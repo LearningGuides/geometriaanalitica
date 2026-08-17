@@ -1,0 +1,846 @@
+---
+export type MidpointGraphType =
+  | "concept"
+  | "number-line"
+  | "positive-example"
+  | "negative-example"
+  | "horizontal-example"
+  | "unknown-endpoint";
+
+interface Props {
+  type: MidpointGraphType;
+  title?: string;
+  description?: string;
+  height?: number;
+  interactive?: boolean;
+}
+
+const {
+  type,
+  title,
+  description,
+  height = 480,
+  interactive = false,
+} = Astro.props;
+
+const boardId = `midpoint-${type}-${crypto.randomUUID()}`;
+---
+
+<figure
+  class="midpoint-graph"
+  data-midpoint-graph
+  data-board-id={boardId}
+  data-graph-type={type}
+  data-interactive={String(interactive)}
+>
+  {
+    title && (
+      <figcaption class="midpoint-graph__caption">
+        <strong>{title}</strong>
+        {description && <span>{description}</span>}
+      </figcaption>
+    )
+  }
+
+  <div
+    id={boardId}
+    class="jxgbox midpoint-graph__board"
+    style={`height:${height}px`}
+    role="img"
+    aria-label={description ?? title ?? "Gráfico del punto medio"}
+  >
+  </div>
+</figure>
+
+<script>
+  import JXG from "jsxgraph";
+
+  type GraphType =
+    | "concept"
+    | "number-line"
+    | "positive-example"
+    | "negative-example"
+    | "horizontal-example"
+    | "unknown-endpoint";
+
+  interface GraphContainer extends HTMLElement {
+    dataset: DOMStringMap & {
+      boardId?: string;
+      graphType?: GraphType;
+      interactive?: string;
+      initialized?: string;
+    };
+  }
+
+  interface CoordinatePoint {
+    name: string;
+    x: number;
+    y: number;
+    color?: string;
+    labelOffset?: [number, number];
+  }
+
+  const COLORS = {
+    blue: "#2563eb",
+    red: "#dc2626",
+    green: "#16a34a",
+    purple: "#7c3aed",
+    orange: "#ea580c",
+    gray: "#64748b",
+    lightGray: "#cbd5e1",
+    dark: "#172033",
+  };
+
+  function createBoard(
+    boardId: string,
+    boundingbox: [number, number, number, number],
+    interactive: boolean,
+    axis = true,
+  ) {
+    return JXG.JSXGraph.initBoard(boardId, {
+      boundingbox,
+      axis,
+      grid: axis,
+      keepAspectRatio: true,
+      showCopyright: false,
+      showNavigation: interactive,
+      pan: {
+        enabled: interactive,
+      },
+      zoom: {
+        enabled: interactive,
+        wheel: interactive,
+        pinch: interactive,
+      },
+      defaultAxes: {
+        x: {
+          name: "x",
+          withLabel: true,
+          label: {
+            position: "rt",
+            offset: [-15, 16],
+          },
+          ticks: {
+            ticksDistance: 1,
+            minorTicks: 0,
+          },
+        },
+        y: {
+          name: "y",
+          withLabel: true,
+          label: {
+            position: "rt",
+            offset: [12, -12],
+          },
+          ticks: {
+            ticksDistance: 1,
+            minorTicks: 0,
+          },
+        },
+      },
+    });
+  }
+
+  function createPoint(
+    board: JXG.Board,
+    point: CoordinatePoint,
+    interactive: boolean,
+  ) {
+    return board.create("point", [point.x, point.y], {
+      name: point.name,
+      size: 4,
+      fixed: !interactive,
+      snapToGrid: interactive,
+      snapSizeX: 1,
+      snapSizeY: 1,
+      strokeWidth: 2,
+      strokeColor: point.color ?? COLORS.blue,
+      fillColor: point.color ?? COLORS.blue,
+      highlight: interactive,
+      label: {
+        offset: point.labelOffset ?? [8, 10],
+        fontSize: 15,
+        color: COLORS.dark,
+        cssStyle: "font-weight:700;",
+      },
+    });
+  }
+
+  function createSegment(
+    board: JXG.Board,
+    start: unknown,
+    end: unknown,
+    options: Record<string, unknown> = {},
+  ) {
+    return board.create("segment", [start, end], {
+      straightFirst: false,
+      straightLast: false,
+      fixed: true,
+      highlight: false,
+      strokeWidth: 4,
+      strokeColor: COLORS.purple,
+      ...options,
+    });
+  }
+
+  function createText(
+    board: JXG.Board,
+    x: number,
+    y: number,
+    value: string,
+    options: Record<string, unknown> = {},
+  ) {
+    return board.create("text", [x, y, value], {
+      fixed: true,
+      highlight: false,
+      fontSize: 16,
+      color: COLORS.dark,
+      ...options,
+    });
+  }
+
+  function createProjectionLines(
+    board: JXG.Board,
+    point: CoordinatePoint,
+  ) {
+    createSegment(
+      board,
+      [point.x, point.y],
+      [point.x, 0],
+      {
+        strokeColor: point.color ?? COLORS.gray,
+        strokeWidth: 1.5,
+        dash: 2,
+      },
+    );
+
+    createSegment(
+      board,
+      [point.x, point.y],
+      [0, point.y],
+      {
+        strokeColor: point.color ?? COLORS.gray,
+        strokeWidth: 1.5,
+        dash: 2,
+      },
+    );
+  }
+
+  function createEqualityMark(
+    board: JXG.Board,
+    centerX: number,
+    centerY: number,
+    directionX: number,
+    directionY: number,
+  ) {
+    const magnitude = Math.hypot(directionX, directionY);
+    const perpendicularX = -directionY / magnitude;
+    const perpendicularY = directionX / magnitude;
+    const size = 0.28;
+
+    createSegment(
+      board,
+      [
+        centerX - perpendicularX * size,
+        centerY - perpendicularY * size,
+      ],
+      [
+        centerX + perpendicularX * size,
+        centerY + perpendicularY * size,
+      ],
+      {
+        strokeColor: COLORS.dark,
+        strokeWidth: 3,
+      },
+    );
+  }
+
+  function drawConcept(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-1, 8, 11, -1],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    const a = createPoint(
+      board,
+      {
+        name: "A",
+        x: 1,
+        y: 2,
+        color: COLORS.blue,
+        labelOffset: [-26, -18],
+      },
+      interactive,
+    );
+
+    const m = createPoint(
+      board,
+      {
+        name: "M",
+        x: 5,
+        y: 4,
+        color: COLORS.green,
+        labelOffset: [-6, 18],
+      },
+      interactive,
+    );
+
+    const b = createPoint(
+      board,
+      {
+        name: "B",
+        x: 9,
+        y: 6,
+        color: COLORS.red,
+      },
+      interactive,
+    );
+
+    createSegment(board, a, m, {
+      strokeColor: COLORS.blue,
+      strokeWidth: 6,
+    });
+
+    createSegment(board, m, b, {
+      strokeColor: COLORS.red,
+      strokeWidth: 6,
+    });
+
+    createEqualityMark(board, 3, 3, 4, 2);
+    createEqualityMark(board, 7, 5, 4, 2);
+
+    createText(board, 3.5, 0.7, "AM = MB", {
+      color: COLORS.purple,
+      fontSize: 20,
+      cssStyle:
+        "font-weight:700;background:white;padding:4px 8px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function drawNumberLine(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [0, 3, 12, -3],
+      interactive,
+      false,
+    );
+
+    board.suspendUpdate();
+
+    createSegment(board, [1, 0], [11, 0], {
+      strokeColor: COLORS.dark,
+      strokeWidth: 3,
+      firstArrow: true,
+      lastArrow: true,
+    });
+
+    const values = [2, 6, 10];
+
+    for (const value of values) {
+      createSegment(
+        board,
+        [value, -0.25],
+        [value, 0.25],
+        {
+          strokeColor: COLORS.dark,
+          strokeWidth: 3,
+        },
+      );
+
+      board.create("point", [value, 0], {
+        name: "",
+        size: value === 6 ? 5 : 4,
+        fixed: true,
+        strokeColor:
+          value === 6 ? COLORS.green : COLORS.blue,
+        fillColor:
+          value === 6 ? COLORS.green : COLORS.blue,
+        highlight: false,
+      });
+
+      createText(board, value - 0.15, -0.75, String(value), {
+        fontSize: 18,
+        cssStyle: "font-weight:700;",
+      });
+    }
+
+    createSegment(board, [2, 1], [6, 1], {
+      strokeColor: COLORS.blue,
+      strokeWidth: 3,
+      firstArrow: true,
+      lastArrow: true,
+    });
+
+    createSegment(board, [6, 1], [10, 1], {
+      strokeColor: COLORS.red,
+      strokeWidth: 3,
+      firstArrow: true,
+      lastArrow: true,
+    });
+
+    createText(board, 3.55, 1.5, "4 unidades", {
+      color: COLORS.blue,
+      cssStyle: "font-weight:700;",
+    });
+
+    createText(board, 7.55, 1.5, "4 unidades", {
+      color: COLORS.red,
+      cssStyle: "font-weight:700;",
+    });
+
+    createText(board, 3.3, -2, "(2 + 10) / 2 = 6", {
+      color: COLORS.purple,
+      fontSize: 19,
+      cssStyle:
+        "font-weight:700;background:white;padding:4px 8px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function drawPositiveExample(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-1, 9, 12, -1],
+      interactive,
+    );
+
+    const points: CoordinatePoint[] = [
+      {
+        name: "A(2, 3)",
+        x: 2,
+        y: 3,
+        color: COLORS.blue,
+        labelOffset: [-72, -18],
+      },
+      {
+        name: "M(6, 5)",
+        x: 6,
+        y: 5,
+        color: COLORS.green,
+        labelOffset: [-28, 18],
+      },
+      {
+        name: "B(10, 7)",
+        x: 10,
+        y: 7,
+        color: COLORS.red,
+      },
+    ];
+
+    board.suspendUpdate();
+
+    for (const point of points) {
+      createProjectionLines(board, point);
+    }
+
+    const [a, m, b] = points.map((point) =>
+      createPoint(board, point, interactive),
+    );
+
+    createSegment(board, a, m, {
+      strokeColor: COLORS.blue,
+      strokeWidth: 5,
+    });
+
+    createSegment(board, m, b, {
+      strokeColor: COLORS.red,
+      strokeWidth: 5,
+    });
+
+    createText(board, 4.15, 1, "M = (6, 5)", {
+      color: COLORS.green,
+      fontSize: 18,
+      cssStyle:
+        "font-weight:700;background:white;padding:3px 7px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function drawNegativeExample(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-9, 7, 5, -10],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    const a = createPoint(
+      board,
+      {
+        name: "A(-6, 4)",
+        x: -6,
+        y: 4,
+        color: COLORS.blue,
+        labelOffset: [-8, 18],
+      },
+      interactive,
+    );
+
+    const m = createPoint(
+      board,
+      {
+        name: "M(-2, -2)",
+        x: -2,
+        y: -2,
+        color: COLORS.green,
+        labelOffset: [-92, -18],
+      },
+      interactive,
+    );
+
+    const b = createPoint(
+      board,
+      {
+        name: "B(2, -8)",
+        x: 2,
+        y: -8,
+        color: COLORS.red,
+      },
+      interactive,
+    );
+
+    createSegment(board, a, m, {
+      strokeColor: COLORS.blue,
+      strokeWidth: 5,
+    });
+
+    createSegment(board, m, b, {
+      strokeColor: COLORS.red,
+      strokeWidth: 5,
+    });
+
+    createEqualityMark(board, -4, 1, 4, -6);
+    createEqualityMark(board, 0, -5, 4, -6);
+
+    createText(board, -5.8, -7.5, "AM = MB", {
+      color: COLORS.purple,
+      fontSize: 19,
+      cssStyle:
+        "font-weight:700;background:white;padding:4px 8px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function drawHorizontalExample(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-7, 7, 11, -2],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    board.create("line", [[0, 3], [1, 3]], {
+      fixed: true,
+      highlight: false,
+      dash: 2,
+      strokeColor: COLORS.lightGray,
+      strokeWidth: 2,
+    });
+
+    const a = createPoint(
+      board,
+      {
+        name: "A(-4, 3)",
+        x: -4,
+        y: 3,
+        color: COLORS.blue,
+        labelOffset: [-28, 18],
+      },
+      interactive,
+    );
+
+    const m = createPoint(
+      board,
+      {
+        name: "M(2, 3)",
+        x: 2,
+        y: 3,
+        color: COLORS.green,
+        labelOffset: [-28, 18],
+      },
+      interactive,
+    );
+
+    const b = createPoint(
+      board,
+      {
+        name: "B(8, 3)",
+        x: 8,
+        y: 3,
+        color: COLORS.red,
+      },
+      interactive,
+    );
+
+    createSegment(board, a, m, {
+      strokeColor: COLORS.blue,
+      strokeWidth: 6,
+    });
+
+    createSegment(board, m, b, {
+      strokeColor: COLORS.red,
+      strokeWidth: 6,
+    });
+
+    createEqualityMark(board, -1, 3, 6, 0);
+    createEqualityMark(board, 5, 3, 6, 0);
+
+    createText(board, 0.2, 5.2, "y = 3", {
+      color: COLORS.purple,
+      fontSize: 19,
+      cssStyle:
+        "font-weight:700;background:white;padding:3px 7px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function drawUnknownEndpoint(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-1, 11, 13, -1],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    const a = createPoint(
+      board,
+      {
+        name: "A(3, 2)",
+        x: 3,
+        y: 2,
+        color: COLORS.blue,
+        labelOffset: [-70, -18],
+      },
+      interactive,
+    );
+
+    const m = createPoint(
+      board,
+      {
+        name: "M(7, 5)",
+        x: 7,
+        y: 5,
+        color: COLORS.green,
+        labelOffset: [-25, 18],
+      },
+      interactive,
+    );
+
+    const b = createPoint(
+      board,
+      {
+        name: "B(11, 8)",
+        x: 11,
+        y: 8,
+        color: COLORS.red,
+      },
+      interactive,
+    );
+
+    createSegment(board, a, m, {
+      strokeColor: COLORS.blue,
+      strokeWidth: 6,
+    });
+
+    createSegment(board, m, b, {
+      strokeColor: COLORS.red,
+      strokeWidth: 6,
+    });
+
+    createSegment(board, [1.5, 0.875], a, {
+      strokeColor: COLORS.gray,
+      strokeWidth: 2,
+      dash: 2,
+    });
+
+    createSegment(board, b, [12, 8.75], {
+      strokeColor: COLORS.gray,
+      strokeWidth: 2,
+      dash: 2,
+      lastArrow: true,
+    });
+
+    createEqualityMark(board, 5, 3.5, 4, 3);
+    createEqualityMark(board, 9, 6.5, 4, 3);
+
+    createText(board, 2.3, 9.5, "B = 2M − A", {
+      color: COLORS.purple,
+      fontSize: 20,
+      cssStyle:
+        "font-weight:700;background:white;padding:4px 8px;",
+    });
+
+    createText(board, 2.3, 8.7, "B = (11, 8)", {
+      color: COLORS.red,
+      fontSize: 18,
+      cssStyle:
+        "font-weight:700;background:white;padding:3px 7px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function initializeGraph(container: GraphContainer) {
+    if (container.dataset.initialized === "true") {
+      return;
+    }
+
+    const boardId = container.dataset.boardId;
+    const graphType = container.dataset.graphType;
+    const interactive =
+      container.dataset.interactive === "true";
+
+    if (!boardId || !graphType) {
+      console.error(
+        "Faltan datos para inicializar el gráfico.",
+      );
+      return;
+    }
+
+    if (!document.getElementById(boardId)) {
+      console.error(
+        `No se encontró el elemento ${boardId}.`,
+      );
+      return;
+    }
+
+    container.dataset.initialized = "true";
+
+    switch (graphType) {
+      case "concept":
+        drawConcept(boardId, interactive);
+        break;
+
+      case "number-line":
+        drawNumberLine(boardId, interactive);
+        break;
+
+      case "positive-example":
+        drawPositiveExample(boardId, interactive);
+        break;
+
+      case "negative-example":
+        drawNegativeExample(boardId, interactive);
+        break;
+
+      case "horizontal-example":
+        drawHorizontalExample(boardId, interactive);
+        break;
+
+      case "unknown-endpoint":
+        drawUnknownEndpoint(boardId, interactive);
+        break;
+
+      default: {
+        const exhaustiveCheck: never = graphType;
+
+        console.error(
+          `Tipo no reconocido: ${exhaustiveCheck}`,
+        );
+      }
+    }
+  }
+
+  function initializeAllGraphs() {
+    const containers =
+      document.querySelectorAll<GraphContainer>(
+        "[data-midpoint-graph]",
+      );
+
+    containers.forEach(initializeGraph);
+  }
+
+  initializeAllGraphs();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeAllGraphs,
+  );
+</script>
+
+<style>
+  .midpoint-graph {
+    width: min(100%, 900px);
+    margin: 2rem auto;
+  }
+
+  .midpoint-graph__caption {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 0.8rem;
+    color: #172033;
+  }
+
+  .midpoint-graph__caption strong {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+  }
+
+  .midpoint-graph__caption span {
+    color: #526078;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .midpoint-graph__board {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    background: #fff;
+    box-shadow:
+      0 1px 2px rgb(15 23 42 / 8%),
+      0 8px 24px rgb(15 23 42 / 8%);
+  }
+
+  :global(.JXGtext) {
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  @media (max-width: 640px) {
+    .midpoint-graph {
+      margin-block: 1.25rem;
+    }
+
+    .midpoint-graph__board {
+      min-height: 390px;
+    }
+  }
+</style>

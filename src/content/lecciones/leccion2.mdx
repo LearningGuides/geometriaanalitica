@@ -1,0 +1,639 @@
+---
+titulo: División de un segmento en una razón dada
+numero: 2
+---
+import SegmentDivisionGraph from "../../components/Leccion2.astro"
+
+# División de un segmento en una razón dada
+
+Dividir un segmento en una razón dada consiste en localizar un punto que se encuentra entre los extremos del segmento y que lo separa en dos partes cuyas longitudes guardan una proporción específica. Este procedimiento es fundamental en geometría analítica porque permite calcular posiciones intermedias sin necesidad de medir directamente sobre una gráfica.
+
+La idea aparece con frecuencia en situaciones cotidianas. Por ejemplo, imaginemos una carretera recta que une dos ciudades y queremos construir una estación de servicio de modo que la distancia desde la primera ciudad hasta la estación sea el doble de la distancia restante. También puede utilizarse para encontrar el punto donde debe colocarse un apoyo en una estructura, dividir un terreno proporcionalmente o calcular una posición intermedia en una animación digital.
+
+En todos estos casos existe un segmento con dos extremos conocidos y se desea encontrar un punto que lo divida de acuerdo con una razón determinada.
+
+---
+
+## ¿Qué significa dividir en una razón?
+
+Consideremos un segmento cuyos extremos son los puntos
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2)
+$$
+
+Supongamos que un punto $P$, situado sobre el segmento, lo divide en dos partes:
+
+$$
+\overline{AP}
+\qquad \text{y} \qquad
+\overline{PB}
+$$
+
+Si decimos que el punto $P$ divide al segmento en la razón
+
+$$
+m:n,
+$$
+
+esto significa que las longitudes cumplen
+
+$$
+\frac{AP}{PB}=\frac{m}{n}
+$$
+
+En otras palabras,
+
+$$
+AP:PB=m:n
+$$
+
+Por ejemplo, si la razón es
+
+$$
+2:3,
+$$
+
+entonces el segmento se divide en cinco partes iguales: dos corresponden a $\overline{AP}$ y tres corresponden a $\overline{PB}$.
+
+Esto no quiere decir que el punto se encuentre exactamente a dos unidades de $A$ y a tres unidades de $B$. Los números $2$ y $3$ expresan una proporción, no necesariamente distancias absolutas.
+
+  <SegmentDivisionGraph
+    type="horizontal-ratio"
+    title="División en razón 2:3"
+    description="El segmento se divide en cinco partes iguales: dos corresponden a AP y tres a PB."
+    height={400}
+  />
+
+---
+
+## Interpretación intuitiva de la razón
+
+La razón indica qué fracción del recorrido total desde $A$ hasta $B$ debe avanzarse para llegar al punto $P$.
+
+Si
+
+$$
+AP:PB=m:n,
+$$
+
+el segmento completo está formado por
+
+$$
+m+n
+$$
+
+partes proporcionales.
+
+La fracción del segmento recorrida desde $A$ hasta $P$ es
+
+$$
+\frac{m}{m+n}
+$$
+
+Por tanto, el punto $P$ puede entenderse como el resultado de comenzar en $A$ y avanzar la fracción
+
+$$
+\frac{m}{m+n}
+$$
+
+del desplazamiento total que conduce hacia $B$.
+
+Por ejemplo, en la razón
+
+$$
+2:3,
+$$
+
+la fracción recorrida desde $A$ es
+
+$$
+\frac{2}{2+3}=\frac{2}{5}
+$$
+
+Así, $P$ se encuentra a dos quintas partes del recorrido desde $A$ hasta $B$.
+
+---
+
+## Fórmula de división interna
+
+Cuando el punto $P$ se encuentra entre $A$ y $B$, hablamos de una **división interna** del segmento.
+
+Si
+
+$$
+A(x_1,y_1), \qquad B(x_2,y_2)
+$$
+
+y el punto $P$ divide al segmento en la razón
+
+$$
+AP:PB=m:n,
+$$
+
+sus coordenadas se calculan mediante la fórmula:
+
+$$
+P\left(
+\frac{nx_1+mx_2}{m+n},
+\frac{ny_1+my_2}{m+n}
+\right)
+$$
+
+Por separado, las coordenadas son
+
+$$
+x_P=\frac{nx_1+mx_2}{m+n}
+$$
+
+y
+
+$$
+y_P=\frac{ny_1+my_2}{m+n}
+$$
+
+Es importante observar que el número asociado con cada extremo aparece multiplicando las coordenadas del extremo opuesto. Esta disposición suele parecer extraña al principio, pero se comprende mejor al interpretar el punto como un desplazamiento proporcional desde $A$ hacia $B$.
+
+---
+
+## Deducción mediante desplazamientos
+
+El vector que va de $A$ a $B$ es
+
+$$
+B-A=(x_2-x_1,\ y_2-y_1)
+$$
+
+Como el punto $P$ debe recorrer desde $A$ la fracción
+
+$$
+\frac{m}{m+n}
+$$
+
+del desplazamiento total, podemos escribir
+
+$$
+P=A+\frac{m}{m+n}(B-A)
+$$
+
+Para la coordenada (x):
+
+$$
+x_P=x_1+\frac{m}{m+n}(x_2-x_1)
+$$
+
+Al desarrollar:
+
+$$
+x_P=
+\frac{(m+n)x_1+m(x_2-x_1)}{m+n}
+$$
+
+Simplificando:
+
+$$
+x_P=
+\frac{nx_1+mx_2}{m+n}
+$$
+
+De manera semejante:
+
+$$
+y_P=
+\frac{ny_1+my_2}{m+n}
+$$
+
+Así se obtiene la fórmula de división interna.
+
+  <SegmentDivisionGraph
+    type="vector-division"
+    title="Interpretación vectorial"
+    description="El vector que va desde A hasta P es una fracción del vector total que va desde A hasta B."
+  />
+
+---
+
+## Ejemplo 1: división en razón (2:3)
+
+Consideremos los puntos
+
+$$
+A=(1,2)
+$$
+
+y
+
+$$
+B=(11,7)
+$$
+
+Deseamos encontrar el punto $P$ que divide internamente el segmento en la razón
+
+$$
+AP:PB=2:3
+$$
+
+En este caso:
+
+$$
+m=2, \qquad n=3
+$$
+
+Aplicamos la fórmula:
+
+$$
+x_P=\frac{3(1)+2(11)}{2+3}
+$$
+
+Entonces:
+
+$$
+x_P=\frac{3+22}{5}
+=\frac{25}{5}
+=5
+$$
+
+Ahora calculamos la coordenada vertical:
+
+$$
+y_P=\frac{3(2)+2(7)}{2+3}
+$$
+
+Por tanto:
+
+$$
+y_P=\frac{6+14}{5}
+=\frac{20}{5}
+=4
+$$
+
+El punto buscado es
+
+$$
+\boxed{P=(5,4)}
+$$
+
+Para verificarlo, observemos los vectores:
+
+$$
+\overrightarrow{AP}=(5-1,\ 4-2)=(4,2)
+$$
+
+y
+
+$$
+\overrightarrow{PB}=(11-5,\ 7-4)=(6,3)
+$$
+
+Las longitudes son proporcionales porque
+
+$$
+(4,2)=\frac{2}{3}(6,3)
+$$
+
+Por tanto,
+
+$$
+AP:PB=2:3
+$$
+
+  <SegmentDivisionGraph
+    type="ratio-example"
+    title="A(1,2), P(5,4) y B(11,7)"
+    description="El punto P divide internamente el segmento en la razón AP:PB = 2:3."
+  />
+
+---
+
+## Ejemplo 2: coordenadas negativas
+
+Sean los puntos
+
+$$
+A=(-4,5)
+$$
+
+y
+
+$$
+B=(8,-1)
+$$
+
+Busquemos el punto que divide el segmento en la razón
+
+$$
+AP:PB=1:2
+$$
+
+Tenemos:
+
+$$
+m=1,\qquad n=2
+$$
+
+Calculamos:
+
+$$
+x_P=\frac{2(-4)+1(8)}{1+2}
+=\frac{-8+8}{3}
+=0
+$$
+
+Para la coordenada (y):
+
+$$
+y_P=\frac{2(5)+1(-1)}{3}
+=\frac{10-1}{3}
+=3
+$$
+
+Por tanto,
+
+$$
+\boxed{P=(0,3)}
+$$
+
+Este resultado muestra que el punto se encuentra sobre el eje (Y), pues su coordenada horizontal es cero.
+
+Además, como la razón es (1:2), el punto está más cerca de $A$ que de $B$. Desde $A$ se recorre solamente una tercera parte del segmento total.
+
+---
+
+## Caso particular: el punto medio
+
+El punto medio es un caso especial de división de un segmento.
+
+Si un punto (M) divide al segmento en la razón
+
+$$
+1:1,
+$$
+
+entonces las dos partes tienen la misma longitud:
+
+$$
+AM=MB
+$$
+
+Sustituyendo
+
+$$
+m=1,\qquad n=1
+$$
+
+en la fórmula general, obtenemos:
+
+$$
+M\left(
+\frac{x_1+x_2}{2},
+\frac{y_1+y_2}{2}
+\right)
+$$
+
+Esta es precisamente la fórmula del punto medio.
+
+Por ejemplo, si
+
+$$
+A=(2,3)
+$$
+
+y
+
+$$
+B=(10,7),
+$$
+
+entonces:
+
+$$
+M=
+\left(
+\frac{2+10}{2},
+\frac{3+7}{2}
+\right)
+$$
+
+Así,
+
+$$
+M=(6,5)
+$$
+ <SegmentDivisionGraph
+    type="midpoint"
+    title="División en razón 1:1"
+    description="El punto M se encuentra exactamente a la misma distancia de A y de B."
+  />
+---
+
+## Método alternativo con incrementos
+
+Otra forma muy intuitiva de calcular el punto consiste en dividir por separado los cambios horizontal y vertical.
+
+Consideremos:
+
+$$
+A=(2,1),\qquad B=(12,6)
+$$
+
+y la razón
+
+$$
+AP:PB=3:2
+$$
+
+Primero calculamos el cambio total:
+
+$$
+\Delta x=12-2=10
+$$
+
+y
+
+$$
+\Delta y=6-1=5
+$$
+
+Como la razón es (3:2), el segmento total se considera dividido en
+
+$$
+3+2=5
+$$
+
+partes.
+
+El punto $P$ se encuentra a
+
+$$
+\frac{3}{5}
+$$
+
+del trayecto desde $A$.
+
+Entonces:
+
+$$
+x_P=2+\frac{3}{5}(10)=2+6=8
+$$
+
+y
+
+$$
+y_P=1+\frac{3}{5}(5)=1+3=4
+$$
+
+Por tanto:
+
+$$
+\boxed{P=(8,4)}
+$$
+
+Este método conduce al mismo resultado que la fórmula de división interna, pero hace más visible la idea de avanzar una fracción del desplazamiento.
+
+---
+
+## Comprobación mediante distancias
+
+Una vez calculado el punto, podemos verificar que realmente divide el segmento en la razón solicitada utilizando la fórmula de distancia:
+
+$$
+d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}
+$$
+
+En el ejemplo anterior:
+
+$$
+A=(2,1),\qquad P=(8,4),\qquad B=(12,6)
+$$
+
+La longitud de $\overline{AP}$ es:
+
+$$
+AP=\sqrt{(8-2)^2+(4-1)^2}
+$$
+
+$$
+AP=\sqrt{6^2+3^2}
+=\sqrt{45}
+=3\sqrt{5}
+$$
+
+La longitud de $\overline{PB}$ es:
+
+$$
+PB=\sqrt{(12-8)^2+(6-4)^2}
+$$
+
+$$
+PB=\sqrt{4^2+2^2}
+=\sqrt{20}
+=2\sqrt{5}
+$$
+
+Por tanto:
+
+$$
+\frac{AP}{PB}
+=
+\frac{3\sqrt{5}}{2\sqrt{5}}
+\frac{3}{2}
+$$
+
+Se confirma que
+
+$$
+AP:PB=3:2
+$$
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes consiste en interpretar la razón al revés. Si se pide
+
+$$
+AP:PB=2:3,
+$$
+
+el punto debe encontrarse más cerca de $A$, porque la primera parte es más corta. Si el resultado queda más cerca de $B$, probablemente se intercambiaron los valores de (m) y (n).
+
+Otro error frecuente es dividir únicamente entre uno de los números de la razón. El denominador correcto siempre es
+
+$$
+m+n
+$$
+
+También es común olvidar los signos negativos al sustituir coordenadas. Por ejemplo:
+
+$$
+2(-4)=-8,
+$$
+
+no (8).
+
+Finalmente, conviene recordar que la razón compara longitudes, por lo que sus valores suelen considerarse positivos en una división interna.
+
+---
+
+## Aplicaciones prácticas
+
+La división de segmentos se utiliza en diseño gráfico para colocar objetos proporcionalmente entre dos puntos. En arquitectura permite distribuir columnas, ventanas o divisiones a lo largo de una estructura. En cartografía ayuda a encontrar posiciones intermedias entre dos ubicaciones, mientras que en animación y videojuegos permite calcular la posición de un objeto durante un movimiento.
+
+También aparece en física. Si una partícula se desplaza en línea recta desde una posición inicial hasta una posición final, su ubicación en un instante intermedio puede determinarse como una fracción del recorrido total.
+
+Por ejemplo, si un objeto ha completado el (40%) de su trayectoria entre $A$ y $B$, su posición puede escribirse como:
+
+$$
+P=A+0.4(B-A)
+$$
+
+Esto equivale a dividir el segmento en la razón
+
+$$
+2:3,
+$$
+
+porque:
+
+$$
+\frac{2}{2+3}=\frac{2}{5}=0.4
+$$
+
+---
+
+## Reflexión final
+
+Dividir un segmento en una razón dada permite transformar una proporción geométrica en coordenadas precisas. La idea central consiste en comprender que el punto buscado representa una determinada fracción del recorrido entre dos extremos.
+
+Si
+
+$$
+AP:PB=m:n,
+$$
+
+entonces el punto $P$ se encuentra a la fracción
+
+$$
+\frac{m}{m+n}
+$$
+
+del recorrido desde $A$ hasta $B$.
+
+La fórmula fundamental es:
+
+$$
+\boxed{
+P\left(
+\frac{nx_1+mx_2}{m+n},
+\frac{ny_1+my_2}{m+n}
+\right)
+}
+$$
+
+Más que memorizarla, conviene comprender su significado: cada coordenada del punto buscado es un promedio ponderado de las coordenadas de los extremos. De esta manera, la geometría y el álgebra trabajan juntas para localizar con exactitud una posición proporcional dentro de un segmento.

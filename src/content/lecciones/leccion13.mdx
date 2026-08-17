@@ -1,0 +1,727 @@
+---
+titulo: Distancia de un punto a una recta
+numero: 13
+---
+
+import PointLineDistanceGraph from "../../components/Leccion13.astro"
+
+# Distancia de un punto a una recta
+
+Uno de los problemas más importantes de la geometría analítica consiste en determinar cuál es la menor distancia entre un punto y una recta. A primera vista, podría parecer suficiente medir cualquier segmento que una ambos elementos; sin embargo, no todos los segmentos representan la distancia mínima.
+
+La distancia más corta entre un punto y una recta siempre corresponde al segmento **perpendicular** que une el punto con la recta. Esta propiedad es consecuencia de la geometría euclidiana y tiene numerosas aplicaciones en ingeniería, arquitectura, física, topografía, robótica y diseño asistido por computadora.
+
+Por ejemplo, cuando un ingeniero desea conocer qué tan lejos se encuentra una columna respecto al eje de una carretera, no mide una línea inclinada cualquiera, sino la distancia perpendicular. Del mismo modo, en navegación y cartografía, la distancia mínima entre una ubicación y una ruta se calcula utilizando este mismo principio.
+
+En esta sección aprenderemos a obtener esa distancia mediante una fórmula derivada de conceptos geométricos fundamentales.
+
+---
+
+# ¿Qué significa la distancia de un punto a una recta?
+
+Supongamos que tenemos un punto:
+
+$$
+P(x_0,y_0)
+$$
+
+y una recta:
+
+$$
+Ax+By+C=0.
+$$
+
+Desde el punto pueden trazarse infinitos segmentos hacia distintos puntos de la recta.
+
+Sin embargo, únicamente uno de ellos posee la longitud mínima.
+
+Ese segmento cumple una condición muy importante:
+
+$$
+\boxed{\text{Es perpendicular a la recta.}}
+$$
+
+Por ello, la distancia entre un punto y una recta siempre se define como la longitud del segmento perpendicular.
+
+<PointLineDistanceGraph
+    type="minimum-distance"
+    title="La distancia mínima es perpendicular"
+    description="Entre todos los segmentos que unen el punto con la recta, el segmento perpendicular tiene la menor longitud."
+  />
+---
+
+# La fórmula de la distancia
+
+Si la recta está escrita en su forma general
+
+$$
+Ax+By+C=0,
+$$
+
+y el punto es
+
+$$
+P(x_0,y_0),
+$$
+
+la distancia viene dada por:
+
+$$
+\boxed{
+d=
+\frac{|Ax_0+By_0+C|}
+{\sqrt{A^2+B^2}}
+}
+$$
+
+donde:
+
+* (A), (B) y (C) son los coeficientes de la recta.
+* ((x_0,y_0)) son las coordenadas del punto.
+* El valor absoluto garantiza que la distancia siempre sea positiva.
+
+Esta es una de las fórmulas más utilizadas de la geometría analítica.
+
+---
+
+# ¿Por qué aparece el valor absoluto?
+
+Consideremos la recta
+
+$$
+x+y-5=0.
+$$
+
+Si sustituimos dos puntos ubicados en lados opuestos de la recta obtenemos valores positivos y negativos.
+
+Por ejemplo,
+
+para
+
+$$
+P_1=(5,5)
+$$
+
+tenemos
+
+$$
+5+5-5=5.
+$$
+
+Mientras que para
+
+$$
+P_2=(1,1)
+$$
+
+obtenemos
+
+$$
+1+1-5=-3.
+$$
+
+Geométricamente ambos puntos poseen una distancia positiva respecto a la recta.
+
+Por ello se utiliza
+
+$$
+|Ax_0+By_0+C|,
+$$
+
+de modo que
+
+$$
+|5|=5
+$$
+
+y
+
+$$
+|-3|=3.
+$$
+
+El signo únicamente indica en qué lado de la recta se encuentra el punto; la distancia nunca puede ser negativa.
+
+---
+
+# ¿De dónde proviene la fórmula?
+
+Aunque la demostración completa utiliza vectores, la idea geométrica es sencilla.
+
+La recta
+
+$$
+Ax+By+C=0
+$$
+
+posee un vector normal
+
+$$
+\vec n=(A,B),
+$$
+
+es decir, un vector perpendicular a la recta.
+
+La distancia buscada corresponde precisamente a la proyección del vector que une un punto cualquiera de la recta con el punto dado sobre ese vector normal.
+
+Después de normalizar el vector (hacer que tenga longitud uno), se obtiene la expresión
+
+$$
+\boxed{
+d=
+\frac{|Ax_0+By_0+C|}
+{\sqrt{A^2+B^2}}
+}
+$$
+
+El denominador
+
+$$
+\sqrt{A^2+B^2}
+$$
+
+representa la longitud del vector normal.
+
+ <PointLineDistanceGraph
+    type="normal-projection"
+    title="Vector normal y proyección"
+    description="La distancia corresponde a la proyección ortogonal sobre el vector normal de la recta."
+  />
+---
+
+# Procedimiento para calcular la distancia
+
+El procedimiento es sencillo.
+
+**Paso 1.**
+
+Escribir la ecuación de la recta en forma general:
+
+$$
+Ax+By+C=0.
+$$
+
+**Paso 2.**
+
+Identificar los coeficientes
+
+$$
+A,;B,;C.
+$$
+
+**Paso 3.**
+
+Sustituir las coordenadas del punto
+
+$$
+(x_0,y_0).
+$$
+
+**Paso 4.**
+
+Calcular el numerador:
+
+$$
+|Ax_0+By_0+C|.
+$$
+
+**Paso 5.**
+
+Calcular el denominador:
+
+$$
+\sqrt{A^2+B^2}.
+$$
+
+**Paso 6.**
+
+Dividir ambos resultados.
+
+---
+
+# Ejemplo 1
+
+Calculemos la distancia entre el punto
+
+$$
+P=(2,3)
+$$
+
+y la recta
+
+$$
+3x+4y-10=0.
+$$
+
+Identificamos
+
+$$
+A=3,
+$$
+
+$$
+B=4,
+$$
+
+$$
+C=-10.
+$$
+
+Aplicamos la fórmula:
+
+$$
+d=
+\frac{|3(2)+4(3)-10|}
+{\sqrt{3^2+4^2}}.
+$$
+
+Calculamos el numerador:
+
+$$
+6+12-10=8.
+$$
+
+Luego
+
+$$
+|8|=8.
+$$
+
+Calculamos el denominador:
+
+$$
+\sqrt{9+16}
+=
+
+# \sqrt{25}
+
+5.
+
+$$
+
+Finalmente,
+
+$$
+\boxed{
+d=\frac85=1.6
+}
+$$
+
+El punto se encuentra a 1.6 unidades de la recta.
+
+ <PointLineDistanceGraph
+    type="formula-example"
+    title="Distancia entre P(2,3) y 3x + 4y − 10 = 0"
+    description="El pie de la perpendicular determina un segmento de longitud 8/5, equivalente a 1.6."
+  />
+---
+
+# Ejemplo 2
+
+Encontrar la distancia del punto
+
+$$
+P=(-1,4)
+$$
+
+a la recta
+
+$$
+2x-y+5=0.
+$$
+
+Aplicamos:
+
+$$
+d=
+\frac{|2(-1)-4+5|}
+{\sqrt{2^2+(-1)^2}}.
+$$
+
+Calculamos:
+
+$$
+-2-4+5=-1.
+$$
+
+Entonces
+
+$$
+|-1|=1.
+$$
+
+El denominador es
+
+$$
+\sqrt4+\sqrt1
+$$
+
+pero debemos sumar primero los cuadrados:
+
+$$
+\sqrt{4+1}
+=
+
+\sqrt5.
+$$
+
+Por tanto,
+
+$$
+\boxed{
+d=\frac1{\sqrt5}
+}
+$$
+
+Racionalizando:
+
+$$
+\boxed{
+d=\frac{\sqrt5}{5}
+}
+$$
+
+Aproximadamente,
+
+$$
+d\approx0.447.
+$$
+
+---
+
+# Ejemplo 3
+
+Calcular la distancia entre
+
+$$
+P=(5,-2)
+$$
+
+y
+
+$$
+x-2y+7=0.
+$$
+
+Sustituimos:
+
+$$
+d=
+\frac{|5-2(-2)+7|}
+{\sqrt{1^2+(-2)^2}}.
+$$
+
+El numerador es
+
+$$
+5+4+7=16.
+$$
+
+El denominador:
+
+$$
+\sqrt{1+4}
+=
+
+\sqrt5.
+$$
+
+Por tanto,
+
+$$
+\boxed{
+d=\frac{16}{\sqrt5}
+=
+
+\frac{16\sqrt5}{5}.
+}
+$$
+
+---
+
+# Cuando el punto pertenece a la recta
+
+Si un punto pertenece a la recta, entonces satisface exactamente su ecuación.
+
+Por ejemplo,
+
+consideremos
+
+$$
+P=(1,2)
+$$
+
+y
+
+$$
+2x+y-4=0.
+$$
+
+Sustituimos:
+
+$$
+2(1)+2-4=0.
+$$
+
+El numerador de la fórmula vale
+
+$$
+|0|=0.
+$$
+
+Entonces
+
+$$
+\boxed{
+d=0.
+}
+$$
+
+Esto confirma que un punto situado sobre la recta tiene distancia cero respecto de ella.
+
+  <PointLineDistanceGraph
+    type="point-on-line"
+    title="Distancia igual a cero"
+    description="El punto P(1,2) satisface la ecuación 2x + y − 4 = 0."
+  />
+---
+
+# Distancia a una recta horizontal
+
+Sea la recta
+
+$$
+y=4.
+$$
+
+Podemos escribirla como
+
+$$
+y-4=0.
+$$
+
+Aquí
+
+$$
+A=0,
+$$
+
+$$
+B=1,
+$$
+
+$$
+C=-4.
+$$
+
+Para el punto
+
+$$
+P=(3,-2),
+$$
+
+la distancia es
+
+$$
+d=
+\frac{|0(3)+(-2)-4|}
+{\sqrt{0^2+1^2}}.
+$$
+
+$$
+d=
+|-6|
+=
+
+6.
+
+$$
+
+Geométricamente coincide con la diferencia vertical
+
+$$
+|4-(-2)|=6.
+$$
+
+Esto muestra que la fórmula general funciona también para rectas horizontales.
+
+  <PointLineDistanceGraph
+    type="horizontal-line"
+    title="Distancia vertical"
+    description="La separación entre P(3,−2) y la recta y = 4 es de seis unidades."
+  />
+---
+
+# Distancia a una recta vertical
+
+Sea la recta
+
+$$
+x=-3.
+$$
+
+En forma general:
+
+$$
+x+3=0.
+$$
+
+Para el punto
+
+$$
+P=(5,2),
+$$
+
+la distancia es
+
+$$
+d=
+\frac{|5+3|}
+{\sqrt1}
+=
+
+8.
+
+$$
+
+Geométricamente corresponde a la diferencia horizontal
+
+$$
+|5-(-3)|=8.
+$$
+
+
+  <PointLineDistanceGraph
+    type="vertical-line"
+    title="Distancia horizontal"
+    description="La separación entre P(5,2) y la recta x = −3 es de ocho unidades."
+  />
+---
+
+# Aplicación: verificar si un punto está sobre una recta
+
+Si al aplicar la fórmula obtenemos
+
+$$
+d=0,
+$$
+
+podemos afirmar inmediatamente que el punto pertenece a la recta.
+
+Por ejemplo,
+
+para
+
+$$
+P=(2,1)
+$$
+
+y
+
+$$
+x-2y=0,
+$$
+
+tenemos
+
+$$
+2-2=0.
+$$
+
+Luego
+
+$$
+d=0.
+$$
+
+El punto pertenece exactamente a la recta.
+
+---
+
+# Aplicaciones en geometría
+
+La distancia punto-recta permite resolver numerosos problemas.
+
+Por ejemplo:
+
+* calcular la altura de un triángulo;
+* encontrar la distancia mínima entre un objeto y una carretera;
+* medir separaciones entre elementos arquitectónicos;
+* determinar errores de ajuste en estadística;
+* calcular la distancia de un punto a un plano en geometría tridimensional;
+* construir mediatrices y bisectrices.
+
+En ingeniería civil se utiliza para verificar alineaciones. En robótica permite calcular la separación entre un robot y una trayectoria programada. En visión artificial ayuda a detectar líneas y medir desviaciones respecto a ellas.
+
+---
+
+# Errores frecuentes
+
+Uno de los errores más comunes consiste en aplicar la fórmula cuando la recta no está escrita en forma general.
+
+Por ejemplo,
+
+$$
+y=2x+1
+$$
+
+debe transformarse primero en
+
+$$
+2x-y+1=0.
+$$
+
+Otro error frecuente consiste en olvidar el valor absoluto, obteniendo distancias negativas.
+
+También es común calcular incorrectamente el denominador escribiendo
+
+$$
+A+B
+$$
+
+en lugar de
+
+$$
+\sqrt{A^2+B^2}.
+$$
+
+Debe recordarse que primero se elevan los coeficientes al cuadrado, luego se suman y finalmente se calcula la raíz cuadrada.
+
+Finalmente, algunos estudiantes sustituyen las coordenadas del punto con signos incorrectos. Es recomendable escribir todos los paréntesis antes de realizar las operaciones.
+
+---
+
+# Relación con otros temas
+
+La distancia de un punto a una recta se conecta directamente con varios conceptos de la geometría analítica.
+
+Se relaciona con:
+
+* el vector normal de una recta;
+* las rectas perpendiculares;
+* las proyecciones ortogonales;
+* la distancia entre rectas paralelas;
+* las alturas de triángulos;
+* la ecuación general de la recta.
+
+Más adelante, esta misma idea se extenderá al cálculo de distancias entre puntos y planos en el espacio tridimensional.
+
+---
+
+# Reflexión final
+
+La distancia entre un punto y una recta no se mide mediante cualquier segmento, sino mediante el segmento **perpendicular**, ya que este representa la menor separación posible entre ambos.
+
+La fórmula fundamental es:
+
+$$
+\boxed{
+d=
+\frac{|Ax_0+By_0+C|}
+{\sqrt{A^2+B^2}}
+}
+$$
+
+Esta expresión combina conceptos de álgebra, geometría y vectores en una sola ecuación. El numerador mide la posición relativa del punto respecto de la recta, mientras que el denominador normaliza esa medida mediante la longitud del vector normal.
+
+Comprender esta fórmula significa entender que la geometría analítica no solo permite describir figuras mediante ecuaciones, sino también medir con precisión distancias y resolver problemas reales relacionados con trayectorias, estructuras, diseño y análisis espacial. Es un excelente ejemplo de cómo una representación algebraica puede traducirse directamente en una interpretación geométrica clara y útil.

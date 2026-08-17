@@ -1,0 +1,691 @@
+/* src/styles/leccion.css */
+
+:root {
+  --lesson-background: #f8fafc;
+  --lesson-surface: #ffffff;
+  --lesson-surface-soft: #f1f5f9;
+
+  --lesson-text: #1e293b;
+  --lesson-text-soft: #475569;
+  --lesson-text-muted: #64748b;
+
+  --lesson-primary: #2563eb;
+  --lesson-primary-dark: #1d4ed8;
+  --lesson-primary-soft: #eff6ff;
+
+  --lesson-accent: #7c3aed;
+  --lesson-accent-soft: #f5f3ff;
+
+  --lesson-border: #dbe4ee;
+  --lesson-border-strong: #cbd5e1;
+
+  --lesson-warning: #b45309;
+  --lesson-warning-soft: #fffbeb;
+
+  --lesson-success: #047857;
+  --lesson-success-soft: #ecfdf5;
+
+  --lesson-danger: #b91c1c;
+  --lesson-danger-soft: #fef2f2;
+
+  --lesson-radius-sm: 0.5rem;
+  --lesson-radius-md: 0.85rem;
+  --lesson-radius-lg: 1.25rem;
+
+  --lesson-shadow:
+    0 1px 2px rgb(15 23 42 / 0.04),
+    0 12px 35px rgb(15 23 42 / 0.08);
+
+  --lesson-font:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --lesson-code-font:
+    "JetBrains Mono",
+    "Fira Code",
+    Consolas,
+    monospace;
+}
+
+/* Contenedor principal */
+
+.leccion {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  color: var(--lesson-text);
+  font-family: var(--lesson-font);
+  font-size: clamp(1rem, 0.98rem + 0.15vw, 1.075rem);
+  line-height: 1.8;
+  background: var(--lesson-surface);
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius-lg);
+  box-shadow: var(--lesson-shadow);
+}
+
+/* Encabezados */
+
+.leccion h1,
+.leccion h2,
+.leccion h3,
+.leccion h4 {
+  color: #0f172a;
+  line-height: 1.25;
+  text-wrap: balance;
+  scroll-margin-top: 6rem;
+}
+
+.leccion h1 {
+  position: relative;
+  margin: 0 0 2rem;
+  padding-bottom: 1rem;
+  font-size: clamp(2rem, 5vw, 3.35rem);
+  font-weight: 850;
+  letter-spacing: -0.045em;
+}
+
+.leccion h1::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: min(8rem, 40%);
+  height: 0.3rem;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    var(--lesson-primary),
+    var(--lesson-accent)
+  );
+  border-radius: 999px;
+}
+
+.leccion h2 {
+  margin: 3.5rem 0 1.25rem;
+  padding: 0.75rem 1rem;
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(
+    90deg,
+    var(--lesson-primary-soft),
+    transparent
+  );
+  border-left: 0.3rem solid var(--lesson-primary);
+  border-radius: 0 var(--lesson-radius-sm) var(--lesson-radius-sm) 0;
+}
+
+.leccion h3 {
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+
+.leccion h4 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 750;
+}
+
+/* Texto */
+
+.leccion p {
+  margin: 1rem 0;
+  color: var(--lesson-text-soft);
+}
+
+.leccion > p:first-of-type {
+  color: var(--lesson-text);
+  font-size: clamp(1.08rem, 1.04rem + 0.25vw, 1.25rem);
+  line-height: 1.85;
+}
+
+.leccion strong {
+  color: #0f172a;
+  font-weight: 750;
+}
+
+.leccion em {
+  color: var(--lesson-accent);
+}
+
+.leccion a {
+  color: var(--lesson-primary);
+  font-weight: 650;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+
+.leccion a:hover {
+  color: var(--lesson-primary-dark);
+}
+
+/* Separadores */
+
+.leccion hr {
+  height: 1px;
+  margin: 3rem 0;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--lesson-border-strong),
+    transparent
+  );
+}
+
+/* Listas */
+
+.leccion ul,
+.leccion ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.leccion li {
+  margin: 0.65rem 0;
+  padding-left: 0.3rem;
+  color: var(--lesson-text-soft);
+}
+
+.leccion li::marker {
+  color: var(--lesson-primary);
+  font-weight: 800;
+}
+
+.leccion li > p {
+  margin: 0.4rem 0;
+}
+
+/* Citas y sugerencias de gráficos */
+
+.leccion blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+  color: var(--lesson-text);
+  background: var(--lesson-primary-soft);
+  border: 1px solid #bfdbfe;
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion blockquote::before {
+  position: absolute;
+  top: 1.05rem;
+  left: 1.15rem;
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 800;
+  content: "i";
+  background: var(--lesson-primary);
+  border-radius: 50%;
+  place-items: center;
+}
+
+.leccion blockquote p {
+  margin: 0;
+  color: inherit;
+}
+
+.leccion blockquote strong:first-child {
+  color: var(--lesson-primary-dark);
+}
+
+/* Tablas */
+
+.leccion table {
+  width: 100%;
+  margin: 2rem 0;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--lesson-surface);
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion thead {
+  color: white;
+  background: linear-gradient(
+    135deg,
+    var(--lesson-primary),
+    var(--lesson-accent)
+  );
+}
+
+.leccion th,
+.leccion td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--lesson-border);
+}
+
+.leccion th {
+  font-size: 0.9rem;
+  font-weight: 750;
+  letter-spacing: 0.025em;
+}
+
+.leccion td {
+  color: var(--lesson-text-soft);
+}
+
+.leccion tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.leccion tbody tr:nth-child(even) {
+  background: var(--lesson-surface-soft);
+}
+
+.leccion tbody tr:hover {
+  background: var(--lesson-primary-soft);
+}
+
+/* Fórmulas matemáticas */
+
+.leccion .katex-display {
+  max-width: 100%;
+  margin: 1.75rem 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  color: #172554;
+  background: linear-gradient(
+    135deg,
+    var(--lesson-primary-soft),
+    var(--lesson-accent-soft)
+  );
+  border: 1px solid #c7d2fe;
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion .katex-display > .katex {
+  white-space: nowrap;
+}
+
+.leccion .katex {
+  font-size: 1.08em;
+}
+
+.leccion p .katex,
+.leccion li .katex,
+.leccion td .katex {
+  color: var(--lesson-primary-dark);
+}
+
+/* Código */
+
+.leccion code {
+  padding: 0.15rem 0.4rem;
+  color: #be185d;
+  font-family: var(--lesson-code-font);
+  font-size: 0.9em;
+  background: #fdf2f8;
+  border: 1px solid #fbcfe8;
+  border-radius: 0.35rem;
+}
+
+.leccion pre {
+  margin: 1.75rem 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  color: #e2e8f0;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion pre code {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+}
+
+/* Imágenes, SVG y gráficos */
+
+.leccion img,
+.leccion > svg,
+.leccion figure svg,
+.leccion canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion figure {
+  margin: 2.5rem 0;
+  padding: 1rem;
+  background: var(--lesson-surface-soft);
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion figure img,
+.leccion figure svg,
+.leccion figure canvas {
+  margin: 0 auto;
+}
+
+.leccion figcaption {
+  margin-top: 0.85rem;
+  color: var(--lesson-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Componentes opcionales */
+
+.leccion .definicion,
+.leccion .ejemplo,
+.leccion .procedimiento,
+.leccion .advertencia,
+.leccion .aplicacion {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion .definicion {
+  background: var(--lesson-primary-soft);
+  border-left: 0.3rem solid var(--lesson-primary);
+}
+
+.leccion .ejemplo {
+  background: var(--lesson-success-soft);
+  border-left: 0.3rem solid var(--lesson-success);
+}
+
+.leccion .procedimiento {
+  background: var(--lesson-accent-soft);
+  border-left: 0.3rem solid var(--lesson-accent);
+}
+
+.leccion .advertencia {
+  background: var(--lesson-warning-soft);
+  border-left: 0.3rem solid var(--lesson-warning);
+}
+
+.leccion .aplicacion {
+  background: var(--lesson-surface-soft);
+  border-left: 0.3rem solid var(--lesson-text-muted);
+}
+
+.leccion .definicion > :first-child,
+.leccion .ejemplo > :first-child,
+.leccion .procedimiento > :first-child,
+.leccion .advertencia > :first-child,
+.leccion .aplicacion > :first-child {
+  margin-top: 0;
+}
+
+.leccion .definicion > :last-child,
+.leccion .ejemplo > :last-child,
+.leccion .procedimiento > :last-child,
+.leccion .advertencia > :last-child,
+.leccion .aplicacion > :last-child {
+  margin-bottom: 0;
+}
+
+/* Pasos */
+
+.leccion .pasos {
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: paso;
+}
+
+.leccion .pasos > li {
+  position: relative;
+  min-height: 3rem;
+  margin: 1rem 0;
+  padding: 1rem 1rem 1rem 4.25rem;
+  background: var(--lesson-surface-soft);
+  border: 1px solid var(--lesson-border);
+  border-radius: var(--lesson-radius-md);
+  counter-increment: paso;
+}
+
+.leccion .pasos > li::before {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: white;
+  font-weight: 800;
+  content: counter(paso);
+  background: var(--lesson-primary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  place-items: center;
+}
+
+/* Selección de texto */
+
+.leccion ::selection {
+  color: #172554;
+  background: #bfdbfe;
+}
+
+/* Diseño responsivo */
+
+@media (max-width: 720px) {
+  .leccion {
+    width: min(100% - 1rem, 900px);
+    padding: 1.25rem;
+    border-radius: var(--lesson-radius-md);
+  }
+
+  .leccion h1 {
+    font-size: clamp(1.8rem, 9vw, 2.45rem);
+  }
+
+  .leccion h2 {
+    margin-top: 2.75rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .leccion blockquote {
+    padding: 3.25rem 1rem 1rem;
+  }
+
+  .leccion blockquote::before {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .leccion table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .leccion th,
+  .leccion td {
+    padding: 0.75rem;
+  }
+
+  .leccion .katex-display {
+    padding: 1rem;
+  }
+}
+
+/* Modo oscuro */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lesson-background: #020617;
+    --lesson-surface: #0f172a;
+    --lesson-surface-soft: #172033;
+
+    --lesson-text: #e2e8f0;
+    --lesson-text-soft: #cbd5e1;
+    --lesson-text-muted: #94a3b8;
+
+    --lesson-primary: #60a5fa;
+    --lesson-primary-dark: #93c5fd;
+    --lesson-primary-soft: rgb(30 64 175 / 0.16);
+
+    --lesson-accent: #a78bfa;
+    --lesson-accent-soft: rgb(109 40 217 / 0.15);
+
+    --lesson-border: #263449;
+    --lesson-border-strong: #475569;
+
+    --lesson-warning: #fbbf24;
+    --lesson-warning-soft: rgb(180 83 9 / 0.15);
+
+    --lesson-success: #34d399;
+    --lesson-success-soft: rgb(4 120 87 / 0.15);
+
+    --lesson-danger: #f87171;
+    --lesson-danger-soft: rgb(185 28 28 / 0.15);
+  }
+
+  .leccion h1,
+  .leccion h2,
+  .leccion h3,
+  .leccion h4,
+  .leccion strong {
+    color: #f8fafc;
+  }
+
+  .leccion {
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.2),
+      0 20px 45px rgb(0 0 0 / 0.25);
+  }
+
+  .leccion thead {
+    color: #eff6ff;
+  }
+
+  .leccion .katex-display {
+    color: #dbeafe;
+    border-color: #334b75;
+  }
+
+  .leccion code {
+    color: #f9a8d4;
+    background: rgb(157 23 77 / 0.15);
+    border-color: rgb(190 24 93 / 0.3);
+  }
+
+  .leccion tbody tr:hover {
+    background: rgb(30 64 175 / 0.15);
+  }
+
+  .leccion ::selection {
+    color: #eff6ff;
+    background: #1d4ed8;
+  }
+}
+
+/* Impresión */
+
+@media print {
+  .leccion {
+    width: 100%;
+    padding: 0;
+    color: #000;
+    background: #fff;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .leccion h1,
+  .leccion h2,
+  .leccion h3,
+  .leccion h4,
+  .leccion p,
+  .leccion li,
+  .leccion td,
+  .leccion strong {
+    color: #000;
+  }
+
+  .leccion h2,
+  .leccion blockquote,
+  .leccion .katex-display,
+  .leccion .definicion,
+  .leccion .ejemplo,
+  .leccion .procedimiento,
+  .leccion .advertencia,
+  .leccion .aplicacion {
+    background: transparent;
+  }
+
+  .leccion a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .leccion pre,
+  .leccion figure,
+  .leccion table,
+  .leccion blockquote,
+  .leccion .katex-display {
+    break-inside: avoid;
+  }
+}
+/* MathJax inline */
+.leccion mjx-container:not([display="true"]) {
+  display: inline-block;
+  margin: 0 0.1em;
+  vertical-align: -0.15em;
+  color: var(--lesson-primary-dark);
+}
+
+.leccion mjx-container:not([display="true"]) svg {
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  vertical-align: middle;
+  border-radius: 0;
+}
+
+/* MathJax en bloque */
+.leccion mjx-container[display="true"] {
+  display: block;
+  max-width: 100%;
+  margin: 1.75rem 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  color: #172554;
+  background: linear-gradient(
+    135deg,
+    var(--lesson-primary-soft),
+    var(--lesson-accent-soft)
+  );
+  border: 1px solid #c7d2fe;
+  border-radius: var(--lesson-radius-md);
+}
+
+.leccion mjx-container[display="true"] svg {
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  border-radius: 0;
+}
+

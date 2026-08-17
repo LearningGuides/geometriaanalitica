@@ -1,0 +1,570 @@
+---
+titulo: Ángulo de inclinación de una recta
+numero: 6
+---
+
+import InclinationAngleGraph from "../../components/Leccion6.astro"
+
+# Ángulo de inclinación de una recta
+
+El ángulo de inclinación de una recta es una medida que permite describir su orientación dentro del plano cartesiano. Mientras que la pendiente indica cuánto sube o baja una recta por cada unidad que avanza horizontalmente, el ángulo de inclinación expresa esa misma idea mediante grados.
+
+Este concepto aparece en numerosas situaciones prácticas. Por ejemplo, una carretera puede tener cierto ángulo de ascenso, una rampa debe construirse con una inclinación determinada y el techo de una vivienda necesita un ángulo adecuado para facilitar el escurrimiento del agua. En todos estos casos, conocer la inclinación permite describir con precisión la orientación de una línea respecto de una referencia horizontal.
+
+En geometría analítica, esa referencia es el semieje positivo de las (x). El ángulo de inclinación conecta directamente la geometría, el álgebra y la trigonometría, ya que se relaciona con la pendiente mediante la función tangente.
+
+---
+
+## ¿Qué es el ángulo de inclinación?
+
+El ángulo de inclinación de una recta es el ángulo que se forma entre la recta y el sentido positivo del eje $X$.
+
+Generalmente se representa con la letra griega:
+
+$$
+\theta
+$$
+
+El ángulo se mide desde el eje positivo de las (x) hasta la recta, siguiendo el sentido contrario a las manecillas del reloj.
+
+Por convención, el ángulo de inclinación cumple:
+
+$$
+0^\circ\leq \theta<180^\circ.
+$$
+
+Esto significa que puede tomar valores desde (0^\circ), incluido, hasta (180^\circ), sin llegar a incluirlo.
+
+La orientación de la recta determina el valor del ángulo:
+
+* Una recta horizontal tiene un ángulo de (0^\circ).
+* Una recta creciente tiene un ángulo entre (0^\circ) y (90^\circ).
+* Una recta vertical tiene un ángulo de (90^\circ).
+* Una recta decreciente tiene un ángulo entre (90^\circ) y (180^\circ).
+
+<InclinationAngleGraph
+    type="angle-types"
+    title="Tipos de inclinación"
+    description="El ángulo se mide en sentido antihorario desde el semieje positivo de las x."
+  />
+---
+
+## Relación entre pendiente y ángulo
+
+La pendiente y el ángulo de inclinación están relacionados mediante la función tangente:
+
+$$
+\boxed{m=\tan\theta}
+$$
+
+donde:
+
+* (m) es la pendiente de la recta.
+* (\theta) es su ángulo de inclinación.
+
+Si conocemos el ángulo, podemos obtener la pendiente calculando su tangente:
+
+$$
+m=\tan\theta.
+$$
+
+Si conocemos la pendiente y queremos calcular el ángulo, utilizamos la función inversa de la tangente:
+
+$$
+\boxed{\theta=\tan^{-1}(m)}
+$$
+
+La expresión (\tan^{-1}) no significa dividir entre la tangente. Representa la función llamada arcotangente, que permite encontrar el ángulo cuya tangente es un número determinado.
+
+---
+
+## ¿Por qué aparece la tangente?
+
+Consideremos una recta que pasa por dos puntos:
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2).
+$$
+
+Al construir un triángulo rectángulo sobre la recta, obtenemos:
+
+$$
+\Delta x=x_2-x_1
+$$
+
+como cateto horizontal y
+
+$$
+\Delta y=y_2-y_1
+$$
+
+como cateto vertical.
+
+En trigonometría, la tangente de un ángulo se define como:
+
+$$
+\tan\theta=
+\frac{\text{cateto opuesto}}{\text{cateto adyacente}}.
+$$
+
+En el triángulo formado por la recta:
+
+$$
+\tan\theta=
+\frac{\Delta y}{\Delta x}.
+$$
+
+Pero sabemos que la pendiente se calcula mediante:
+
+$$
+m=\frac{\Delta y}{\Delta x}.
+$$
+
+Por tanto:
+
+$$
+\boxed{m=\tan\theta}.
+$$
+
+Esta igualdad demuestra que pendiente y ángulo son dos formas distintas de describir la misma inclinación.
+
+<InclinationAngleGraph
+    type="tangent-relation"
+    title="Relación entre pendiente y ángulo"
+    description="El cambio vertical y el cambio horizontal forman los catetos de un triángulo rectángulo."
+  />
+
+---
+
+## Ejemplo 1: calcular la pendiente a partir del ángulo
+
+Supongamos que una recta tiene un ángulo de inclinación de:
+
+$$
+\theta=45^\circ.
+$$
+
+La pendiente se obtiene con:
+
+$$
+m=\tan45^\circ.
+$$
+
+Sabemos que:
+
+$$
+\tan45^\circ=1.
+$$
+
+Por tanto:
+
+$$
+\boxed{m=1}.
+$$
+
+Esto significa que la recta sube una unidad por cada unidad que avanza hacia la derecha.
+
+Una posible ecuación de esta recta, si pasa por el origen, es:
+
+$$
+y=x.
+$$
+
+  <InclinationAngleGraph
+    type="angle-45"
+    title="Recta y = x"
+    description="La recta forma un ángulo de 45° y tiene pendiente igual a uno."
+  />
+---
+
+## Ejemplo 2: ángulo con pendiente positiva
+
+Consideremos una recta cuya pendiente es:
+
+$$
+m=2.
+$$
+
+Para encontrar su ángulo de inclinación usamos:
+
+$$
+\theta=\tan^{-1}(2).
+$$
+
+Con una calculadora en modo grados:
+
+$$
+\theta\approx63.43^\circ.
+$$
+
+Por tanto:
+
+$$
+\boxed{\theta\approx63.43^\circ}.
+$$
+
+Este ángulo está entre (0^\circ) y (90^\circ), lo cual concuerda con el hecho de que la pendiente es positiva y la recta es creciente.
+
+ <InclinationAngleGraph
+    type="angle-positive"
+    title="Recta y = 2x"
+    description="La pendiente 2 corresponde a un ángulo aproximado de 63.43°."
+  />
+---
+
+## Ejemplo 3: pendiente fraccionaria
+
+Supongamos:
+
+$$
+m=\frac{1}{2}.
+$$
+
+Entonces:
+
+$$
+\theta=\tan^{-1}\left(\frac{1}{2}\right).
+$$
+
+Al calcular:
+
+$$
+\theta\approx26.57^\circ.
+$$
+
+Por tanto:
+
+$$
+\boxed{\theta\approx26.57^\circ}.
+$$
+
+La recta es creciente, pero su inclinación es menor que la de una recta con pendiente (1) o (2).
+
+Podemos interpretar la pendiente diciendo que la recta sube una unidad por cada dos unidades que avanza horizontalmente.
+
+ <InclinationAngleGraph
+    type="fraction-comparison"
+    title="Comparación de inclinaciones"
+    description="La recta con pendiente 1/2 presenta menor inclinación que la recta con pendiente 1."
+  />
+---
+
+## Rectas con pendiente negativa
+
+Cuando la pendiente es negativa, la recta desciende de izquierda a derecha. En ese caso, el ángulo de inclinación debe encontrarse entre:
+
+$$
+90^\circ<\theta<180^\circ.
+$$
+
+Sin embargo, muchas calculadoras producen un ángulo negativo al calcular la arcotangente.
+
+Por ejemplo, si:
+
+$$
+m=-1,
+$$
+
+entonces:
+
+$$
+\tan^{-1}(-1)=-45^\circ.
+$$
+
+El resultado (-45^\circ) representa un giro en sentido horario, pero el ángulo de inclinación debe medirse en sentido antihorario desde el eje positivo de las (x).
+
+Por ello, sumamos:
+
+$$
+180^\circ.
+$$
+
+Así:
+
+$$
+\theta=-45^\circ+180^\circ=135^\circ.
+$$
+
+Por tanto:
+
+$$
+\boxed{\theta=135^\circ}.
+$$
+
+  <InclinationAngleGraph
+    type="negative-angle"
+    title="Recta y = −x"
+    description="El ángulo de inclinación es 135°, aunque la arcotangente principal produce −45°."
+  />
+---
+
+## Ejemplo 4: pendiente negativa distinta de (-1)
+
+Consideremos:
+
+$$
+m=-2.
+$$
+
+Calculamos:
+
+$$
+\tan^{-1}(-2)\approx-63.43^\circ.
+$$
+
+Como necesitamos un ángulo entre (0^\circ) y (180^\circ), sumamos:
+
+$$
+180^\circ.
+$$
+
+Entonces:
+
+$$
+\theta=-63.43^\circ+180^\circ.
+$$
+
+$$
+\boxed{\theta\approx116.57^\circ}.
+$$
+
+El resultado está entre (90^\circ) y (180^\circ), por lo que corresponde correctamente a una recta decreciente.
+
+---
+
+## Caso de una recta horizontal
+
+Una recta horizontal tiene pendiente:
+
+$$
+m=0.
+$$
+
+Por tanto:
+
+$$
+\theta=\tan^{-1}(0).
+$$
+
+Como:
+
+$$
+\tan0^\circ=0,
+$$
+
+se concluye que:
+
+$$
+\boxed{\theta=0^\circ}.
+$$
+
+Por ejemplo, la ecuación:
+
+$$
+y=4
+$$
+
+representa una recta horizontal con ángulo de inclinación igual a cero.
+
+---
+
+## Caso de una recta vertical
+
+Una recta vertical tiene un ángulo de inclinación de:
+
+$$
+\boxed{\theta=90^\circ}.
+$$
+
+Su pendiente no está definida porque:
+
+$$
+\tan90^\circ
+$$
+
+no existe como número real finito.
+
+Geométricamente, en una recta vertical existe cambio en (y), pero no existe cambio horizontal:
+
+$$
+\Delta x=0.
+$$
+
+Por ello:
+
+$$
+m=\frac{\Delta y}{0},
+$$
+
+y la división entre cero no está definida.
+
+Un ejemplo de recta vertical es:
+
+$$
+x=3.
+$$
+
+ <InclinationAngleGraph
+    type="vertical-angle"
+    title="Ángulo de 90 grados"
+    description="La recta x = 3 tiene pendiente indefinida y forma un ángulo recto con el eje x."
+  />
+---
+
+## Comparación de distintas inclinaciones
+
+Es útil comparar algunas pendientes y sus ángulos aproximados:
+
+| Pendiente (m)  | Ángulo (\theta) |
+| -------------- | --------------: |
+| (0)            |       (0^\circ) |
+| (\frac{1}{2})  |   (26.57^\circ) |
+| (1)            |      (45^\circ) |
+| (2)            |   (63.43^\circ) |
+| Indefinida     |      (90^\circ) |
+| (-2)           |  (116.57^\circ) |
+| (-1)           |     (135^\circ) |
+| (-\frac{1}{2}) |  (153.43^\circ) |
+
+Esta tabla muestra que, cuando la pendiente positiva aumenta, el ángulo se acerca a (90^\circ). En cambio, para pendientes negativas, los ángulos se encuentran en el segundo cuadrante.
+
+<InclinationAngleGraph
+    type="angle-comparison"
+    title="Pendientes y ángulos de inclinación"
+    description="Las pendientes positivas generan ángulos agudos y las negativas generan ángulos del segundo cuadrante."
+  />
+---
+
+## Ángulo entre dos rectas
+
+El concepto de inclinación también permite calcular el ángulo entre dos rectas.
+
+Si sus pendientes son (m_1) y (m_2), el ángulo agudo (\alpha) entre ellas cumple:
+
+$$
+\boxed{
+\tan\alpha=
+\left|
+\frac{m_2-m_1}{1+m_1m_2}
+\right|
+}
+$$
+
+Por ejemplo, si:
+
+$$
+m_1=0
+$$
+
+y
+
+$$
+m_2=1,
+$$
+
+entonces:
+
+$$
+\tan\alpha=
+\left|
+\frac{1-0}{1+0}
+\right|=1.
+$$
+
+Así:
+
+$$
+\alpha=\tan^{-1}(1)=45^\circ.
+$$
+
+Este resultado tiene sentido: la recta horizontal y la recta (y=x) forman un ángulo de (45^\circ).
+
+Cuando:
+
+$$
+m_1m_2=-1,
+$$
+
+el denominador de la fórmula se hace cero y las rectas son perpendiculares. Por tanto, forman un ángulo de:
+
+$$
+90^\circ.
+$$
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes consiste en calcular el ángulo con la calculadora en modo radianes. Para obtener respuestas en grados, debe verificarse que la calculadora se encuentre en modo:
+
+$$
+\text{DEG}.
+$$
+
+Otro error ocurre con las pendientes negativas. Si la calculadora devuelve un ángulo negativo, no debe presentarse directamente como ángulo de inclinación. Es necesario sumar:
+
+$$
+180^\circ.
+$$
+
+También debe evitarse confundir la pendiente con el ángulo. Aunque están relacionados, no son iguales. Por ejemplo:
+
+$$
+m=1
+$$
+
+no significa que el ángulo sea (1^\circ), sino que:
+
+$$
+\theta=45^\circ.
+$$
+
+Finalmente, una recta vertical no tiene pendiente cero. Su pendiente es indefinida y su ángulo es (90^\circ).
+
+---
+
+## Aplicaciones
+
+En ingeniería civil, el ángulo de inclinación se utiliza para diseñar rampas, carreteras y puentes. En arquitectura permite definir pendientes de techos y escaleras. En topografía sirve para describir la inclinación del terreno respecto a una superficie horizontal.
+
+En física, el ángulo de una trayectoria permite descomponer movimientos y fuerzas en componentes horizontales y verticales. En diseño asistido por computadora se utiliza para orientar líneas, objetos y estructuras con precisión.
+
+Aunque en algunos contextos se expresa la inclinación como porcentaje, esta medida también se relaciona con la pendiente. Por ejemplo, una pendiente del (10%) significa:
+
+$$
+m=0.10.
+$$
+
+El ángulo correspondiente es:
+
+$$
+\theta=\tan^{-1}(0.10)\approx5.71^\circ.
+$$
+
+Esto muestra que una pendiente porcentual y un ángulo no son exactamente lo mismo, aunque describen una misma inclinación.
+
+---
+
+## Reflexión final
+
+El ángulo de inclinación permite expresar geométricamente la orientación de una recta respecto al eje positivo de las (x). Su relación fundamental con la pendiente es:
+
+$$
+\boxed{m=\tan\theta}
+$$
+
+y, cuando se conoce la pendiente:
+
+$$
+\boxed{\theta=\tan^{-1}(m)}.
+$$
+
+Para pendientes positivas, el ángulo está entre (0^\circ) y (90^\circ). Para pendientes negativas, se encuentra entre (90^\circ) y (180^\circ). Una recta horizontal tiene un ángulo de (0^\circ), mientras que una recta vertical tiene un ángulo de (90^\circ).
+
+Comprender este concepto permite interpretar una recta no solo como un conjunto de puntos, sino como una dirección precisa. La pendiente describe la razón de cambio y el ángulo muestra visualmente la orientación. Juntos constituyen dos formas complementarias de estudiar la inclinación de una recta en el plano cartesiano.

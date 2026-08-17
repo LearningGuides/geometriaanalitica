@@ -1,0 +1,611 @@
+---
+titulo: Rectas perpendiculares
+numero: 9
+---
+import PerpendicularLinesGraph from "../../components/Leccion9.astro"
+
+# Rectas perpendiculares
+
+Las rectas perpendiculares son un caso particular de dos rectas que se intersectan formando un ángulo recto, es decir, un ángulo de (90^\circ). Este concepto es uno de los pilares de la geometría, ya que aparece en la construcción de figuras, edificios, planos, sistemas de coordenadas y numerosos problemas de ingeniería y física.
+
+En nuestra vida cotidiana encontramos ejemplos de rectas perpendiculares en las esquinas de una habitación, las paredes y el piso de un edificio, las líneas de una hoja cuadriculada, las calles que se cruzan formando una intersección recta y los ejes del plano cartesiano.
+
+En geometría analítica, la perpendicularidad puede determinarse de forma precisa mediante las pendientes de las rectas, sin necesidad de construirlas gráficamente. Esta propiedad permite resolver problemas relacionados con distancias mínimas, alturas de triángulos, mediatrices y muchas otras aplicaciones.
+
+---
+
+## ¿Qué son las rectas perpendiculares?
+
+Dos rectas son **perpendiculares** cuando se intersectan formando un ángulo de:
+
+$$
+\boxed{90^\circ}
+$$
+
+Geométricamente se representan mediante el símbolo:
+
+$$
+r_1\perp r_2
+$$
+
+La característica principal de estas rectas es que sus direcciones son completamente independientes, formando una esquina recta.
+
+El ejemplo más conocido es el de los ejes del plano cartesiano:
+
+* El eje $X$.
+* El eje $Y$.
+
+Ambos forman un ángulo recto y, por tanto, son perpendiculares.
+
+  <PerpendicularLinesGraph
+    type="cartesian-axes"
+    title="Ejes perpendiculares"
+    description="Los ejes X y Y se intersectan en el origen formando un ángulo recto."
+  />
+---
+
+# Relación entre pendiente y perpendicularidad
+
+Recordemos que la pendiente de una recta mide su inclinación y se calcula mediante:
+
+$$
+m=\frac{y_2-y_1}{x_2-x_1}.
+$$
+
+Cuando dos rectas son perpendiculares, sus pendientes cumplen una relación muy especial.
+
+Si las pendientes son:
+
+$$
+m_1
+$$
+
+y
+
+$$
+m_2,
+$$
+
+entonces:
+
+$$
+\boxed{
+m_1m_2=-1
+}
+$$
+
+Esta es la condición fundamental para reconocer rectas perpendiculares.
+
+En otras palabras:
+
+> **Las pendientes deben ser recíprocas y de signo contrario.**
+
+Por ejemplo:
+
+| Pendiente de la primera recta | Pendiente perpendicular |
+| ----------------------------- | ----------------------- |
+| (2)                           | (-\frac12)              |
+| (-3)                          | (\frac13)               |
+| (\frac45)                     | (-\frac54)              |
+| (-\frac23)                    | (\frac32)               |
+
+---
+
+## ¿Por qué ocurre esta relación?
+
+Sabemos que la pendiente y el ángulo de inclinación están relacionados mediante:
+
+$$
+m=\tan\theta.
+$$
+
+Si dos rectas son perpendiculares, sus ángulos difieren exactamente en:
+
+$$
+90^\circ.
+$$
+
+Es decir,
+
+$$
+\theta_2=\theta_1+90^\circ.
+$$
+
+La identidad trigonométrica establece que:
+
+$$
+\tan(\theta+90^\circ)
+=
+
+-\frac1{\tan\theta}.
+$$
+
+Sustituyendo:
+
+$$
+m_2
+=
+
+-\frac1{m_1}.
+$$
+
+Multiplicando ambos lados por (m_1):
+
+$$
+m_1m_2=-1.
+$$
+
+Esta demostración muestra que la condición algebraica proviene directamente de la geometría y de la trigonometría.
+
+ <PerpendicularLinesGraph
+    type="inclination-relation"
+    title="Ángulos separados por 90 grados"
+    description="Las direcciones tienen ángulos θ y θ + 90°, por lo que sus pendientes son recíprocas y de signo contrario."
+  />
+---
+
+# Ejemplo 1: comprobar perpendicularidad
+
+Consideremos las rectas
+
+$$
+r_1:\quad y=2x+1
+$$
+
+y
+
+$$
+r_2:\quad y=-\frac12x+4.
+$$
+
+Las pendientes son
+
+$$
+m_1=2
+$$
+
+y
+
+$$
+m_2=-\frac12.
+$$
+
+Calculamos:
+
+$$
+m_1m_2
+=
+
+2\left(-\frac12\right)
+=-1.
+$$
+
+Como el producto es igual a (-1), concluimos que
+
+$$
+\boxed{r_1\perp r_2.}
+$$
+
+Estas rectas forman un ángulo recto.
+
+
+  <PerpendicularLinesGraph
+    type="equation-example"
+    title="Rectas con pendientes 2 y −1/2"
+    description="El producto de las pendientes es −1 y las rectas forman un ángulo recto."
+  />
+---
+
+# Ejemplo 2: pendientes que no son perpendiculares
+
+Sean las rectas
+
+$$
+r_1:\quad y=3x+5
+$$
+
+y
+
+$$
+r_2:\quad y=-2x+1.
+$$
+
+Las pendientes son
+
+$$
+m_1=3
+$$
+
+y
+
+$$
+m_2=-2.
+$$
+
+Calculamos:
+
+$$
+m_1m_2
+=
+
+3(-2)
+=-6.
+$$
+
+Como
+
+$$
+-6\neq-1,
+$$
+
+las rectas **no** son perpendiculares.
+
+Aunque una sea creciente y la otra decreciente, eso no garantiza que formen un ángulo de (90^\circ).
+
+---
+
+# Ejemplo 3: calcular la pendiente perpendicular
+
+Supongamos que una recta tiene pendiente
+
+$$
+m=4.
+$$
+
+La pendiente de cualquier recta perpendicular será
+
+$$
+m_\perp
+=
+
+-\frac14.
+$$
+
+Por tanto, una posible recta perpendicular es
+
+$$
+y=-\frac14x+3.
+$$
+
+Verificación:
+
+$$
+4
+\left(-\frac14\right)
+=-1.
+$$
+
+La condición se cumple correctamente.
+
+---
+
+# Ejemplo 4: obtener la pendiente a partir de dos puntos
+
+Sea la recta que pasa por
+
+$$
+A=(2,1)
+$$
+
+y
+
+$$
+B=(6,9).
+$$
+
+Primero calculamos su pendiente:
+
+$$
+m=
+\frac{9-1}{6-2}.
+$$
+
+$$
+m=\frac84=2.
+$$
+
+La pendiente de cualquier recta perpendicular será
+
+$$
+m_\perp=-\frac12.
+$$
+
+Si deseamos construir una recta perpendicular que pase por
+
+$$
+P=(4,3),
+$$
+
+utilizamos la ecuación punto-pendiente:
+
+$$
+y-y_1
+=
+
+m(x-x_1).
+$$
+
+Sustituyendo:
+
+$$
+y-3
+=
+
+-\frac12(x-4).
+$$
+
+Desarrollando:
+
+$$
+y-3
+=
+
+-\frac12x+2.
+$$
+
+Finalmente:
+
+$$
+\boxed{
+y
+=
+
+-\frac12x+5.
+}
+$$
+
+Esta recta pasa por el punto indicado y es perpendicular a la recta original.
+
+
+  <PerpendicularLinesGraph
+    type="construction-example"
+    title="Perpendicular que pasa por P(4,3)"
+    description="La recta original tiene pendiente 2 y la perpendicular tiene pendiente −1/2."
+  />
+---
+
+# Perpendicularidad y ángulo entre rectas
+
+Recordemos la fórmula del ángulo entre dos rectas:
+
+$$
+\tan\alpha
+=
+
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|.
+$$
+
+Si
+
+$$
+m_1m_2=-1,
+$$
+
+entonces
+
+$$
+1+m_1m_2
+=
+
+# 1-1
+
+0.
+
+$$
+
+La tangente de un ángulo recto no está definida, por lo que necesariamente
+
+$$
+\boxed{
+\alpha=90^\circ.
+}
+$$
+
+Esta es otra forma de demostrar la condición de perpendicularidad.
+
+---
+
+# Casos especiales
+
+## Recta horizontal y recta vertical
+
+Una recta horizontal tiene pendiente
+
+$$
+m=0.
+$$
+
+Una recta vertical posee pendiente indefinida.
+
+Aunque el producto de pendientes no puede calcularse porque una de ellas no existe, ambas rectas siempre son perpendiculares.
+
+Por ejemplo,
+
+$$
+y=2
+$$
+
+y
+
+$$
+x=-3
+$$
+
+se cruzan formando un ángulo recto.
+
+<PerpendicularLinesGraph
+    type="horizontal-vertical"
+    title="Caso especial de perpendicularidad"
+    description="La recta y = 2 y la recta x = −3 se intersectan formando un ángulo de 90°."
+  />
+---
+
+# Construcción de una recta perpendicular
+
+Supongamos que conocemos la recta
+
+$$
+y=3x-2
+$$
+
+y queremos construir una recta perpendicular que pase por
+
+$$
+(2,5).
+$$
+
+La pendiente original es
+
+$$
+m=3.
+$$
+
+La pendiente perpendicular será
+
+$$
+m=-\frac13.
+$$
+
+Aplicamos la ecuación punto-pendiente:
+
+$$
+y-5
+=
+
+-\frac13(x-2).
+$$
+
+Desarrollando:
+
+$$
+y-5
+=
+
+-\frac13x+\frac23.
+$$
+
+Finalmente:
+
+$$
+\boxed{
+y
+=
+
+-\frac13x+\frac{17}{3}.
+}
+$$
+
+Esta recta cumple ambas condiciones:
+
+* pasa por ((2,5)),
+* es perpendicular a la recta dada.
+
+---
+
+# Aplicaciones de las rectas perpendiculares
+
+Las rectas perpendiculares tienen aplicaciones en prácticamente todas las áreas de la ciencia y la ingeniería.
+
+En arquitectura se utilizan para diseñar esquinas, columnas, pisos y paredes. En ingeniería mecánica permiten construir piezas con uniones exactas y ejes de rotación. En dibujo técnico son indispensables para representar vistas ortogonales y planos de fabricación.
+
+En topografía se emplean para calcular distancias mínimas entre puntos y líneas. En física ayudan a descomponer fuerzas y movimientos en componentes horizontales y verticales.
+
+En geometría aparecen en la construcción de alturas, mediatrices, bisectrices y centros notables de triángulos como el ortocentro y el circuncentro.
+
+---
+
+# Errores frecuentes
+
+Uno de los errores más comunes consiste en cambiar únicamente el signo de la pendiente.
+
+Por ejemplo, si
+
+$$
+m=2,
+$$
+
+algunos estudiantes escriben
+
+$$
+m=-2.
+$$
+
+Esto es incorrecto.
+
+Debe calcularse el recíproco y además cambiar el signo:
+
+$$
+m=-\frac12.
+$$
+
+Otro error frecuente consiste en invertir la fracción sin modificar el signo.
+
+Por ejemplo,
+
+$$
+\frac23
+$$
+
+no tiene como perpendicular
+
+$$
+\frac32,
+$$
+
+sino
+
+$$
+-\frac32.
+$$
+
+También suele olvidarse que una recta horizontal es perpendicular únicamente a una recta vertical.
+
+Finalmente, algunos estudiantes creen que pendientes de signos opuestos implican perpendicularidad. Esto tampoco es cierto. Es indispensable verificar que:
+
+$$
+m_1m_2=-1.
+$$
+
+---
+
+# Relación con otros conceptos
+
+Las rectas perpendiculares están estrechamente relacionadas con otros temas de la geometría analítica.
+
+A partir de ellas se estudian:
+
+* la distancia mínima entre un punto y una recta;
+* las alturas de un triángulo;
+* las mediatrices de segmentos;
+* los ejes de simetría;
+* las proyecciones ortogonales;
+* la optimización de distancias en ingeniería y física.
+
+Por esta razón, comprender la perpendicularidad constituye un paso fundamental antes de estudiar problemas más avanzados.
+
+---
+
+# Reflexión final
+
+Las rectas perpendiculares representan una de las relaciones geométricas más importantes entre dos rectas. Su característica esencial es que se intersectan formando un ángulo recto de:
+
+$$
+\boxed{
+90^\circ.
+}
+$$
+
+En geometría analítica, esta propiedad puede verificarse fácilmente mediante la condición:
+
+$$
+\boxed{
+m_1m_2=-1.
+}
+$$
+
+Esta sencilla igualdad resume una profunda conexión entre el álgebra, la geometría y la trigonometría. Mientras la pendiente describe la inclinación de una recta, el producto de dos pendientes permite reconocer inmediatamente si ambas direcciones son ortogonales.
+
+Comprender la perpendicularidad no solo facilita la resolución de ejercicios matemáticos, sino que proporciona una herramienta indispensable para el diseño, la construcción, la ingeniería y el análisis de fenómenos físicos. Cada vez que dos líneas forman un ángulo recto, la geometría analítica ofrece un lenguaje preciso para describir y estudiar esa relación.

@@ -1,0 +1,588 @@
+---
+titulo: Rectas paralelas
+numero: 8
+---
+import ParallelLinesGraph from "../../components/Leccion8.astro"
+
+# Rectas paralelas
+
+Las rectas paralelas constituyen uno de los conceptos fundamentales de la geometría y la geometría analítica. Se trata de rectas que mantienen siempre la misma dirección y la misma inclinación, por lo que nunca llegan a intersectarse, sin importar cuánto se prolonguen en ambos sentidos.
+
+Este concepto aparece constantemente en la vida cotidiana. Los rieles de un tren, las líneas de una carretera, los bordes de una hoja de papel, las vigas de una estructura y los carriles de una autopista son ejemplos de elementos que pueden modelarse mediante rectas paralelas.
+
+En geometría analítica, el paralelismo puede estudiarse de manera precisa utilizando las ecuaciones de las rectas y, especialmente, el concepto de pendiente. Gracias a ello es posible determinar si dos rectas son paralelas sin necesidad de dibujarlas.
+
+---
+
+## ¿Qué son las rectas paralelas?
+
+Dos rectas son **paralelas** cuando tienen la misma dirección y nunca se cruzan, aunque se prolonguen indefinidamente.
+
+Geométricamente se representan mediante el símbolo:
+
+$$
+r_1 \parallel r_2
+$$
+
+Una característica importante es que la distancia perpendicular entre ellas permanece constante en todos sus puntos.
+
+Por ejemplo, si observamos dos rieles de un ferrocarril, notaremos que siempre mantienen la misma separación. Si los rieles se acercaran o alejaran entre sí, terminarían cruzándose y dejarían de ser paralelos.
+
+ <ParallelLinesGraph
+    type="constant-distance"
+    title="Distancia constante"
+    description="Los segmentos perpendiculares entre ambas rectas conservan la misma longitud."
+  />
+---
+
+## La pendiente de una recta
+
+Recordemos que la pendiente de una recta se calcula mediante:
+
+$$
+m=\frac{y_2-y_1}{x_2-x_1}.
+$$
+
+La pendiente mide la inclinación de la recta respecto del eje $X$.
+
+Si dos rectas tienen exactamente la misma inclinación, ambas subirán o bajarán al mismo ritmo y, por tanto, conservarán siempre la misma dirección.
+
+De esta observación surge el criterio más importante del paralelismo.
+
+---
+
+## Condición de paralelismo
+
+Dos rectas no verticales son paralelas **si y solo si** tienen la misma pendiente.
+
+Matemáticamente:
+
+$$
+\boxed{
+m_1=m_2
+}
+$$
+
+donde:
+
+* (m_1) es la pendiente de la primera recta.
+* (m_2) es la pendiente de la segunda.
+
+Esta igualdad garantiza que ambas rectas tienen exactamente el mismo ángulo de inclinación.
+
+Sin embargo, para que sean rectas distintas también deben tener diferentes intersecciones con el eje (Y).
+
+Por ejemplo:
+
+$$
+y=2x+1
+$$
+
+y
+
+$$
+y=2x-4
+$$
+
+tienen la misma pendiente:
+
+$$
+m=2,
+$$
+
+pero distintos valores de:
+
+$$
+b.
+$$
+
+Por ello son paralelas.
+
+En cambio,
+
+$$
+y=2x+1
+$$
+
+y
+
+$$
+y=2x+1
+$$
+
+no son dos rectas paralelas diferentes, sino la misma recta.
+
+---
+
+## Relación con el ángulo de inclinación
+
+Sabemos que la pendiente y el ángulo de inclinación están relacionados mediante:
+
+$$
+m=\tan\theta.
+$$
+
+Si dos rectas tienen la misma pendiente:
+
+$$
+m_1=m_2,
+$$
+
+entonces también poseen el mismo ángulo de inclinación:
+
+$$
+\theta_1=\theta_2.
+$$
+
+Como ambas apuntan exactamente en la misma dirección, nunca llegan a intersectarse.
+
+ <ParallelLinesGraph
+    type="same-angle"
+    title="Mismo ángulo de inclinación"
+    description="Las dos rectas forman el mismo ángulo θ con una referencia horizontal."
+  />
+---
+
+## Paralelismo en la forma pendiente-intersección
+
+Muchas rectas se escriben mediante la ecuación:
+
+$$
+\boxed{
+y=mx+b
+}
+$$
+
+donde:
+
+* (m) representa la pendiente.
+* (b) representa la ordenada al origen.
+
+Para dos rectas:
+
+$$
+y=m_1x+b_1
+$$
+
+y
+
+$$
+y=m_2x+b_2,
+$$
+
+serán paralelas cuando:
+
+$$
+m_1=m_2
+$$
+
+y
+
+$$
+b_1\neq b_2.
+$$
+
+La diferencia en los valores de (b) desplaza verticalmente la recta sin modificar su inclinación.
+
+---
+
+## Ejemplo 1: comprobar si dos rectas son paralelas
+
+Consideremos las rectas:
+
+$$
+r_1:\quad y=3x+2
+$$
+
+y
+
+$$
+r_2:\quad y=3x-5.
+$$
+
+Las pendientes son:
+
+$$
+m_1=3
+$$
+
+y
+
+$$
+m_2=3.
+$$
+
+Como:
+
+$$
+m_1=m_2,
+$$
+
+las rectas tienen la misma inclinación.
+
+Además,
+
+$$
+2\neq-5,
+$$
+
+por lo que no coinciden.
+
+Concluimos que:
+
+$$
+\boxed{r_1\parallel r_2.}
+$$
+
+  <ParallelLinesGraph
+    type="equation-example"
+    title="Rectas con pendiente 3"
+    description="Las ordenadas al origen son diferentes, pero ambas rectas tienen la misma pendiente."
+  />
+---
+
+## Ejemplo 2: rectas no paralelas
+
+Sean:
+
+$$
+r_1:\quad y=2x+1
+$$
+
+y
+
+$$
+r_2:\quad y=-x+4.
+$$
+
+Las pendientes son:
+
+$$
+m_1=2
+$$
+
+y
+
+$$
+m_2=-1.
+$$
+
+Como:
+
+$$
+2\neq-1,
+$$
+
+las rectas no son paralelas.
+
+De hecho, al tener pendientes distintas, inevitablemente se intersectarán en algún punto del plano.
+
+---
+
+## Ejemplo 3: calcular pendientes a partir de puntos
+
+Muchas veces la ecuación de la recta no está disponible y debemos calcular primero su pendiente.
+
+Supongamos que la primera recta pasa por:
+
+$$
+A=(1,2)
+$$
+
+y
+
+$$
+B=(5,6).
+$$
+
+Su pendiente es:
+
+$$
+m_1=
+\frac{6-2}{5-1}
+=
+
+# \frac{4}{4}
+
+1.
+
+$$
+
+La segunda recta pasa por:
+
+$$
+C=(-2,4)
+$$
+
+y
+
+$$
+D=(3,9).
+$$
+
+Su pendiente es:
+
+$$
+m_2=
+\frac{9-4}{3-(-2)}
+=
+
+# \frac{5}{5}
+
+1.
+
+$$
+
+Como:
+
+$$
+m_1=m_2,
+$$
+
+las rectas son paralelas.
+
+Aunque se encuentren en regiones diferentes del plano, poseen exactamente la misma dirección.
+
+ <ParallelLinesGraph
+    type="points-example"
+    title="Dos rectas con pendiente 1"
+    description="Los segmentos AB y CD poseen la misma inclinación aunque ocupan posiciones diferentes."
+  />
+---
+
+## Rectas verticales paralelas
+
+Las rectas verticales tienen ecuaciones del tipo:
+
+$$
+x=a.
+$$
+
+Su pendiente no está definida porque:
+
+$$
+\Delta x=0.
+$$
+
+A pesar de ello, dos rectas verticales distintas son paralelas.
+
+Por ejemplo:
+
+$$
+x=3
+$$
+
+y
+
+$$
+x=-2.
+$$
+
+Nunca se cruzan y mantienen siempre la misma distancia horizontal.
+
+<ParallelLinesGraph
+    type="vertical-lines"
+    title="Rectas x = −2 y x = 3"
+    description="La separación horizontal entre las rectas permanece constante."
+  />
+---
+
+## Demostración utilizando el ángulo entre rectas
+
+La fórmula del ángulo entre dos rectas es:
+
+$$
+\tan\alpha=
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|.
+$$
+
+Si:
+
+$$
+m_1=m_2,
+$$
+
+entonces:
+
+$$
+m_2-m_1=0.
+$$
+
+Por tanto:
+
+$$
+\tan\alpha=0.
+$$
+
+Como:
+
+$$
+\tan0^\circ=0,
+$$
+
+obtenemos:
+
+$$
+\boxed{\alpha=0^\circ.}
+$$
+
+Esto demuestra que dos rectas paralelas poseen exactamente la misma dirección.
+
+---
+
+## Construcción de una recta paralela
+
+Supongamos que tenemos la recta:
+
+$$
+y=2x+3
+$$
+
+y queremos construir una recta paralela que pase por el punto:
+
+$$
+P=(1,-2).
+$$
+
+Sabemos que toda recta paralela debe conservar la misma pendiente:
+
+$$
+m=2.
+$$
+
+Utilizamos la ecuación punto-pendiente:
+
+$$
+y-y_1=m(x-x_1).
+$$
+
+Sustituimos:
+
+$$
+y+2=2(x-1).
+$$
+
+Desarrollamos:
+
+$$
+y+2=2x-2.
+$$
+
+Finalmente:
+
+$$
+\boxed{
+y=2x-4.
+}
+$$
+
+La nueva recta posee la misma pendiente y pasa por el punto indicado.
+
+ <ParallelLinesGraph
+    type="parallel-construction"
+    title="Paralela que pasa por P(1,−2)"
+    description="La nueva recta conserva la pendiente 2 de la recta original."
+  />
+---
+
+## Distancia entre rectas paralelas
+
+Una característica importante es que la distancia perpendicular entre dos rectas paralelas permanece constante.
+
+Si las rectas están escritas en la forma general:
+
+$$
+Ax+By+C_1=0
+$$
+
+y
+
+$$
+Ax+By+C_2=0,
+$$
+
+la distancia entre ellas es:
+
+$$
+\boxed{
+d=
+\frac{|C_2-C_1|}
+{\sqrt{A^2+B^2}}
+}
+$$
+
+Por ejemplo, consideremos:
+
+$$
+2x-3y+4=0
+$$
+
+y
+
+$$
+2x-3y-8=0.
+$$
+
+Aplicando la fórmula:
+
+$$
+d=
+\frac{|(-8)-4|}
+{\sqrt{2^2+(-3)^2}}.
+$$
+
+$$
+d=
+\frac{12}
+{\sqrt{13}}.
+$$
+
+Esta expresión representa la distancia mínima entre ambas rectas.
+
+ <ParallelLinesGraph
+    type="general-distance"
+    title="Distancia perpendicular"
+    description="El segmento verde representa la distancia mínima entre las dos rectas."
+  />
+---
+
+## Aplicaciones del paralelismo
+
+Las rectas paralelas aparecen en numerosas disciplinas.
+
+En arquitectura permiten diseñar paredes, pisos, techos y columnas alineadas. En ingeniería civil se utilizan para construir carreteras, puentes y vías férreas. En dibujo técnico son indispensables para representar piezas mecánicas y planos de construcción.
+
+En informática, el paralelismo se utiliza en gráficos vectoriales, modelado tridimensional y diseño asistido por computadora. En física puede representar trayectorias de movimiento uniforme o líneas de campo en determinadas aproximaciones.
+
+En cartografía, muchas proyecciones utilizan líneas paralelas para representar direcciones o divisiones del terreno.
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes consiste en creer que dos rectas con el mismo término independiente son paralelas. En realidad, el paralelismo depende exclusivamente de la pendiente.
+
+También es frecuente afirmar que toda recta con pendiente igual representa una recta distinta. Si además tienen el mismo valor de (b), ambas ecuaciones describen exactamente la misma recta.
+
+Otro error consiste en pensar que dos rectas "muy parecidas" son paralelas. En realidad, basta una pequeña diferencia en las pendientes para que, tarde o temprano, las rectas se intersecten.
+
+Finalmente, debe recordarse que las rectas verticales no poseen pendiente definida, pero sí pueden ser paralelas entre sí cuando tienen diferentes valores de (x).
+
+---
+
+## Reflexión final
+
+El paralelismo es una relación geométrica que describe rectas con la misma dirección y que nunca se intersectan. En geometría analítica, esta propiedad se reconoce fácilmente mediante la pendiente.
+
+La condición fundamental es:
+
+$$
+\boxed{m_1=m_2.}
+$$
+
+Si además las rectas tienen diferentes ordenadas al origen, representan dos rectas paralelas distintas.
+
+Comprender el paralelismo permite analizar figuras geométricas, construir modelos matemáticos y resolver problemas relacionados con trayectorias, estructuras y diseños. Más allá de una simple condición algebraica, el paralelismo representa la idea de mantener una dirección constante sin importar la distancia recorrida, una propiedad esencial en la geometría y en múltiples aplicaciones de la ingeniería, la arquitectura y las ciencias.

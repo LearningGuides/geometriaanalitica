@@ -1,0 +1,693 @@
+---
+titulo: Ecuación de la recta - forma punto-pendiente
+numero: 10
+---
+import PointSlopeGraph from "../../components/Leccion10.astro"
+
+# Ecuación de la recta: forma punto-pendiente
+
+La forma punto-pendiente es una de las expresiones más útiles para escribir la ecuación de una recta. Su principal ventaja es que permite construir una ecuación cuando conocemos dos datos fundamentales: un punto por el que pasa la recta y su pendiente.
+
+Esta situación aparece con mucha frecuencia en geometría analítica. Por ejemplo, podemos conocer la inclinación de una carretera y un punto específico por el que debe pasar, la velocidad constante de un objeto y su posición en cierto instante, o la razón de cambio de una variable junto con uno de sus valores conocidos. En todos estos casos, la forma punto-pendiente permite representar matemáticamente la relación lineal.
+
+La ecuación se escribe como:
+
+$$
+\boxed{y-y_1=m(x-x_1)}
+$$
+
+donde:
+
+* (m) es la pendiente de la recta;
+* ((x_1,y_1)) es un punto conocido perteneciente a la recta;
+* ((x,y)) representa cualquier otro punto de la misma recta.
+
+Más que memorizar esta fórmula, conviene comprender de dónde proviene y qué significado tiene cada uno de sus elementos.
+
+---
+
+## Recordatorio: la pendiente de una recta
+
+La pendiente mide la inclinación de una recta y se calcula mediante:
+
+$$
+m=\frac{y_2-y_1}{x_2-x_1}.
+$$
+
+También puede expresarse como:
+
+$$
+m=\frac{\Delta y}{\Delta x}.
+$$
+
+Esto significa que la pendiente compara el cambio vertical con el cambio horizontal.
+
+Si una recta tiene pendiente:
+
+$$
+m=2,
+$$
+
+significa que, por cada unidad que avanzamos hacia la derecha, la recta sube dos unidades.
+
+Si:
+
+$$
+m=-\frac{1}{2},
+$$
+
+la recta baja una unidad por cada dos unidades que avanza horizontalmente.
+
+La forma punto-pendiente utiliza precisamente esta idea de cambio.
+
+---
+
+## Deducción de la forma punto-pendiente
+
+Supongamos que una recta pasa por un punto conocido:
+
+$$
+P_1=(x_1,y_1).
+$$
+
+Tomemos además un punto cualquiera de la misma recta:
+
+$$
+P=(x,y).
+$$
+
+La pendiente entre estos dos puntos es:
+
+$$
+m=\frac{y-y_1}{x-x_1}.
+$$
+
+Multiplicamos ambos lados por:
+
+$$
+x-x_1.
+$$
+
+Entonces obtenemos:
+
+$$
+m(x-x_1)=y-y_1.
+$$
+
+Reordenando:
+
+$$
+\boxed{y-y_1=m(x-x_1)}.
+$$
+
+Esta es la ecuación punto-pendiente.
+
+La fórmula no es una regla aislada, sino una consecuencia directa de la definición de pendiente.
+
+ <PointSlopeGraph
+    type="formula-deduction"
+    title="La fórmula surge de la pendiente"
+    description="Los cambios horizontal y vertical entre P₁ y P permiten construir la ecuación y − y₁ = m(x − x₁)."
+  />
+---
+
+## Interpretación de la fórmula
+
+En la ecuación:
+
+$$
+y-y_1=m(x-x_1),
+$$
+
+la expresión:
+
+$$
+x-x_1
+$$
+
+representa el cambio horizontal desde el punto conocido hasta cualquier otro punto de la recta.
+
+Por su parte:
+
+$$
+y-y_1
+$$
+
+representa el cambio vertical.
+
+La pendiente indica cómo se relacionan esos cambios:
+
+$$
+y-y_1=m(x-x_1).
+$$
+
+Es decir, el cambio vertical es igual a la pendiente multiplicada por el cambio horizontal.
+
+Esta interpretación es muy útil porque permite visualizar la ecuación como un desplazamiento desde un punto conocido.
+
+---
+
+## Ejemplo 1: pendiente positiva
+
+Deseamos encontrar la ecuación de la recta que pasa por:
+
+$$
+P=(2,3)
+$$
+
+y tiene pendiente:
+
+$$
+m=4.
+$$
+
+Aplicamos la fórmula:
+
+$$
+y-y_1=m(x-x_1).
+$$
+
+Sustituimos:
+
+$$
+y-3=4(x-2).
+$$
+
+Esta ya es una ecuación correcta en forma punto-pendiente:
+
+$$
+\boxed{y-3=4(x-2)}.
+$$
+
+Podemos transformarla a la forma:
+
+$$
+y=mx+b.
+$$
+
+Desarrollamos:
+
+$$
+y-3=4x-8.
+$$
+
+Sumamos 3 en ambos lados:
+
+$$
+y=4x-5.
+$$
+
+Por tanto, ambas ecuaciones representan la misma recta:
+
+$$
+\boxed{y-3=4(x-2)}
+$$
+
+y
+
+$$
+\boxed{y=4x-5}.
+$$
+
+Para comprobar que pasa por ((2,3)), sustituimos:
+
+$$
+3=4(2)-5.
+$$
+
+$$
+3=8-5.
+$$
+
+$$
+3=3.
+$$
+
+<PointSlopeGraph
+    type="positive-slope"
+    title="Recta que pasa por P(2,3)"
+    description="Al avanzar una unidad horizontal, la recta asciende cuatro unidades."
+  />
+---
+
+## Ejemplo 2: pendiente negativa
+
+Encontremos la ecuación de la recta que pasa por:
+
+$$
+P=(-1,5)
+$$
+
+y tiene pendiente:
+
+$$
+m=-2.
+$$
+
+Sustituimos:
+
+$$
+y-5=-2(x-(-1)).
+$$
+
+Como restar un número negativo equivale a sumar:
+
+$$
+y-5=-2(x+1).
+$$
+
+Esta es la forma punto-pendiente:
+
+$$
+\boxed{y-5=-2(x+1)}.
+$$
+
+Desarrollamos:
+
+$$
+y-5=-2x-2.
+$$
+
+Sumamos 5:
+
+$$
+\boxed{y=-2x+3}.
+$$
+
+La pendiente negativa indica que la recta desciende de izquierda a derecha.
+
+ <PointSlopeGraph
+    type="negative-slope"
+    title="Recta que pasa por P(−1,5)"
+    description="La pendiente −2 indica que la recta desciende dos unidades por cada unidad horizontal."
+  />
+---
+
+## Ejemplo 3: pendiente fraccionaria
+
+Supongamos que una recta pasa por:
+
+$$
+P=(3,-2)
+$$
+
+y tiene pendiente:
+
+$$
+m=\frac{2}{5}.
+$$
+
+Aplicamos la fórmula:
+
+$$
+y-(-2)=\frac{2}{5}(x-3).
+$$
+
+Simplificamos:
+
+$$
+\boxed{y+2=\frac{2}{5}(x-3)}.
+$$
+
+La pendiente:
+
+$$
+\frac{2}{5}
+$$
+
+significa que la recta sube dos unidades por cada cinco unidades que avanza hacia la derecha.
+
+Si deseamos despejar (y):
+
+$$
+y+2=\frac{2}{5}x-\frac{6}{5}.
+$$
+
+Restamos 2:
+
+$$
+y=\frac{2}{5}x-\frac{6}{5}-2.
+$$
+
+Como:
+
+$$
+2=\frac{10}{5},
+$$
+
+obtenemos:
+
+$$
+\boxed{y=\frac{2}{5}x-\frac{16}{5}}.
+$$
+
+---
+
+## Encontrar la ecuación con dos puntos
+
+En ocasiones no se proporciona directamente la pendiente. En su lugar, se conocen dos puntos.
+
+Consideremos:
+
+$$
+A=(1,2)
+$$
+
+y
+
+$$
+B=(5,10).
+$$
+
+Primero calculamos la pendiente:
+
+$$
+m=\frac{10-2}{5-1}.
+$$
+
+$$
+m=\frac{8}{4}=2.
+$$
+
+Después elegimos uno de los puntos, por ejemplo:
+
+$$
+A=(1,2).
+$$
+
+Aplicamos la forma punto-pendiente:
+
+$$
+y-2=2(x-1).
+$$
+
+Por tanto:
+
+$$
+\boxed{y-2=2(x-1)}.
+$$
+
+Al desarrollar:
+
+$$
+y-2=2x-2.
+$$
+
+$$
+\boxed{y=2x}.
+$$
+
+Podríamos haber utilizado el punto (B=(5,10)):
+
+$$
+y-10=2(x-5).
+$$
+
+Aunque la expresión parece diferente, al simplificar obtenemos nuevamente:
+
+$$
+y=2x.
+$$
+
+Esto demuestra que cualquier punto de la recta puede utilizarse en la forma punto-pendiente.
+
+ <PointSlopeGraph
+    type="two-points"
+    title="Recta determinada por A y B"
+    description="El cambio horizontal es 4, el vertical es 8 y la pendiente resultante es 2."
+  />
+---
+
+## Caso de una recta horizontal
+
+Una recta horizontal tiene pendiente:
+
+$$
+m=0.
+$$
+
+Supongamos que pasa por:
+
+$$
+P=(4,6).
+$$
+
+Aplicamos:
+
+$$
+y-6=0(x-4).
+$$
+
+Como el lado derecho es cero:
+
+$$
+y-6=0.
+$$
+
+Por tanto:
+
+$$
+\boxed{y=6}.
+$$
+
+Todas las rectas horizontales tienen ecuaciones de la forma:
+
+$$
+y=k,
+$$
+
+donde (k) es una constante.
+
+  <PointSlopeGraph
+    type="horizontal-line"
+    title="Pendiente igual a cero"
+    description="Todos los puntos de la recta conservan la coordenada vertical y = 6."
+  />
+---
+
+## Caso de una recta vertical
+
+Una recta vertical no tiene pendiente definida, por lo que no puede escribirse mediante la forma punto-pendiente convencional.
+
+Si una recta vertical pasa por el punto:
+
+$$
+P=(3,-2),
+$$
+
+todos sus puntos tienen la misma coordenada (x).
+
+Por tanto, su ecuación es:
+
+$$
+\boxed{x=3}.
+$$
+
+Este caso debe tratarse por separado porque la pendiente implicaría dividir entre cero.
+
+---
+
+## Construcción gráfica desde la forma punto-pendiente
+
+La forma punto-pendiente también permite graficar una recta de manera directa.
+
+Consideremos:
+
+$$
+y-1=-\frac{3}{2}(x-4).
+$$
+
+Podemos identificar:
+
+$$
+(x_1,y_1)=(4,1)
+$$
+
+y:
+
+$$
+m=-\frac{3}{2}.
+$$
+
+Primero ubicamos el punto:
+
+$$
+(4,1).
+$$
+
+Después interpretamos la pendiente:
+
+$$
+-\frac{3}{2}.
+$$
+
+Esto significa que podemos:
+
+* avanzar dos unidades a la derecha;
+* bajar tres unidades.
+
+Así obtenemos otro punto:
+
+$$
+(6,-2).
+$$
+
+También podemos desplazarnos en sentido contrario:
+
+* retroceder dos unidades;
+* subir tres unidades.
+
+De esta manera obtenemos:
+
+$$
+(2,4).
+$$
+
+Finalmente, trazamos la recta que pasa por los tres puntos.
+
+<PointSlopeGraph
+    type="graph-construction"
+    title="Construcción desde P(4,1)"
+    description="La pendiente −3/2 permite avanzar dos unidades y bajar tres, o retroceder dos y subir tres."
+  />
+---
+
+## Aplicación: recta paralela por un punto
+
+Supongamos que queremos encontrar la recta paralela a:
+
+$$
+y=3x+4
+$$
+
+que pasa por:
+
+$$
+P=(2,-1).
+$$
+
+Las rectas paralelas tienen la misma pendiente, así que:
+
+$$
+m=3.
+$$
+
+Aplicamos la forma punto-pendiente:
+
+$$
+y-(-1)=3(x-2).
+$$
+
+$$
+\boxed{y+1=3(x-2)}.
+$$
+
+Al desarrollar:
+
+$$
+y+1=3x-6.
+$$
+
+$$
+\boxed{y=3x-7}.
+$$
+
+---
+
+## Aplicación: recta perpendicular por un punto
+
+Busquemos ahora la recta perpendicular a:
+
+$$
+y=2x+5
+$$
+
+que pasa por:
+
+$$
+P=(4,1).
+$$
+
+La pendiente original es:
+
+$$
+m=2.
+$$
+
+La pendiente perpendicular es:
+
+$$
+m_\perp=-\frac{1}{2}.
+$$
+
+Usamos la forma punto-pendiente:
+
+$$
+y-1=-\frac{1}{2}(x-4).
+$$
+
+Por tanto:
+
+$$
+\boxed{y-1=-\frac{1}{2}(x-4)}.
+$$
+
+Al simplificar:
+
+$$
+y-1=-\frac{1}{2}x+2.
+$$
+
+$$
+\boxed{y=-\frac{1}{2}x+3}.
+$$
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes es sustituir incorrectamente un punto con coordenadas negativas. Por ejemplo, si:
+
+$$
+(x_1,y_1)=(-2,-3),
+$$
+
+la ecuación debe escribirse como:
+
+$$
+y-(-3)=m(x-(-2)),
+$$
+
+es decir:
+
+$$
+y+3=m(x+2).
+$$
+
+Otro error frecuente es cambiar el orden de las coordenadas. El valor (x_1) siempre debe colocarse dentro del paréntesis que contiene a (x), y (y_1) en el lado que contiene a (y).
+
+También es común confundir el punto conocido con la ordenada al origen. El punto ((x_1,y_1)) no tiene que estar sobre el eje (Y); puede ubicarse en cualquier parte de la recta.
+
+Finalmente, no siempre es necesario transformar la ecuación a otra forma. Una expresión como:
+
+$$
+y-4=3(x+2)
+$$
+
+ya es una ecuación completa y correcta de la recta.
+
+---
+
+## Reflexión final
+
+La forma punto-pendiente permite construir la ecuación de una recta a partir de un punto conocido y de su inclinación. Su expresión fundamental es:
+
+$$
+\boxed{y-y_1=m(x-x_1)}.
+$$
+
+Esta ecuación surge directamente de la definición de pendiente y expresa una idea sencilla: el cambio vertical desde un punto conocido es igual a la pendiente multiplicada por el cambio horizontal.
+
+Su utilidad es especialmente evidente cuando se conocen dos puntos, cuando se desea construir una recta paralela o perpendicular, o cuando debe representarse una relación lineal a partir de una condición inicial.
+
+Comprender esta forma no consiste únicamente en sustituir valores en una fórmula. Implica reconocer que una recta queda completamente determinada cuando conocemos su dirección y al menos uno de sus puntos. De esta manera, la forma punto-pendiente convierte información geométrica en una ecuación algebraica precisa.
