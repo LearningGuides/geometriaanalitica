@@ -21,7 +21,7 @@ const lecciones = (await getCollection("lecciones")).sort(
       <section class="grid">
         {
           lecciones.map((leccion) => (
-            <a class="card" href={`/lecciones/${leccion.id}/`}>
+            <a class="card" href={`geometriaanalitica/lecciones/${leccion.id}/`}>
 				<p>Leccion {leccion.data.numero}</p>
               <h2>{leccion.data.titulo}</h2>
 
