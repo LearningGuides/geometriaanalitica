@@ -25,7 +25,7 @@ export default defineConfig({
   integrations: [react(), mdx()],
 
   site: "https://learningguides.github.io",
-  base: "",
+  base: "/geometriaanalitica",
 
   markdown: {
     processor,
