@@ -3,6 +3,8 @@ titulo: División de un segmento en una razón dada
 numero: 2
 ---
 import SegmentDivisionGraph from "../../components/Leccion2.astro"
+import Ejercicios from '../ejercicios/ejercicios2.mdx';
+import BloqueEjercicios from '../../components/BloqueEjercicios.astro';
 
 # División de un segmento en una razón dada
 
@@ -182,7 +184,7 @@ $$
 P=A+\frac{m}{m+n}(B-A)
 $$
 
-Para la coordenada (x):
+Para la coordenada $x$:
 
 $$
 x_P=x_1+\frac{m}{m+n}(x_2-x_1)
@@ -219,7 +221,7 @@ Así se obtiene la fórmula de división interna.
 
 ---
 
-## Ejemplo 1: división en razón (2:3)
+## Ejemplo 1: división en razón $2:3$
 
 Consideremos los puntos
 
@@ -345,7 +347,7 @@ x_P=\frac{2(-4)+1(8)}{1+2}
 =0
 $$
 
-Para la coordenada (y):
+Para la coordenada $y$:
 
 $$
 y_P=\frac{2(5)+1(-1)}{3}
@@ -359,9 +361,9 @@ $$
 \boxed{P=(0,3)}
 $$
 
-Este resultado muestra que el punto se encuentra sobre el eje (Y), pues su coordenada horizontal es cero.
+Este resultado muestra que el punto se encuentra sobre el eje $Y$, pues su coordenada horizontal es cero.
 
-Además, como la razón es (1:2), el punto está más cerca de $A$ que de $B$. Desde $A$ se recorre solamente una tercera parte del segmento total.
+Además, como la razón es $1:2$, el punto está más cerca de $A$ que de $B$. Desde $A$ se recorre solamente una tercera parte del segmento total.
 
 ---
 
@@ -369,7 +371,7 @@ Además, como la razón es (1:2), el punto está más cerca de $A$ que de $B$. D
 
 El punto medio es un caso especial de división de un segmento.
 
-Si un punto (M) divide al segmento en la razón
+Si un punto $M$ divide al segmento en la razón
 
 $$
 1:1,
@@ -460,7 +462,7 @@ $$
 \Delta y=6-1=5
 $$
 
-Como la razón es (3:2), el segmento total se considera dividido en
+Como la razón es $3:2$, el segmento total se considera dividido en
 
 $$
 3+2=5
@@ -561,7 +563,7 @@ $$
 AP:PB=2:3,
 $$
 
-el punto debe encontrarse más cerca de $A$, porque la primera parte es más corta. Si el resultado queda más cerca de $B$, probablemente se intercambiaron los valores de (m) y (n).
+el punto debe encontrarse más cerca de $A$, porque la primera parte es más corta. Si el resultado queda más cerca de $B$, probablemente se intercambiaron los valores de $m$ y $n$.
 
 Otro error frecuente es dividir únicamente entre uno de los números de la razón. El denominador correcto siempre es
 
@@ -575,7 +577,7 @@ $$
 2(-4)=-8,
 $$
 
-no (8).
+no $8$.
 
 Finalmente, conviene recordar que la razón compara longitudes, por lo que sus valores suelen considerarse positivos en una división interna.
 
@@ -587,7 +589,7 @@ La división de segmentos se utiliza en diseño gráfico para colocar objetos pr
 
 También aparece en física. Si una partícula se desplaza en línea recta desde una posición inicial hasta una posición final, su ubicación en un instante intermedio puede determinarse como una fracción del recorrido total.
 
-Por ejemplo, si un objeto ha completado el (40%) de su trayectoria entre $A$ y $B$, su posición puede escribirse como:
+Por ejemplo, si un objeto ha completado el $40%$ de su trayectoria entre $A$ y $B$, su posición puede escribirse como:
 
 $$
 P=A+0.4(B-A)
@@ -637,3 +639,7 @@ P\left(
 $$
 
 Más que memorizarla, conviene comprender su significado: cada coordenada del punto buscado es un promedio ponderado de las coordenadas de los extremos. De esta manera, la geometría y el álgebra trabajan juntas para localizar con exactitud una posición proporcional dentro de un segmento.
+
+<BloqueEjercicios>
+  <Ejercicios />
+</BloqueEjercicios>
