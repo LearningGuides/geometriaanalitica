@@ -1,0 +1,52 @@
+*,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(
+        circle at top left,
+        rgb(219 234 254 / 0.65),
+        transparent 30rem
+      ),
+      #f8fafc;
+  }
+
+  .pagina-leccion {
+    min-height: 100vh;
+  }
+
+    .btn-home {
+    display: inline-block;
+    margin: .5rem 0 0 1.5rem;
+    padding: 0.6rem 1rem;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+
+  .btn-home:hover {
+    background: #1d4ed8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background:
+        radial-gradient(
+          circle at top left,
+          rgb(30 64 175 / 0.16),
+          transparent 30rem
+        ),
+        #020617;
+    }
+  }

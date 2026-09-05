@@ -1,0 +1,934 @@
+---
+titulo: Ecuación de la recta - forma pendiente-ordenada al origen
+numero: 11
+---
+
+import SlopeInterceptGraph from "../../components/Leccion11.astro"
+
+# Ecuación de la recta: forma pendiente-ordenada al origen
+
+La forma pendiente-ordenada al origen es probablemente la expresión más conocida de la ecuación de una recta. Su popularidad se debe a que permite identificar de inmediato dos características esenciales: la inclinación de la recta y el punto donde corta al eje vertical.
+
+Su expresión general es:
+
+$$
+\boxed{y=mx+b}
+$$
+
+donde:
+
+* (m) representa la pendiente;
+* (b) representa la ordenada al origen;
+* (x) y (y) son las coordenadas de cualquier punto de la recta.
+
+Esta forma resulta especialmente útil para graficar rectas, interpretar relaciones lineales y comparar varias ecuaciones. También aparece en problemas de física, economía, ingeniería, estadística y ciencias sociales, pues permite describir situaciones en las que una cantidad cambia de manera constante respecto a otra.
+
+Por ejemplo, si un servicio cobra una cuota inicial y después una cantidad fija por cada unidad consumida, el costo puede representarse mediante una ecuación de la forma:
+
+$$
+y=mx+b.
+$$
+
+La pendiente representa el costo por unidad, mientras que la ordenada al origen representa la cuota inicial.
+
+---
+
+## ¿Qué representa la pendiente?
+
+En la ecuación
+
+$$
+y=mx+b,
+$$
+
+el valor (m) indica la razón de cambio de (y) respecto a (x).
+
+Se calcula mediante:
+
+$$
+m=\frac{\Delta y}{\Delta x}
+$$
+
+o, si conocemos dos puntos,
+
+$$
+m=\frac{y_2-y_1}{x_2-x_1}.
+$$
+
+La pendiente indica cuánto cambia (y) cuando (x) aumenta una unidad.
+
+Por ejemplo, en:
+
+$$
+y=3x+2,
+$$
+
+la pendiente es:
+
+$$
+m=3.
+$$
+
+Esto significa que por cada unidad que avanzamos hacia la derecha, la recta sube tres unidades.
+
+En cambio, en:
+
+$$
+y=-2x+5,
+$$
+
+la pendiente es:
+
+$$
+m=-2.
+$$
+
+Esto significa que por cada unidad que avanzamos hacia la derecha, la recta baja dos unidades.
+
+ <SlopeInterceptGraph
+    type="slope-comparison"
+    title="Pendiente positiva y negativa"
+    description="La primera recta sube tres unidades y la segunda baja dos por cada unidad horizontal."
+  />
+---
+
+## ¿Qué representa la ordenada al origen?
+
+El valor (b) indica el punto donde la recta corta al eje (Y).
+
+Recordemos que todos los puntos del eje (Y) tienen:
+
+$$
+x=0.
+$$
+
+Si sustituimos (x=0) en la ecuación:
+
+$$
+y=mx+b,
+$$
+
+obtenemos:
+
+$$
+y=m(0)+b.
+$$
+
+Por tanto:
+
+$$
+y=b.
+$$
+
+Así, la recta corta al eje vertical en:
+
+$$
+\boxed{(0,b)}.
+$$
+
+Por ejemplo, en:
+
+$$
+y=2x+4,
+$$
+
+la ordenada al origen es:
+
+$$
+b=4.
+$$
+
+La recta cruza el eje (Y) en:
+
+$$
+(0,4).
+$$
+
+En:
+
+$$
+y=-x-3,
+$$
+
+tenemos:
+
+$$
+b=-3,
+$$
+
+por lo que la recta corta al eje vertical en:
+
+$$
+(0,-3).
+$$
+
+  <SlopeInterceptGraph
+    type="intercept-comparison"
+    title="Misma pendiente, diferentes ordenadas"
+    description="Las tres rectas tienen pendiente 1, pero cortan al eje Y en posiciones distintas."
+  />
+---
+
+## Interpretación conjunta de (m) y (b)
+
+La ecuación:
+
+$$
+y=mx+b
+$$
+
+puede interpretarse como un procedimiento gráfico.
+
+Primero ubicamos el punto:
+
+$$
+(0,b).
+$$
+
+Después utilizamos la pendiente (m) para encontrar otros puntos de la recta.
+
+Si:
+
+$$
+m=\frac{p}{q},
+$$
+
+podemos avanzar (q) unidades horizontalmente y cambiar (p) unidades verticalmente.
+
+Por ejemplo, consideremos:
+
+$$
+y=\frac{2}{3}x+1.
+$$
+
+La ordenada al origen es:
+
+$$
+b=1,
+$$
+
+por lo que comenzamos en:
+
+$$
+(0,1).
+$$
+
+La pendiente es:
+
+$$
+m=\frac{2}{3}.
+$$
+
+Desde ((0,1)):
+
+* avanzamos tres unidades a la derecha;
+* subimos dos unidades.
+
+Así obtenemos:
+
+$$
+(3,3).
+$$
+
+Repitiendo el procedimiento obtenemos:
+
+$$
+(6,5).
+$$
+
+  <SlopeInterceptGraph
+    type="fractional-construction"
+    title="Construcción de y = ⅔x + 1"
+    description="La gráfica comienza en (0,1) y utiliza desplazamientos de tres unidades horizontales y dos verticales."
+  />
+---
+
+## Ejemplo 1: identificación directa
+
+Consideremos la ecuación:
+
+$$
+y=4x-5.
+$$
+
+Al compararla con:
+
+$$
+y=mx+b,
+$$
+
+identificamos:
+
+$$
+m=4
+$$
+
+y
+
+$$
+b=-5.
+$$
+
+Por tanto:
+
+* la recta es creciente;
+* sube cuatro unidades por cada unidad horizontal;
+* corta al eje (Y) en ((0,-5)).
+
+Para hallar otro punto, tomamos (x=1):
+
+$$
+y=4(1)-5=-1.
+$$
+
+Obtenemos:
+
+$$
+(1,-1).
+$$
+
+Si tomamos (x=2):
+
+$$
+y=4(2)-5=3.
+$$
+
+Obtenemos:
+
+$$
+(2,3).
+$$
+
+Estos puntos permiten trazar la recta.
+
+---
+
+## Ejemplo 2: pendiente negativa
+
+Sea:
+
+$$
+y=-\frac{3}{2}x+4.
+$$
+
+La pendiente es:
+
+$$
+m=-\frac{3}{2},
+$$
+
+y la ordenada al origen es:
+
+$$
+b=4.
+$$
+
+La recta comienza en:
+
+$$
+(0,4).
+$$
+
+Como la pendiente es negativa, al avanzar dos unidades hacia la derecha debemos bajar tres unidades.
+
+Así obtenemos:
+
+$$
+(2,1).
+$$
+
+Si repetimos el desplazamiento:
+
+$$
+(4,-2).
+$$
+
+La recta es decreciente.
+
+ <SlopeInterceptGraph
+    type="negative-example"
+    title="Recta y = −3/2x + 4"
+    description="La recta comienza en (0,4) y desciende tres unidades por cada dos unidades horizontales."
+  />
+---
+
+## Caso con ordenada al origen igual a cero
+
+Si:
+
+$$
+b=0,
+$$
+
+la ecuación se convierte en:
+
+$$
+y=mx.
+$$
+
+Estas rectas pasan por el origen:
+
+$$
+(0,0).
+$$
+
+Por ejemplo:
+
+$$
+y=2x
+$$
+
+tiene pendiente (2) y pasa por el origen.
+
+También:
+
+$$
+y=-\frac{1}{2}x
+$$
+
+pasa por el origen, pero es decreciente.
+
+Las ecuaciones de la forma:
+
+$$
+y=mx
+$$
+
+representan relaciones de proporcionalidad directa.
+
+Esto significa que el cociente:
+
+$$
+\frac{y}{x}
+$$
+
+permanece constante y es igual a (m), siempre que (x\neq0).
+
+---
+
+## Caso con pendiente igual a cero
+
+Si:
+
+$$
+m=0,
+$$
+
+la ecuación queda:
+
+$$
+y=0x+b.
+$$
+
+Por tanto:
+
+$$
+\boxed{y=b}.
+$$
+
+Esta es una recta horizontal.
+
+Por ejemplo:
+
+$$
+y=5
+$$
+
+es una recta horizontal que corta al eje (Y) en ((0,5)).
+
+Todos sus puntos tienen la misma coordenada vertical.
+
+ <SlopeInterceptGraph
+    type="horizontal-lines"
+    title="Rectas horizontales"
+    description="Todas las rectas y = b tienen pendiente cero."
+  />
+---
+
+## La recta vertical y esta forma
+
+Las rectas verticales no pueden expresarse como:
+
+$$
+y=mx+b,
+$$
+
+porque su pendiente no está definida.
+
+Una recta vertical tiene una ecuación de la forma:
+
+$$
+\boxed{x=k}.
+$$
+
+Por ejemplo:
+
+$$
+x=4.
+$$
+
+Esta recta contiene todos los puntos cuya coordenada horizontal es (4).
+
+La imposibilidad de escribir una recta vertical como $y=mx+b$ se debe a que para un mismo valor de (x) existen muchos valores de (y). Por ello, (y) no puede expresarse como una única función de (x).
+
+---
+
+## Obtener la ecuación a partir de la pendiente y la ordenada
+
+Supongamos que una recta tiene pendiente:
+
+$$
+m=-3
+$$
+
+y corta al eje (Y) en:
+
+$$
+(0,7).
+$$
+
+Entonces:
+
+$$
+b=7.
+$$
+
+Sustituimos directamente en:
+
+$$
+y=mx+b.
+$$
+
+Obtenemos:
+
+$$
+\boxed{y=-3x+7}.
+$$
+
+No es necesario realizar cálculos adicionales.
+
+---
+
+## Obtener la ecuación a partir de un punto y la pendiente
+
+En ocasiones conocemos la pendiente y un punto, pero no la ordenada al origen.
+
+Supongamos:
+
+$$
+m=2
+$$
+
+y la recta pasa por:
+
+$$
+P=(3,8).
+$$
+
+Partimos de:
+
+$$
+y=mx+b.
+$$
+
+Sustituimos las coordenadas del punto:
+
+$$
+8=2(3)+b.
+$$
+
+Entonces:
+
+$$
+8=6+b.
+$$
+
+Restamos 6:
+
+$$
+b=2.
+$$
+
+Por tanto, la ecuación es:
+
+$$
+\boxed{y=2x+2}.
+$$
+
+Este procedimiento muestra que un punto y una pendiente determinan completamente una recta.
+
+---
+
+## Obtener la ecuación a partir de dos puntos
+
+Consideremos los puntos:
+
+$$
+A=(1,5)
+$$
+
+y
+
+$$
+B=(4,11).
+$$
+
+Primero calculamos la pendiente:
+
+$$
+m=\frac{11-5}{4-1}.
+$$
+
+$$
+m=\frac{6}{3}=2.
+$$
+
+Ahora utilizamos uno de los puntos para encontrar (b). Usamos (A=(1,5)):
+
+$$
+5=2(1)+b.
+$$
+
+$$
+5=2+b.
+$$
+
+Por tanto:
+
+$$
+b=3.
+$$
+
+La ecuación es:
+
+$$
+\boxed{y=2x+3}.
+$$
+
+Comprobamos con el punto (B):
+
+$$
+11=2(4)+3.
+$$
+
+$$
+11=8+3.
+$$
+
+$$
+11=11.
+$$
+
+<SlopeInterceptGraph
+    type="two-points"
+    title="Recta y = 2x + 3"
+    description="Los puntos A y B determinan una pendiente 2 y la recta corta al eje Y en (0,3)."
+  />
+---
+
+## Transformación desde la forma punto-pendiente
+
+La forma punto-pendiente es:
+
+$$
+y-y_1=m(x-x_1).
+$$
+
+Podemos convertirla a la forma pendiente-ordenada despejando (y).
+
+Por ejemplo:
+
+$$
+y-4=3(x-2).
+$$
+
+Distribuimos:
+
+$$
+y-4=3x-6.
+$$
+
+Sumamos 4:
+
+$$
+y=3x-2.
+$$
+
+Por tanto:
+
+$$
+\boxed{y=3x-2}.
+$$
+
+En esta forma identificamos de inmediato:
+
+$$
+m=3
+$$
+
+y
+
+$$
+b=-2.
+$$
+
+---
+
+## Transformación desde la forma general
+
+La forma general de una recta es:
+
+$$
+Ax+By+C=0.
+$$
+
+Para convertirla a forma pendiente-ordenada, despejamos (y).
+
+Consideremos:
+
+$$
+2x+3y-6=0.
+$$
+
+Movemos los demás términos:
+
+$$
+3y=-2x+6.
+$$
+
+Dividimos entre 3:
+
+$$
+y=-\frac{2}{3}x+2.
+$$
+
+Por tanto:
+
+$$
+\boxed{m=-\frac{2}{3}}
+$$
+
+y
+
+$$
+\boxed{b=2}.
+$$
+
+En general, si (B\neq0):
+
+$$
+Ax+By+C=0
+$$
+
+se transforma en:
+
+$$
+\boxed{
+y=-\frac{A}{B}x-\frac{C}{B}
+}.
+$$
+
+Así:
+
+$$
+m=-\frac{A}{B}
+$$
+
+y
+
+$$
+b=-\frac{C}{B}.
+$$
+
+---
+
+## Rectas paralelas
+
+Dos rectas no verticales son paralelas cuando tienen la misma pendiente.
+
+Por ejemplo:
+
+$$
+y=3x+2
+$$
+
+y
+
+$$
+y=3x-6.
+$$
+
+Ambas tienen:
+
+$$
+m=3.
+$$
+
+Como sus ordenadas al origen son diferentes, representan rectas paralelas distintas.
+
+  <SlopeInterceptGraph
+    type="parallel-lines"
+    title="Misma pendiente, distintos valores de b"
+    description="Las dos rectas tienen pendiente 3, pero diferentes ordenadas al origen."
+  />
+---
+
+## Rectas perpendiculares
+
+Dos rectas no verticales son perpendiculares cuando sus pendientes cumplen:
+
+$$
+m_1m_2=-1.
+$$
+
+Por ejemplo:
+
+$$
+y=2x+1
+$$
+
+y
+
+$$
+y=-\frac{1}{2}x+4.
+$$
+
+Sus pendientes son:
+
+$$
+m_1=2
+$$
+
+y
+
+$$
+m_2=-\frac{1}{2}.
+$$
+
+Entonces:
+
+$$
+2\left(-\frac{1}{2}\right)=-1.
+$$
+
+Por tanto, las rectas son perpendiculares.
+
+---
+
+## Interpretación en situaciones reales
+
+Consideremos un servicio de transporte que cobra una tarifa inicial de (4) unidades monetarias y después (2) unidades por cada kilómetro recorrido.
+
+La ecuación del costo es:
+
+$$
+C=2x+4.
+$$
+
+Aquí:
+
+$$
+m=2
+$$
+
+representa el costo por kilómetro, mientras que:
+
+$$
+b=4
+$$
+
+representa la tarifa inicial.
+
+Si se recorren (5) kilómetros:
+
+$$
+C=2(5)+4.
+$$
+
+$$
+C=14.
+$$
+
+Este ejemplo muestra que la ordenada al origen representa el valor inicial y la pendiente representa el cambio por unidad.
+
+ <SlopeInterceptGraph
+    type="cost-model"
+    title="Costo C = 2x + 4"
+    description="El valor 4 representa la tarifa inicial y la pendiente 2 representa el incremento por unidad recorrida."
+    height={520}
+  />
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes es confundir la pendiente con la ordenada al origen. En:
+
+$$
+y=-4x+7,
+$$
+
+la pendiente es:
+
+$$
+m=-4,
+$$
+
+y la ordenada es:
+
+$$
+b=7.
+$$
+
+Otro error consiste en olvidar que el signo forma parte del número. Si la ecuación es:
+
+$$
+y=3x-5,
+$$
+
+entonces:
+
+$$
+b=-5,
+$$
+
+no (5).
+
+También es frecuente asumir que toda ecuación puede escribirse como $y=mx+b$. Las rectas verticales no admiten esta forma.
+
+Por último, al obtener $b$ a partir de un punto, es importante sustituir correctamente las coordenadas y conservar los signos negativos.
+
+---
+
+## Reflexión final
+
+La forma pendiente-ordenada al origen:
+
+$$
+\boxed{y=mx+b}
+$$
+
+permite leer de manera inmediata dos propiedades esenciales de una recta.
+
+La pendiente:
+
+$$
+m
+$$
+
+describe su inclinación y su razón de cambio.
+
+La ordenada al origen:
+
+$$
+b
+$$
+
+indica el punto donde cruza el eje vertical:
+
+$$
+(0,b).
+$$
+
+Esta forma es especialmente útil para graficar, comparar rectas e interpretar relaciones lineales. También permite conectar una ecuación con situaciones reales en las que existe un valor inicial y un cambio constante.
+
+Comprender la expresión $y=mx+b$ significa reconocer que toda recta no vertical puede describirse a partir de dos ideas: dónde comienza respecto al eje (Y) y cómo cambia al avanzar horizontalmente. Por ello, esta forma constituye una de las herramientas centrales de la geometría analítica y del estudio de las funciones lineales.

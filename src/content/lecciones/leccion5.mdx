@@ -1,0 +1,537 @@
+---
+titulo: Pendiente de una recta
+numero: 5
+---
+
+import SlopeGraph from "../../components/Leccion5.astro"
+import Ejercicios from '../ejercicios/ejercicios5.mdx';
+import BloqueEjercicios from '../../components/BloqueEjercicios.astro';
+
+# Pendiente de una recta
+
+La pendiente es una de las ideas más importantes de la geometría analítica porque describe la inclinación de una recta y la rapidez con la que una variable cambia respecto a otra. En términos sencillos, la pendiente nos indica si una recta asciende, desciende o permanece horizontal cuando avanzamos de izquierda a derecha sobre el plano cartesiano.
+
+Aunque el concepto surge en matemáticas, sus aplicaciones son muy amplias. En ingeniería se utiliza para diseñar carreteras, puentes y rampas; en arquitectura ayuda a calcular inclinaciones de techos y escaleras; en economía representa el cambio en costos o ingresos; en física describe relaciones entre variables como posición y tiempo, y en ciencias de datos permite interpretar tendencias en conjuntos de información.
+
+En esta sección aprenderemos qué representa la pendiente, cómo calcularla y cómo interpretar su significado mediante ejemplos y representaciones gráficas.
+
+---
+
+## ¿Qué es la pendiente?
+
+La pendiente de una recta es una medida de su inclinación respecto al eje horizontal.
+
+Se representa normalmente con la letra:
+
+$$
+m
+$$
+
+Su valor indica cuánto cambia la coordenada vertical cuando la coordenada horizontal aumenta una unidad.
+
+En otras palabras, la pendiente responde a la pregunta:
+
+> **¿Cuánto sube o baja la recta por cada unidad que avanzamos hacia la derecha?**
+
+Por ejemplo:
+
+* Si una recta sube 2 unidades por cada unidad horizontal, su pendiente es 2.
+* Si baja 3 unidades por cada unidad horizontal, su pendiente es −3.
+* Si no sube ni baja, su pendiente es 0.
+
+Esta interpretación convierte a la pendiente en una razón de cambio.
+
+<SlopeGraph
+    type="slope-types"
+    title="Tipos de pendiente"
+    description="Una recta puede ser creciente, horizontal o decreciente según el signo de su pendiente."
+  />
+---
+
+## Cambio vertical y cambio horizontal
+
+Consideremos dos puntos de una recta:
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2).
+$$
+
+Al desplazarnos de (A) hacia (B), ocurren dos cambios.
+
+El cambio horizontal es:
+
+$$
+\Delta x=x_2-x_1.
+$$
+
+El cambio vertical es:
+
+$$
+\Delta y=y_2-y_1.
+$$
+
+La pendiente compara ambos cambios mediante el cociente:
+
+$$
+\boxed{
+m=\frac{\Delta y}{\Delta x}
+}
+$$
+
+Sustituyendo las diferencias obtenemos la fórmula general:
+
+$$
+\boxed{
+m=\frac{y_2-y_1}{x_2-x_1}
+}
+$$
+
+Esta expresión indica que la pendiente es el cambio vertical dividido entre el cambio horizontal.
+
+---
+
+## ¿Por qué esta fórmula?
+
+Supongamos que una recta pasa por dos puntos.
+
+Si avanzamos una determinada distancia horizontal y observamos cuánto cambia la altura, obtenemos una razón constante.
+
+Por ejemplo, si cada vez que avanzamos:
+
+* 2 unidades hacia la derecha,
+* subimos 4 unidades,
+
+la razón es:
+
+$$
+\frac{4}{2}=2.
+$$
+
+Si avanzamos ahora:
+
+* 5 unidades,
+
+subiremos:
+
+* 10 unidades.
+
+La razón permanece constante:
+
+$$
+\frac{10}{5}=2.
+$$
+
+Esa constancia es precisamente la característica de una recta.
+
+<SlopeGraph
+    type="constant-slope"
+    title="Razón de cambio constante"
+    description="Los triángulos poseen tamaños diferentes, pero mantienen la misma relación entre altura y base."
+  />
+---
+
+## Interpretación geométrica
+
+La pendiente puede entenderse como la inclinación de una escalera.
+
+Si la escalera es muy inclinada, la pendiente será grande.
+
+Si apenas se eleva, la pendiente será pequeña.
+
+Si la escalera desciende, la pendiente será negativa.
+
+Matemáticamente:
+
+* Numerador → cuánto sube o baja.
+* Denominador → cuánto avanza horizontalmente.
+
+Mientras mayor sea el valor absoluto de la pendiente, más inclinada será la recta.
+
+---
+
+## Ejemplo 1: pendiente positiva
+
+Sean los puntos
+
+$$
+A=(2,3)
+$$
+
+y
+
+$$
+B=(6,7).
+$$
+
+Aplicamos la fórmula:
+
+$$
+m=\frac{7-3}{6-2}.
+$$
+
+Calculamos:
+
+$$
+m=\frac{4}{4}=1.
+$$
+
+La pendiente es:
+
+$$
+\boxed{m=1}.
+$$
+
+Esto significa que por cada unidad que avanzamos hacia la derecha, la recta asciende exactamente una unidad.
+
+<SlopeGraph
+    type="positive-one"
+    title="Pendiente m = 1"
+    description="La recta asciende cuatro unidades al avanzar cuatro unidades horizontalmente."
+  />
+---
+
+## Ejemplo 2: pendiente mayor que uno
+
+Consideremos:
+
+$$
+A=(1,2)
+$$
+
+y
+
+$$
+B=(3,8).
+$$
+
+Calculamos:
+
+$$
+m=\frac{8-2}{3-1}.
+$$
+
+$$
+m=\frac{6}{2}=3.
+$$
+
+Por tanto,
+
+$$
+\boxed{m=3}.
+$$
+
+Esto significa que la recta sube tres unidades por cada unidad horizontal.
+
+La inclinación es considerablemente mayor que en el ejemplo anterior.
+
+<SlopeGraph
+    type="steep-positive"
+    title="Pendiente m = 3"
+    description="La recta asciende seis unidades en un desplazamiento horizontal de dos unidades."
+  />
+---
+
+## Ejemplo 3: pendiente negativa
+
+Sean
+
+$$
+A=(-2,6)
+$$
+
+y
+
+$$
+B=(4,0).
+$$
+
+La pendiente es:
+
+$$
+m=\frac{0-6}{4-(-2)}.
+$$
+
+$$
+m=\frac{-6}{6}=-1.
+$$
+
+Así,
+
+$$
+\boxed{m=-1}.
+$$
+
+En este caso, por cada unidad que avanzamos hacia la derecha, descendemos una unidad.
+
+La recta es decreciente.
+
+  <SlopeGraph
+    type="negative"
+    title="Pendiente m = −1"
+    description="La recta desciende una unidad por cada unidad que avanza hacia la derecha."
+  />
+---
+
+## Recta horizontal
+
+Si ambos puntos tienen la misma coordenada vertical:
+
+$$
+A=(1,5)
+$$
+
+$$
+B=(8,5),
+$$
+
+entonces:
+
+$$
+m=\frac{5-5}{8-1}.
+$$
+
+$$
+m=\frac{0}{7}=0.
+$$
+
+Por tanto,
+
+$$
+\boxed{m=0}.
+$$
+
+La recta no sube ni baja.
+
+Toda recta horizontal posee pendiente cero.
+
+<SlopeGraph
+    type="horizontal"
+    title="Pendiente cero"
+    description="Existe desplazamiento horizontal, pero el cambio vertical es cero."
+  />
+---
+
+## Recta vertical
+
+Consideremos:
+
+$$
+A=(4,2)
+$$
+
+y
+
+$$
+B=(4,8).
+$$
+
+Aplicamos la fórmula:
+
+$$
+m=\frac{8-2}{4-4}.
+$$
+
+El denominador vale cero:
+
+$$
+m=\frac{6}{0}.
+$$
+
+Como una división entre cero no está definida, concluimos que:
+
+$$
+\boxed{\text{La pendiente no existe (es indefinida).}}
+$$
+
+Esto ocurre porque una recta vertical no presenta desplazamiento horizontal.
+
+ <SlopeGraph
+    type="vertical"
+    title="Pendiente indefinida"
+    description="La división entre el cambio vertical y un desplazamiento horizontal igual a cero no está definida."
+  />
+---
+
+## Relación entre pendiente e inclinación
+
+La pendiente permite clasificar rápidamente una recta.
+
+| Valor de $m$ | Tipo de recta |
+| ------------ | ------------- |
+| $m>0$        | Creciente     |
+| $m<0$        | Decreciente   |
+| $m=0$        | Horizontal    |
+| Indefinida   | Vertical      |
+
+Además:
+
+* Si el valor absoluto de $m$ aumenta, la recta se vuelve más inclinada.
+* Si el valor absoluto disminuye, la recta se aproxima a una horizontal.
+
+Por ejemplo:
+
+$$
+m=0.5
+$$
+
+representa una recta poco inclinada.
+
+Mientras que
+
+$$
+m=5
+$$
+
+corresponde a una recta mucho más empinada.
+
+<SlopeGraph
+    type="slope-comparison"
+    title="Comparación de inclinaciones"
+    description="Al aumentar el valor absoluto de la pendiente, la recta se vuelve más empinada."
+  />
+---
+
+## Relación entre pendiente y ángulo de inclinación
+
+La pendiente también está relacionada con el ángulo $\theta$ que forma la recta con el eje positivo de las (x).
+
+La relación es:
+
+$$
+\boxed{
+m=\tan\theta
+}
+$$
+
+Esto significa que la pendiente es la tangente del ángulo de inclinación.
+
+Por ejemplo:
+
+Si
+
+$$
+\theta=45^\circ,
+$$
+
+entonces:
+
+$$
+m=\tan45^\circ=1.
+$$
+
+Si
+
+$$
+\theta\approx63.4^\circ,
+$$
+
+entonces:
+
+$$
+m=\tan63.4^\circ\approx2.
+$$
+
+Esta relación conecta la geometría analítica con la trigonometría y permite calcular inclinaciones mediante funciones trigonométricas.
+
+<SlopeGraph
+    type="angle"
+    title="Relación m = tan θ"
+    description="La pendiente es la tangente del ángulo que forma la recta con el eje positivo de las x."
+  />
+---
+
+## Aplicación en la ecuación de la recta
+
+La pendiente es el elemento principal de la ecuación punto-pendiente:
+
+$$
+y-y_1=m(x-x_1).
+$$
+
+También aparece en la ecuación pendiente-intersección:
+
+$$
+\boxed{
+y=mx+b
+}
+$$
+
+donde:
+
+* $m$ representa la pendiente.
+* $b$ indica el punto donde la recta corta al eje $Y$.
+
+Por ejemplo:
+
+$$
+y=2x+1.
+$$
+
+Tiene pendiente:
+
+$$
+m=2.
+$$
+
+Esto significa que la recta sube dos unidades por cada unidad horizontal.
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes consiste en restar las coordenadas en diferente orden. Si se calcula:
+
+$$
+y_2-y_1,
+$$
+
+también debe calcularse:
+
+$$
+x_2-x_1.
+$$
+
+Cambiar el orden en uno de ellos modifica el signo de la pendiente.
+
+Otro error frecuente es olvidar que una recta vertical no tiene pendiente cero. En realidad, su pendiente es indefinida porque implicaría dividir entre cero.
+
+También es común interpretar el numerador y el denominador como valores independientes. La pendiente es una razón; ambos cambios deben analizarse conjuntamente.
+
+Finalmente, algunos estudiantes creen que una pendiente negativa implica una longitud negativa. La pendiente solo describe la dirección del cambio, no la longitud del segmento.
+
+---
+
+## Aplicaciones de la pendiente
+
+La pendiente se utiliza en prácticamente todas las ciencias aplicadas.
+
+En ingeniería civil permite diseñar carreteras con inclinaciones seguras y sistemas de drenaje adecuados. En arquitectura se emplea para calcular la inclinación de techos, rampas y escaleras. En física representa la velocidad cuando se grafica posición contra tiempo, o la aceleración cuando se grafica velocidad contra tiempo.
+
+En economía, la pendiente de una gráfica puede indicar cómo cambian los costos, las ganancias o la demanda conforme varía otra cantidad. En informática y diseño gráfico ayuda a construir líneas, modelar trayectorias y representar movimientos dentro de un plano.
+
+---
+
+## Reflexión final
+
+La pendiente resume en un solo número la inclinación de una recta y la rapidez con la que una variable cambia respecto a otra. Su fórmula fundamental es:
+
+$$
+\boxed{
+m=\frac{y_2-y_1}{x_2-x_1}
+}
+$$
+
+Más que un simple cociente, esta expresión representa una razón de cambio constante, característica esencial de todas las rectas.
+
+Comprender la pendiente significa aprender a interpretar gráficamente cómo evoluciona una relación entre variables. Este concepto será la base para estudiar las ecuaciones de la recta, el paralelismo, la perpendicularidad, el análisis de funciones lineales y muchos otros temas de la geometría analítica y del cálculo.
+
+En definitiva, la pendiente es el puente entre la representación gráfica y el comportamiento matemático de una recta, permitiendo describir con precisión cómo cambia una magnitud cuando otra varía.
+<BloqueEjercicios>
+  <Ejercicios />
+</BloqueEjercicios>

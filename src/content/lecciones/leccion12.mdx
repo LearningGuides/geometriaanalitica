@@ -1,0 +1,1067 @@
+---
+titulo: Ecuación de la recta - forma simétrica
+numero: 12
+---
+
+import SymmetricLineGraph from "../../components/Leccion12.astro"
+
+# Ecuación de la recta: forma simétrica
+
+La forma simétrica de la ecuación de una recta permite describirla a partir de un punto conocido y de una dirección. Es una forma especialmente útil cuando se desea representar una recta en términos de sus variaciones horizontales y verticales, sin despejar necesariamente una variable en función de la otra.
+
+A diferencia de la forma pendiente-ordenada al origen,
+
+$$
+y=mx+b,
+$$
+
+la forma simétrica no presenta de manera directa la pendiente ni la intersección con el eje (Y). Sin embargo, muestra con claridad cómo cambian las coordenadas (x) y (y) siguiendo una misma proporción.
+
+La forma simétrica puede escribirse como:
+
+$$
+\boxed{
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b}
+}
+$$
+
+donde:
+
+* ((x_1,y_1)) es un punto conocido de la recta;
+* (a) representa un desplazamiento horizontal;
+* (b) representa el desplazamiento vertical correspondiente;
+* ((a,b)) es un vector director de la recta.
+
+Esta expresión indica que los cambios en (x) y en (y) están relacionados mediante un mismo factor de proporcionalidad.
+
+---
+
+## ¿Qué significa la forma simétrica?
+
+Consideremos la ecuación:
+
+$$
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b}.
+$$
+
+El numerador:
+
+$$
+x-x_1
+$$
+
+representa el cambio horizontal desde el punto conocido.
+
+De manera semejante:
+
+$$
+y-y_1
+$$
+
+representa el cambio vertical.
+
+La igualdad indica que ambos desplazamientos corresponden al mismo número de veces que se recorre el vector:
+
+$$
+(a,b).
+$$
+
+Podemos llamar (t) a ese factor común:
+
+$$
+\frac{x-x_1}{a}=t
+$$
+
+y
+
+$$
+\frac{y-y_1}{b}=t.
+$$
+
+Entonces:
+
+$$
+x-x_1=at
+$$
+
+y
+
+$$
+y-y_1=bt.
+$$
+
+Por tanto:
+
+$$
+x=x_1+at
+$$
+
+$$
+y=y_1+bt.
+$$
+
+Estas son las ecuaciones paramétricas de la recta.
+
+La forma simétrica y la forma paramétrica expresan exactamente la misma idea: partir de un punto conocido y avanzar en una dirección fija.
+
+  <SymmetricLineGraph
+    type="vector-parameter"
+    title="Punto, vector director y parámetro"
+    description="Los distintos puntos se obtienen comenzando en P y multiplicando el vector director por diferentes valores de t."
+  />
+---
+
+## Relación con el vector director
+
+Un vector director es cualquier vector paralelo a la recta.
+
+Si:
+
+$$
+\vec v=(a,b),
+$$
+
+entonces avanzar una vez en la dirección del vector produce el desplazamiento:
+
+$$
+\Delta x=a
+$$
+
+y
+
+$$
+\Delta y=b.
+$$
+
+Avanzar dos veces produce:
+
+$$
+(2a,2b),
+$$
+
+mientras que avanzar en sentido contrario produce:
+
+$$
+(-a,-b).
+$$
+
+Por esta razón, todos los vectores proporcionales a ((a,b)) representan la misma dirección.
+
+Por ejemplo, los vectores:
+
+$$
+(2,3),\qquad (4,6),\qquad (-2,-3)
+$$
+
+son paralelos y pueden utilizarse para describir la misma recta.
+
+La forma simétrica se mantiene equivalente aunque multipliquemos o dividamos ambos denominadores por el mismo número distinto de cero.
+
+---
+
+## Relación con la pendiente
+
+Si el vector director de una recta es:
+
+$$
+(a,b),
+$$
+
+la pendiente se obtiene mediante:
+
+$$
+\boxed{
+m=\frac{b}{a}
+}
+$$
+
+siempre que:
+
+$$
+a\neq0.
+$$
+
+Esto se debe a que:
+
+$$
+a=\Delta x
+$$
+
+y
+
+$$
+b=\Delta y.
+$$
+
+Por tanto:
+
+$$
+m=\frac{\Delta y}{\Delta x}
+=
+
+\frac{b}{a}.
+$$
+
+En la ecuación:
+
+$$
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b},
+$$
+
+los denominadores no representan puntos ni intersecciones. Representan las componentes de una dirección.
+
+ <SymmetricLineGraph
+    type="direction-slope"
+    title="Vector director (4,2)"
+    description="Las componentes del vector forman un triángulo con base 4, altura 2 y pendiente 1/2."
+  />
+---
+
+## Deducción desde la forma punto-pendiente
+
+La forma punto-pendiente es:
+
+$$
+y-y_1=m(x-x_1).
+$$
+
+Si la pendiente se expresa como:
+
+$$
+m=\frac{b}{a},
+$$
+
+sustituimos:
+
+$$
+y-y_1=\frac{b}{a}(x-x_1).
+$$
+
+Multiplicamos por (a):
+
+$$
+a(y-y_1)=b(x-x_1).
+$$
+
+Dividimos entre (ab), suponiendo que ambos son distintos de cero:
+
+$$
+\frac{y-y_1}{b}
+=
+
+\frac{x-x_1}{a}.
+$$
+
+Reordenando:
+
+$$
+\boxed{
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b}
+}.
+$$
+
+Así se obtiene la forma simétrica a partir de la pendiente y de un punto conocido.
+
+---
+
+## Ejemplo 1: interpretar una ecuación simétrica
+
+Consideremos:
+
+$$
+\frac{x-2}{3}
+=
+
+\frac{y+1}{4}.
+$$
+
+Podemos identificar el punto:
+
+$$
+P=(2,-1),
+$$
+
+porque:
+
+$$
+y+1=y-(-1).
+$$
+
+El vector director es:
+
+$$
+\vec v=(3,4).
+$$
+
+Por tanto, la pendiente es:
+
+$$
+m=\frac{4}{3}.
+$$
+
+La recta pasa por ((2,-1)) y, desde ese punto, puede obtenerse otro punto avanzando:
+
+* tres unidades en (x);
+* cuatro unidades en (y).
+
+Así obtenemos:
+
+$$
+(2+3,-1+4)=(5,3).
+$$
+
+Si avanzamos en sentido contrario:
+
+$$
+(2-3,-1-4)=(-1,-5).
+$$
+
+Los puntos:
+
+$$
+(-1,-5),\qquad(2,-1),\qquad(5,3)
+$$
+
+pertenecen a la misma recta.
+
+ <SymmetricLineGraph
+    type="symmetric-example"
+    title="Vector director (3,4)"
+    description="Los puntos A, P y B pertenecen a la misma recta y se separan mediante desplazamientos de tres unidades horizontales y cuatro verticales."
+  />
+---
+
+## Conversión a forma punto-pendiente
+
+Partimos de:
+
+$$
+\frac{x-2}{3}
+=
+
+\frac{y+1}{4}.
+$$
+
+Multiplicamos en cruz:
+
+$$
+4(x-2)=3(y+1).
+$$
+
+Desarrollamos:
+
+$$
+4x-8=3y+3.
+$$
+
+También podemos escribir directamente:
+
+$$
+y+1=\frac{4}{3}(x-2).
+$$
+
+Esta es la forma punto-pendiente:
+
+$$
+\boxed{
+y+1=\frac{4}{3}(x-2)
+}.
+$$
+
+Aquí se reconoce que:
+
+$$
+m=\frac{4}{3}.
+$$
+
+---
+
+## Conversión a forma pendiente-ordenada
+
+Continuamos desde:
+
+$$
+y+1=\frac{4}{3}(x-2).
+$$
+
+Distribuimos:
+
+$$
+y+1=\frac{4}{3}x-\frac{8}{3}.
+$$
+
+Restamos 1:
+
+$$
+y=\frac{4}{3}x-\frac{8}{3}-1.
+$$
+
+Como:
+
+$$
+1=\frac{3}{3},
+$$
+
+obtenemos:
+
+$$
+\boxed{
+y=\frac{4}{3}x-\frac{11}{3}
+}.
+$$
+
+De esta manera, una misma recta puede escribirse en diferentes formas sin cambiar su gráfica.
+
+---
+
+## Ejemplo 2: construir la forma simétrica a partir de un punto y una pendiente
+
+Busquemos la ecuación simétrica de la recta que pasa por:
+
+$$
+P=(1,5)
+$$
+
+y tiene pendiente:
+
+$$
+m=-\frac{2}{3}.
+$$
+
+Podemos elegir un vector director cuyos componentes satisfagan:
+
+$$
+\frac{b}{a}=-\frac{2}{3}.
+$$
+
+Una elección conveniente es:
+
+$$
+(a,b)=(3,-2).
+$$
+
+Sustituimos en la forma simétrica:
+
+$$
+\frac{x-1}{3}
+=
+
+\frac{y-5}{-2}.
+$$
+
+Por tanto:
+
+$$
+\boxed{
+\frac{x-1}{3}
+=
+
+\frac{y-5}{-2}
+}.
+$$
+
+También podría escribirse utilizando el vector opuesto:
+
+$$
+(-3,2).
+$$
+
+Entonces:
+
+$$
+\frac{x-1}{-3}
+=
+
+\frac{y-5}{2}.
+$$
+
+Ambas ecuaciones representan la misma recta.
+
+  <SymmetricLineGraph
+    type="negative-direction"
+    title="Vector director (3,−2)"
+    description="Desde P se avanza tres unidades hacia la derecha y se descienden dos unidades."
+  />
+---
+
+## Ejemplo 3: obtener la forma simétrica con dos puntos
+
+Sean:
+
+$$
+A=(2,3)
+$$
+
+y
+
+$$
+B=(8,7).
+$$
+
+Un vector director se obtiene restando las coordenadas:
+
+$$
+\vec{AB}
+=
+
+(8-2,\ 7-3).
+$$
+
+$$
+\vec{AB}=(6,4).
+$$
+
+Podemos simplificarlo dividiendo entre 2:
+
+$$
+\vec v=(3,2).
+$$
+
+Usando el punto (A=(2,3)), la ecuación simétrica es:
+
+$$
+\boxed{
+\frac{x-2}{3}
+=
+
+\frac{y-3}{2}
+}.
+$$
+
+También podemos utilizar el punto (B=(8,7)):
+
+$$
+\frac{x-8}{3}
+=
+
+\frac{y-7}{2}.
+$$
+
+Aunque parecen distintas, ambas representan la misma recta.
+
+Podemos comprobarlo con la pendiente:
+
+$$
+m=\frac{2}{3}.
+$$
+
+Si calculamos la pendiente directamente entre los dos puntos:
+
+$$
+m=
+\frac{7-3}{8-2}
+=
+
+# \frac{4}{6}
+
+\frac{2}{3}.
+$$
+
+El resultado coincide.
+
+---
+
+## Ejemplo 4: ecuación simétrica con coordenadas negativas
+
+Consideremos los puntos:
+
+$$
+A=(-3,4)
+$$
+
+y
+
+$$
+B=(2,-6).
+$$
+
+El vector director es:
+
+$$
+\vec{AB}
+=
+
+(2-(-3),\ -6-4).
+$$
+
+$$
+\vec{AB}=(5,-10).
+$$
+
+Simplificamos:
+
+$$
+\vec v=(1,-2).
+$$
+
+Usando el punto (A):
+
+$$
+\boxed{
+\frac{x+3}{1}
+=
+
+\frac{y-4}{-2}
+}.
+$$
+
+Como dividir entre 1 no modifica la expresión, también podemos escribir:
+
+$$
+x+3
+=
+
+\frac{y-4}{-2}.
+$$
+
+La forma con ambas fracciones suele ser más clara porque conserva la simetría entre las variables.
+
+---
+
+## Casos especiales
+
+La forma simétrica tradicional:
+
+$$
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b}
+$$
+
+requiere cuidado cuando uno de los componentes del vector director es cero.
+
+### Recta horizontal
+
+Una recta horizontal tiene un vector director como:
+
+$$
+(a,0).
+$$
+
+No podemos escribir:
+
+$$
+\frac{y-y_1}{0},
+$$
+
+porque la división entre cero no está definida.
+
+Por ello, una recta horizontal que pasa por ((x_1,y_1)) se escribe simplemente como:
+
+$$
+\boxed{y=y_1}.
+$$
+
+Por ejemplo, si pasa por ((3,5)):
+
+$$
+\boxed{y=5}.
+$$
+
+### Recta vertical
+
+Una recta vertical tiene un vector director como:
+
+$$
+(0,b).
+$$
+
+Tampoco podemos escribir:
+
+$$
+\frac{x-x_1}{0}.
+$$
+
+Por ello, su ecuación es:
+
+$$
+\boxed{x=x_1}.
+$$
+
+Por ejemplo, si pasa por ((-2,4)):
+
+$$
+\boxed{x=-2}.
+$$
+
+<SymmetricLineGraph
+    type="special-cases"
+    title="Rectas horizontal y vertical"
+    description="Cuando una componente del vector director es cero, la forma simétrica tradicional produciría una división entre cero."
+  />
+---
+
+## Forma simétrica e intersecciones con los ejes
+
+En algunos cursos, la expresión “forma simétrica” también se utiliza para referirse a la forma de intersecciones:
+
+$$
+\boxed{
+\frac{x}{a}+\frac{y}{b}=1
+}
+$$
+
+donde:
+
+* $a$ es la intersección con el eje $X$;
+* $b$ es la intersección con el eje $Y$.
+
+Esta forma también recibe los nombres de:
+
+* forma de interceptos;
+* forma segmentaria;
+* forma canónica por intersecciones.
+
+Por ejemplo:
+
+$$
+\frac{x}{6}+\frac{y}{3}=1
+$$
+
+corta al eje $X$ en:
+
+$$
+(6,0)
+$$
+
+y al eje (Y) en:
+
+$$
+(0,3).
+$$
+
+Es importante revisar la convención utilizada en cada libro o curso, porque ambos nombres aparecen en distintos contextos.
+
+En este apartado, la forma principal estudiada es:
+
+$$
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b},
+$$
+
+que corresponde a la forma simétrica basada en un punto y un vector director.
+
+---
+
+## Conversión desde la forma general
+
+Supongamos que tenemos:
+
+$$
+2x-3y+6=0.
+$$
+
+Primero despejamos una relación entre los cambios.
+
+La pendiente es:
+
+$$
+m=-\frac{A}{B}
+=
+
+# -\frac{2}{-3}
+
+\frac{2}{3}.
+$$
+
+Un vector director adecuado es:
+
+$$
+(3,2).
+$$
+
+Ahora necesitamos un punto de la recta. Podemos elegir (x=0):
+
+$$
+-3y+6=0.
+$$
+
+$$
+y=2.
+$$
+
+Así, un punto es:
+
+$$
+(0,2).
+$$
+
+La forma simétrica es:
+
+$$
+\boxed{
+\frac{x}{3}
+=
+
+\frac{y-2}{2}
+}.
+$$
+
+Podemos verificarla multiplicando en cruz:
+
+$$
+2x=3(y-2).
+$$
+
+$$
+2x=3y-6.
+$$
+
+$$
+2x-3y+6=0.
+$$
+
+Se recupera la ecuación original.
+
+---
+
+## Aplicación: recta paralela
+
+Supongamos que queremos encontrar una recta paralela a:
+
+$$
+\frac{x-1}{4}
+=
+
+\frac{y+2}{3}
+$$
+
+que pase por:
+
+$$
+P=(5,1).
+$$
+
+La recta dada tiene vector director:
+
+$$
+(4,3).
+$$
+
+Una recta paralela debe tener el mismo vector director.
+
+Por tanto, la ecuación buscada es:
+
+$$
+\boxed{
+\frac{x-5}{4}
+=
+
+\frac{y-1}{3}
+}.
+$$
+
+No necesitamos calcular la pendiente explícitamente, aunque podríamos verificar que:
+
+$$
+m=\frac{3}{4}.
+$$
+
+---
+
+## Aplicación: recta perpendicular
+
+Consideremos la recta:
+
+$$
+\frac{x-2}{3}
+=
+
+\frac{y+1}{2}.
+$$
+
+Su vector director es:
+
+$$
+(3,2).
+$$
+
+Un vector perpendicular debe tener producto escalar igual a cero.
+
+Una opción es:
+
+$$
+(2,-3),
+$$
+
+porque:
+
+$$
+(3)(2)+(2)(-3)=6-6=0.
+$$
+
+Si la recta perpendicular debe pasar por:
+
+$$
+P=(1,4),
+$$
+
+su ecuación simétrica es:
+
+$$
+\boxed{
+\frac{x-1}{2}
+=
+
+\frac{y-4}{-3}
+}.
+$$
+
+La pendiente original es:
+
+$$
+\frac{2}{3},
+$$
+
+mientras que la perpendicular es:
+
+$$
+-\frac{3}{2}.
+$$
+
+Su producto es:
+
+$$
+\frac{2}{3}
+\left(-\frac{3}{2}\right)
+=-1.
+$$
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes es confundir los denominadores con las coordenadas de un punto. En:
+
+$$
+\frac{x-2}{3}
+=
+
+\frac{y+1}{4},
+$$
+
+el punto es:
+
+$$
+(2,-1),
+$$
+
+mientras que el vector director es:
+
+$$
+(3,4).
+$$
+
+Otro error consiste en invertir las componentes del vector director. Si el vector es:
+
+$$
+(a,b),
+$$
+
+la pendiente es:
+
+$$
+\frac{b}{a},
+$$
+
+no:
+
+$$
+\frac{a}{b}.
+$$
+
+También es frecuente olvidar los signos negativos. La expresión:
+
+$$
+y+5
+$$
+
+equivale a:
+
+$$
+y-(-5),
+$$
+
+por lo que la coordenada vertical del punto es (-5).
+
+Debe evitarse además colocar cero en un denominador. Las rectas horizontales y verticales deben escribirse por separado como:
+
+$$
+y=k
+$$
+
+o:
+
+$$
+x=k.
+$$
+
+Finalmente, conviene reconocer que diferentes vectores proporcionales describen la misma dirección. No existe un único vector director para una recta.
+
+---
+
+## Reflexión final
+
+La forma simétrica:
+
+$$
+\boxed{
+\frac{x-x_1}{a}
+=
+
+\frac{y-y_1}{b}
+}
+$$
+
+permite describir una recta mediante un punto conocido y un vector director.
+
+El punto:
+
+$$
+(x_1,y_1)
+$$
+
+indica por dónde pasa la recta, mientras que el vector:
+
+$$
+(a,b)
+$$
+
+describe su dirección.
+
+La pendiente puede obtenerse mediante:
+
+$$
+\boxed{
+m=\frac{b}{a}
+}
+$$
+
+si (a\neq0).
+
+Esta forma resulta especialmente útil porque muestra de manera equilibrada el cambio horizontal y el cambio vertical. Además, se relaciona directamente con las ecuaciones paramétricas:
+
+$$
+x=x_1+at
+$$
+
+$$
+y=y_1+bt.
+$$
+
+Comprender la forma simétrica significa reconocer que una recta puede construirse comenzando en un punto y avanzando repetidamente en una dirección fija. Esta visión será fundamental para estudiar vectores, ecuaciones paramétricas y geometría analítica en dimensiones superiores.

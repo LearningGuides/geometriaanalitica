@@ -1,0 +1,40 @@
+---
+
+
+import "katex/dist/katex.min.css";
+import "../styles/leccion.css";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <a href="/geometriaanalitica" class="btn-home">Lecciones</a>
+    <main class="pagina-leccion">
+      <slot />
+    </main>
+  </body>
+</html>

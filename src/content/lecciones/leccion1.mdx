@@ -1,0 +1,403 @@
+---
+titulo: Plano cartesiano y trazo de segmentos
+numero: 1
+---
+import CartesianGraph from "../../components/Leccion1.astro"
+import Ejercicios from '../ejercicios/ejercicios1.mdx';
+import BloqueEjercicios from '../../components/BloqueEjercicios.astro';
+
+# Plano cartesiano y trazo de segmentos
+
+El plano cartesiano es una de las herramientas más importantes de las matemáticas, pues permite representar puntos, figuras y relaciones entre variables mediante un sistema de coordenadas. Aunque a primera vista parece simplemente una cuadrícula con números, en realidad constituye el lenguaje gráfico con el que disciplinas como la geometría, el álgebra, la física, la ingeniería, la economía e incluso la informática describen fenómenos y resuelven problemas.
+
+Cuando utilizamos aplicaciones de navegación, programas de diseño asistido por computadora (CAD), videojuegos o sistemas de información geográfica (SIG), todos ellos emplean principios derivados del plano cartesiano.
+
+Por ello, dominar su funcionamiento no solo es un requisito académico, sino también una habilidad útil para comprender cómo se representan objetos y movimientos en el mundo digital.
+
+En esta sección aprenderemos cómo se construye el plano cartesiano, cómo localizar puntos mediante coordenadas y cómo trazar segmentos entre dos puntos utilizando procedimientos geométricos y matemáticos.
+
+---
+
+## ¿Qué es el plano cartesiano?
+
+El plano cartesiano es un sistema de referencia bidimensional formado por dos rectas numéricas perpendiculares que se intersectan en un punto llamado **origen**, cuyas coordenadas son:
+
+$$
+O=(0,0)
+$$
+
+Estas dos rectas reciben nombres específicos:
+
+* **Eje X** o eje de las abscisas: representa el desplazamiento horizontal.
+* **Eje Y** o eje de las ordenadas: representa el desplazamiento vertical.
+
+Cada punto del plano queda perfectamente determinado mediante un **par ordenado** de números:
+
+$$
+P=(x,y)
+$$
+
+donde:
+
+* $x$ indica cuánto se desplaza horizontalmente.
+* $y$ indica cuánto se desplaza verticalmente.
+
+Por ejemplo,
+
+$$
+P=(3,2)
+$$
+
+significa:
+
+* avanzar **3 unidades hacia la derecha**;
+* subir **2 unidades**.
+
+En cambio,
+
+$$
+Q=(-4,5)
+$$
+
+significa:
+
+* avanzar **4 unidades hacia la izquierda**;
+* subir **5 unidades**.
+
+El orden de las coordenadas es fundamental. Los puntos
+
+$$
+(2,5)\neq(5,2)
+$$
+representan posiciones completamente diferentes.
+
+ <CartesianGraph
+          type="points"
+          title="Lectura de coordenadas"
+          description="Los puntos A, B, C y D incluyen proyecciones punteadas hacia los ejes."
+        />
+
+---
+
+## Los cuadrantes del plano cartesiano
+
+Los ejes dividen el plano en cuatro regiones llamadas **cuadrantes**.
+
+| Cuadrante | Signo de (x) | Signo de (y) |
+| --------- | ------------ | ------------ |
+| I         | +            | +            |
+| II        | −            | +            |
+| III       | −            | −            |
+| IV        | +            | −            |
+
+Cada cuadrante representa una combinación distinta de signos.
+
+Por ejemplo:
+
+* $A=(2,4)$ pertenece al primer cuadrante.
+* $B=(-3,5)$ pertenece al segundo.
+* $C=(-4,-2)$ pertenece al tercero.
+* $D=(5,-3)$ pertenece al cuarto.
+
+Reconocer rápidamente el cuadrante facilita la interpretación de gráficas y evita errores al ubicar puntos.
+
+<CartesianGraph
+          type="quadrants"
+          title="Signos de las coordenadas por cuadrante"
+          description="Cada región muestra la combinación correspondiente de signos."
+        />
+
+---
+
+# Localización de puntos
+
+Para localizar un punto se siguen siempre dos pasos:
+
+**Paso 1.** Localizar el valor de (x).
+
+**Paso 2.** Desde allí desplazarse verticalmente hasta alcanzar el valor de (y).
+
+### Ejemplo 1
+
+Ubicar
+
+$$
+A=(4,3)
+$$
+
+Primero se avanza cuatro unidades sobre el eje X.
+
+Después se ascienden tres unidades.
+
+Así se obtiene el punto A.
+
+### Ejemplo 2
+
+Ubicar
+
+$$
+B=(-5,-2)
+$$
+
+Se avanza cinco unidades hacia la izquierda.
+
+Luego se baja dos unidades.
+
+El punto queda en el tercer cuadrante.
+
+Este procedimiento siempre es el mismo sin importar la posición del punto.
+
+---
+
+## ¿Qué es un segmento de recta?
+
+Un segmento es la parte de una recta comprendida entre dos puntos llamados extremos.
+
+Si tenemos dos puntos
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2)
+$$
+
+el segmento $\overline{AB}$ está formado por todos los puntos comprendidos entre ambos.
+
+A diferencia de una recta, un segmento **tiene longitud finita**.
+
+Por ejemplo,
+
+si
+
+$$
+A=(1,2)
+$$
+
+y
+
+$$
+B=(5,4)
+$$
+
+el segmento une exactamente esos dos puntos.
+   
+   <CartesianGraph
+          type="segment"
+          title="Segmento entre dos puntos"
+          description="El segmento tiene como extremos A(1, 2) y B(5, 4)."
+        />
+
+---
+
+# Trazo de segmentos en el plano cartesiano
+
+El procedimiento es sencillo.
+
+### Paso 1
+
+Ubicar el primer punto.
+
+Supongamos
+
+$$
+A=(2,1)
+$$
+
+### Paso 2
+
+Ubicar el segundo punto.
+
+$$
+B=(6,5)
+$$
+
+### Paso 3
+
+Unir ambos puntos utilizando una regla.
+
+El resultado es el segmento
+
+$$
+\overline{AB}
+$$
+
+Este procedimiento constituye la base para construir figuras geométricas como triángulos, rectángulos, polígonos e incluso curvas mediante aproximaciones.
+
+---
+
+# Longitud de un segmento
+
+Una vez dibujado el segmento surge una pregunta natural:
+
+**¿Cuál es su longitud?**
+
+La respuesta proviene del Teorema de Pitágoras.
+
+Si
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2)
+$$
+
+la longitud del segmento es
+
+$$
+d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}
+$$
+
+Esta expresión se conoce como **fórmula de la distancia entre dos puntos**.
+
+---
+
+## ¿De dónde sale esta fórmula?
+
+Observemos dos puntos:
+
+$$
+A=(2,1)
+$$
+
+$$
+B=(7,5)
+$$
+
+La diferencia horizontal es
+
+$$
+\Delta x=7-2=5
+$$
+
+La diferencia vertical es
+
+$$
+\Delta y=5-1=4
+$$
+
+Estas diferencias forman un triángulo rectángulo.
+
+Por Pitágoras,
+
+$$
+d^2=(5)^2+(4)^2
+$$
+
+$$
+d=\sqrt{25+16}
+$$
+
+$$
+d=\sqrt{41}
+$$
+
+$$
+d\approx6.40
+$$
+
+Por tanto, el segmento mide aproximadamente **6.40 unidades**.
+
+   <CartesianGraph
+          type="distance"
+          title="Distancia mediante el Teorema de Pitágoras"
+          description="Las diferencias horizontal y vertical forman los catetos de un triángulo rectángulo."
+        />
+
+---
+
+# Ejemplo completo
+
+Consideremos los puntos
+
+$$
+A=(-2,3)
+$$
+
+$$
+B=(4,-1)
+$$
+
+### Diferencia horizontal
+
+$$
+\Delta x=4-(-2)=6
+$$
+
+### Diferencia vertical
+
+$$
+\Delta y=-1-3=-4
+$$
+
+### Longitud
+
+$$
+d=\sqrt{6^2+(-4)^2}
+$$
+
+$$
+d=\sqrt{36+16}
+$$
+
+$$
+d=\sqrt{52}
+$$
+
+$$
+d\approx7.21
+$$
+
+Esto significa que el segmento que une ambos puntos tiene una longitud aproximada de **7.21 unidades**.
+
+---
+
+# Aplicaciones del trazo de segmentos
+
+Aunque este procedimiento parece sencillo, tiene aplicaciones muy amplias.
+
+En arquitectura se utiliza para elaborar planos y calcular dimensiones.
+
+En ingeniería permite representar estructuras, mecanismos y trayectorias.
+
+En informática constituye la base de los gráficos vectoriales y del diseño asistido por computadora.
+
+En robótica ayuda a planificar movimientos y recorridos.
+
+En geografía permite medir distancias sobre mapas digitales.
+
+Cada línea que aparece en un plano de construcción o en un videojuego puede interpretarse como un segmento definido mediante coordenadas cartesianas.
+
+---
+
+# Errores frecuentes
+
+Al comenzar a trabajar con el plano cartesiano es común cometer algunos errores.
+
+Uno de los más habituales consiste en intercambiar el orden de las coordenadas. Recordemos que siempre se escribe primero la coordenada horizontal y después la vertical.
+
+Otro error frecuente es olvidar los signos negativos. Un punto con coordenadas negativas cambia completamente de posición dentro del plano.
+
+También suele confundirse una recta con un segmento. La recta se prolonga indefinidamente en ambos sentidos, mientras que el segmento posee dos extremos claramente definidos.
+
+Finalmente, algunos estudiantes aplican incorrectamente la fórmula de la distancia al olvidar elevar al cuadrado las diferencias de coordenadas antes de sumar.
+
+---
+
+# Reflexión final
+
+El plano cartesiano constituye el puente entre la geometría y el álgebra. Gracias a él es posible representar posiciones, describir trayectorias y construir figuras mediante coordenadas numéricas. El trazo de segmentos, aunque parece una operación elemental, es el punto de partida para estudiar conceptos más avanzados como pendientes, ecuaciones de la recta, polígonos, transformaciones geométricas y funciones.
+
+Comprender cómo localizar puntos y unirlos mediante segmentos no solo fortalece el razonamiento espacial, sino que desarrolla la capacidad de interpretar información gráfica y resolver problemas reales. Cada segmento dibujado en el plano representa mucho más que una simple línea: es la conexión entre la representación visual y el lenguaje matemático que permite modelar el mundo que nos rodea.
+
+
+<BloqueEjercicios>
+  <Ejercicios />
+</BloqueEjercicios>

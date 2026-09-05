@@ -1,0 +1,46 @@
+---
+const { title = 'Ejercicios' } = Astro.props;
+---
+
+<section class="ejercicios">
+    <h2>Ejercicios</h2>
+  <div class="ejercicios__contenido">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .ejercicios {
+    padding: 2rem;
+    border: 1px solid #2563eb;
+    border-radius: 1rem;
+    background: #f5f3ff;
+  }
+
+  .ejercicios h2{
+    margin: 0;
+    color:#2563eb;
+  }
+
+  /*
+   * El contenido del slot no recibe automáticamente
+   * los estilos scoped del componente, por eso usamos :global().
+   */
+  .ejercicios__contenido :global(h2) {
+    color: #2563eb;
+    font-size: 24px;
+    border: 0;
+    background-color:  #d0dfff;
+    margin: 1rem;
+  }
+
+  .ejercicios__contenido :global(h3) {
+    color: #2563eb;
+  }
+
+  .ejercicios__contenido :global(pre) {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #1e1b4b;
+  }
+</style>

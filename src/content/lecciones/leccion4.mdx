@@ -1,0 +1,633 @@
+---
+titulo: Distancia entre dos puntos
+numero: 4
+---
+
+import DistanceGraph from "../../components/Leccion4.astro"
+
+import Ejercicios from '../ejercicios/ejercicios4.mdx';
+import BloqueEjercicios from '../../components/BloqueEjercicios.astro';
+
+# Distancia entre dos puntos
+
+La distancia entre dos puntos es una medida que indica qué tan separados se encuentran dentro del plano cartesiano. Este concepto parece sencillo, pero tiene una enorme importancia en matemáticas y en muchas situaciones prácticas. Se utiliza para calcular la longitud de trayectorias, determinar dimensiones de figuras geométricas, medir desplazamientos y comparar posiciones.
+
+Por ejemplo, imaginemos que dos ciudades aparecen representadas mediante coordenadas en un mapa. La distancia entre sus puntos permite estimar la longitud de una ruta directa. De manera semejante, en arquitectura podemos calcular la longitud de una viga, en diseño digital podemos medir la separación entre objetos y en robótica podemos determinar cuánto debe desplazarse una máquina para llegar de una posición a otra.
+
+En geometría analítica, la distancia entre dos puntos se obtiene mediante una fórmula basada en el teorema de Pitágoras. Esta relación conecta la representación gráfica con el cálculo algebraico y permite encontrar distancias sin medir directamente sobre el plano.
+
+---
+
+## La distancia en una recta numérica
+
+Antes de estudiar la distancia en dos dimensiones, conviene recordar cómo se calcula en una recta numérica.
+
+Si tenemos dos números, por ejemplo:
+
+$$
+A=2
+$$
+
+y
+
+$$
+B=8,
+$$
+
+la distancia entre ellos es:
+
+$$
+d=|8-2|=6.
+$$
+
+Utilizamos valor absoluto porque una distancia nunca es negativa.
+
+Si intercambiamos el orden:
+
+$$
+d=|2-8|=|-6|=6.
+$$
+
+El resultado no cambia. Esto muestra una propiedad importante:
+
+$$
+d(A,B)=d(B,A).
+$$
+
+La distancia entre (A) y (B) es la misma que entre (B) y (A).
+
+  <DistanceGraph
+    type="number-line"
+    title="Distancia entre 2 y 8"
+    description="La distancia corresponde al valor absoluto de la diferencia entre ambas posiciones."
+    height={360}
+  />
+  
+---
+
+## Distancia en el plano cartesiano
+
+En el plano cartesiano, cada punto posee dos coordenadas:
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2).
+$$
+
+A diferencia de lo que ocurre en una recta numérica, aquí los puntos pueden estar separados tanto horizontal como verticalmente.
+
+La diferencia horizontal entre los puntos es:
+
+$$
+\Delta x=x_2-x_1.
+$$
+
+La diferencia vertical es:
+
+$$
+\Delta y=y_2-y_1.
+$$
+
+Estas diferencias representan los desplazamientos necesarios para ir desde $A$ hasta $B$.
+
+Al dibujar un segmento entre ambos puntos y completar un triángulo rectángulo, los desplazamientos $\Delta x$ y $\Delta y$ se convierten en los catetos, mientras que el segmento $\overline{AB}$ corresponde a la hipotenusa.
+
+  <DistanceGraph
+    type="general-triangle"
+    title="Componentes horizontal y vertical"
+    description="Los desplazamientos Δx y Δy forman los catetos de un triángulo rectángulo."
+  />
+---
+
+## Deducción de la fórmula de distancia
+
+El teorema de Pitágoras establece que, en todo triángulo rectángulo, el cuadrado de la hipotenusa es igual a la suma de los cuadrados de los catetos:
+
+$$
+c^2=a^2+b^2.
+$$
+
+En nuestro triángulo cartesiano:
+
+$$
+c=d,
+$$
+
+$$
+a=x_2-x_1
+$$
+
+y
+
+$$
+b=y_2-y_1.
+$$
+
+Al sustituir estas expresiones obtenemos:
+
+$$
+d^2=(x_2-x_1)^2+(y_2-y_1)^2.
+$$
+
+Para despejar (d), calculamos la raíz cuadrada:
+
+$$
+\boxed{
+d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}
+}
+$$
+
+Esta es la fórmula de la distancia entre dos puntos del plano cartesiano.
+
+Aunque alguna diferencia sea negativa, al elevarla al cuadrado el resultado será positivo. Por esta razón, la distancia siempre es un número mayor o igual que cero.
+
+---
+
+## Procedimiento para calcular una distancia
+
+Para aplicar correctamente la fórmula podemos seguir cuatro pasos.
+
+Primero, identificamos las coordenadas de los puntos:
+
+$$
+A(x_1,y_1),\qquad B(x_2,y_2).
+$$
+
+Después, calculamos la diferencia horizontal:
+
+$$
+x_2-x_1.
+$$
+
+Luego, calculamos la diferencia vertical:
+
+$$
+y_2-y_1.
+$$
+
+Finalmente, elevamos ambas diferencias al cuadrado, sumamos y calculamos la raíz cuadrada.
+
+Es recomendable sustituir las coordenadas utilizando paréntesis, especialmente cuando aparecen números negativos.
+
+---
+
+## Ejemplo 1: distancia con coordenadas positivas
+
+Consideremos los puntos:
+
+$$
+A=(2,1)
+$$
+
+y
+
+$$
+B=(8,5).
+$$
+
+Aplicamos la fórmula:
+
+$$
+d=\sqrt{(8-2)^2+(5-1)^2}.
+$$
+
+Calculamos las diferencias:
+
+$$
+8-2=6
+$$
+
+y
+
+$$
+5-1=4.
+$$
+
+Entonces:
+
+$$
+d=\sqrt{6^2+4^2}.
+$$
+
+$$
+d=\sqrt{36+16}.
+$$
+
+$$
+d=\sqrt{52}.
+$$
+
+Podemos simplificar la raíz:
+
+$$
+\sqrt{52}=\sqrt{4\cdot13}=2\sqrt{13}.
+$$
+
+Por tanto:
+
+$$
+\boxed{d=2\sqrt{13}}.
+$$
+
+En forma decimal:
+
+$$
+d\approx7.21.
+$$
+
+Esto significa que los puntos están separados aproximadamente (7.21) unidades.
+
+<DistanceGraph
+    type="positive-example"
+    title="Distancia entre A(2,1) y B(8,5)"
+    description="Los catetos miden 6 y 4 unidades, mientras que la hipotenusa mide √52."
+  />
+---
+
+## Ejemplo 2: coordenadas negativas
+
+Sean los puntos:
+
+$$
+A=(-3,4)
+$$
+
+y
+
+$$
+B=(5,-2).
+$$
+
+Sustituimos:
+
+$$
+d=\sqrt{(5-(-3))^2+(-2-4)^2}.
+$$
+
+Debemos tener cuidado con los signos:
+
+$$
+5-(-3)=5+3=8
+$$
+
+y
+
+$$
+-2-4=-6.
+$$
+
+Entonces:
+
+$$
+d=\sqrt{8^2+(-6)^2}.
+$$
+
+$$
+d=\sqrt{64+36}.
+$$
+
+$$
+d=\sqrt{100}.
+$$
+
+Por tanto:
+
+$$
+\boxed{d=10}.
+$$
+
+Aunque el desplazamiento vertical fue negativo, su cuadrado es positivo:
+
+$$
+(-6)^2=36.
+$$
+
+  <DistanceGraph
+    type="negative-example"
+    title="Distancia entre A(-3,4) y B(5,-2)"
+    description="El desplazamiento horizontal es 8 y la magnitud del desplazamiento vertical es 6."
+  />
+---
+
+## Distancia horizontal
+
+Cuando dos puntos tienen la misma coordenada (y), el segmento que los une es horizontal.
+
+Por ejemplo:
+
+$$
+A=(-4,3)
+$$
+
+y
+
+$$
+B=(7,3).
+$$
+
+Aplicamos la fórmula:
+
+$$
+d=\sqrt{(7-(-4))^2+(3-3)^2}.
+$$
+
+$$
+d=\sqrt{11^2+0^2}.
+$$
+
+$$
+d=\sqrt{121}=11.
+$$
+
+En un segmento horizontal, la distancia puede obtenerse directamente mediante:
+
+$$
+d=|x_2-x_1|.
+$$
+
+Por tanto:
+
+$$
+\boxed{d=11}.
+$$
+
+<DistanceGraph
+    type="horizontal-distance"
+    title="Segmento sobre la recta y = 3"
+    description="La separación horizontal entre los extremos es de once unidades."
+  />
+---
+
+## Distancia vertical
+
+Cuando los dos puntos tienen la misma coordenada (x), el segmento es vertical.
+
+Consideremos:
+
+$$
+A=(2,-5)
+$$
+
+y
+
+$$
+B=(2,4).
+$$
+
+La fórmula produce:
+
+$$
+d=\sqrt{(2-2)^2+(4-(-5))^2}.
+$$
+
+$$
+d=\sqrt{0^2+9^2}.
+$$
+
+$$
+d=9.
+$$
+
+En este caso también podemos utilizar directamente:
+
+$$
+d=|y_2-y_1|.
+$$
+
+Así:
+
+$$
+\boxed{d=9}.
+$$
+
+---
+
+## Distancia del origen a un punto
+
+Un caso especial ocurre cuando uno de los puntos es el origen:
+
+$$
+O=(0,0).
+$$
+
+Si el otro punto es:
+
+$$
+P=(x,y),
+$$
+
+la fórmula general se convierte en:
+
+$$
+d=\sqrt{(x-0)^2+(y-0)^2}.
+$$
+
+Por tanto:
+
+$$
+\boxed{d=\sqrt{x^2+y^2}}.
+$$
+
+Por ejemplo, para:
+
+$$
+P=(3,4),
+$$
+
+tenemos:
+
+$$
+d=\sqrt{3^2+4^2}
+=\sqrt{9+16}
+=\sqrt{25}
+=5.
+$$
+
+El punto ((3,4)) se encuentra a cinco unidades del origen.
+
+ <DistanceGraph
+    type="origin-distance"
+    title="Triángulo 3-4-5"
+    description="El punto P(3,4) se encuentra a cinco unidades del origen."
+  />
+---
+
+## Comprobación del punto medio mediante distancias
+
+La fórmula de distancia también sirve para comprobar que un punto es el punto medio de un segmento.
+
+Supongamos:
+
+$$
+A=(1,2),
+$$
+
+$$
+M=(4,6)
+$$
+
+y
+
+$$
+B=(7,10).
+$$
+
+Calculamos:
+
+$$
+AM=\sqrt{(4-1)^2+(6-2)^2}
+$$
+
+$$
+AM=\sqrt{3^2+4^2}
+=\sqrt{25}=5.
+$$
+
+Después:
+
+$$
+MB=\sqrt{(7-4)^2+(10-6)^2}
+$$
+
+$$
+MB=\sqrt{3^2+4^2}
+=\sqrt{25}=5.
+$$
+
+Como:
+
+$$
+AM=MB,
+$$
+
+y los tres puntos se encuentran sobre la misma recta, podemos concluir que $M$ es el punto medio de $\overline{AB}$.
+
+---
+
+## Distancia y ecuación de una circunferencia
+
+La fórmula de distancia permite comprender la ecuación de una circunferencia. Una circunferencia está formada por todos los puntos que se encuentran a la misma distancia de un centro.
+
+Si el centro es:
+
+$$
+C=(h,k)
+$$
+
+y el radio es (r), cualquier punto:
+
+$$
+P=(x,y)
+$$
+
+de la circunferencia cumple:
+
+$$
+\sqrt{(x-h)^2+(y-k)^2}=r.
+$$
+
+Al elevar ambos lados al cuadrado:
+
+$$
+\boxed{
+(x-h)^2+(y-k)^2=r^2
+}
+$$
+
+Esta expresión es la ecuación ordinaria de una circunferencia.
+
+Por ejemplo, una circunferencia con centro en el origen y radio (5) cumple:
+
+$$
+x^2+y^2=25.
+$$
+
+ <DistanceGraph
+    type="circle-distance"
+    title="Circunferencia de radio 5"
+    description="Todos los puntos de la circunferencia están a cinco unidades del origen."
+  />
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes es olvidar elevar al cuadrado ambas diferencias. La fórmula correcta es:
+
+$$
+\sqrt{(x_2-x_1)^2+(y_2-y_1)^2},
+$$
+
+no:
+
+$$
+\sqrt{x_2-x_1+y_2-y_1}.
+$$
+
+Otro error consiste en manejar incorrectamente los signos negativos. Por ejemplo:
+
+$$
+5-(-3)=8,
+$$
+
+no (2).
+
+También se debe recordar que:
+
+$$
+(-6)^2=36,
+$$
+
+mientras que escribir (-6^2) sin paréntesis puede interpretarse como:
+
+$$
+-(6^2)=-36.
+$$
+
+Finalmente, no siempre es necesario expresar la respuesta como número decimal. En matemáticas, una forma exacta como:
+
+$$
+2\sqrt{13}
+$$
+
+puede ser más útil y rigurosa que su aproximación:
+
+$$
+7.21.
+$$
+
+---
+
+## Aplicaciones de la distancia entre dos puntos
+
+La fórmula de distancia se utiliza en cartografía para calcular separaciones entre ubicaciones representadas mediante coordenadas. En arquitectura e ingeniería permite obtener longitudes de elementos inclinados. En informática se emplea para detectar qué tan cerca se encuentran dos objetos en una pantalla o en un videojuego.
+
+En física, la distancia entre posiciones ayuda a describir desplazamientos. En geometría, permite calcular los lados de triángulos y polígonos, verificar si una figura tiene lados iguales y determinar si un punto pertenece a una circunferencia.
+
+Incluso los sistemas de navegación y localización utilizan ideas semejantes, aunque en superficies terrestres se requieren modelos más complejos debido a la curvatura del planeta.
+
+---
+
+## Reflexión final
+
+La distancia entre dos puntos transforma una separación visual en una medida exacta. Su fórmula fundamental es:
+
+$$
+\boxed{
+d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}
+}
+$$
+
+Esta expresión surge directamente del teorema de Pitágoras: las diferencias entre las coordenadas forman los catetos de un triángulo rectángulo, mientras que la distancia buscada corresponde a la hipotenusa.
+
+Más que memorizar la fórmula, conviene comprender su estructura. Primero se mide cuánto cambia la posición horizontal, después cuánto cambia la posición vertical y, finalmente, ambos desplazamientos se combinan mediante el teorema de Pitágoras.
+
+Así, la fórmula de distancia muestra una de las ideas centrales de la geometría analítica: las figuras dibujadas en el plano pueden estudiarse mediante números, operaciones y ecuaciones.
+
+<BloqueEjercicios>
+  <Ejercicios />
+</BloqueEjercicios>

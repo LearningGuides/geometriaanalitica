@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async () => {
+  const lecciones = await getCollection("lecciones");
+
+  return lecciones.map((leccion) => ({
+    params: {
+      id: leccion.id,
+    },
+    props: {
+      leccion,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { leccion } = Astro.props;
+
+const { Content } = await render(leccion);
+
+import LeccionLayout from "../../layouts/LeccionLayout.astro";
+import "katex/dist/katex.min.css";
+import "../../styles/leccion.css";
+
+---
+    
+
+<LeccionLayout
+  title={leccion.data.title}
+>   <div class="leccion">
+      <Content />
+    </div>
+</LeccionLayout>
+
+

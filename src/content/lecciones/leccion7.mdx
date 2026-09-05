@@ -1,0 +1,800 @@
+---
+titulo: Ángulo entre dos rectas
+numero: 7
+---
+
+import LinesAngleGraph from "../../components/Leccion7.astro"
+
+# Ángulo entre dos rectas
+
+El ángulo entre dos rectas permite medir qué tan separadas están sus direcciones. Este concepto resulta muy importante en geometría analítica porque ayuda a determinar si dos rectas son paralelas, perpendiculares o si se intersectan formando un ángulo agudo u obtuso.
+
+En la vida cotidiana, esta idea aparece en el diseño de calles, techos, rampas, estructuras metálicas, piezas mecánicas y trayectorias. Por ejemplo, cuando dos carreteras se cruzan, el ángulo entre ellas influye en la visibilidad y la seguridad de la intersección. En arquitectura, conocer el ángulo entre dos elementos permite comprobar si una esquina es recta o si una estructura tiene la inclinación prevista.
+
+En el plano cartesiano, el ángulo entre dos rectas puede obtenerse a partir de sus pendientes o de sus ángulos de inclinación. Ambas formas son equivalentes y muestran cómo se conectan la geometría, el álgebra y la trigonometría.
+
+---
+
+## ¿Qué significa el ángulo entre dos rectas?
+
+Cuando dos rectas se intersectan, forman cuatro ángulos alrededor del punto de intersección. Los ángulos opuestos por el vértice son iguales, mientras que los ángulos adyacentes suman:
+
+$$
+180^\circ.
+$$
+
+Por esta razón, normalmente se habla de dos medidas distintas:
+
+* Un ángulo agudo.
+* Un ángulo obtuso.
+
+En geometría analítica, cuando se pide simplemente el **ángulo entre dos rectas**, por lo general se busca el ángulo menor, es decir, el ángulo agudo o, en el caso especial de rectas perpendiculares, el ángulo recto.
+
+Por tanto, suele considerarse:
+
+$$
+0^\circ\leq \theta\leq90^\circ.
+$$
+
+ <LinesAngleGraph
+    type="intersection-angles"
+    title="Ángulos formados por dos rectas"
+    description="Los ángulos opuestos por el vértice son iguales y los adyacentes son suplementarios."
+  />
+---
+
+## Método mediante los ángulos de inclinación
+
+Cada recta posee un ángulo de inclinación medido desde el eje positivo de las (x).
+
+Supongamos que las rectas (r_1) y (r_2) tienen ángulos de inclinación:
+
+$$
+\theta_1
+$$
+
+y
+
+$$
+\theta_2.
+$$
+
+El ángulo entre ambas rectas se obtiene calculando la diferencia absoluta:
+
+$$
+\alpha=|\theta_2-\theta_1|.
+$$
+
+Sin embargo, si esta diferencia es mayor que (90^\circ), el ángulo menor entre las rectas será:
+
+$$
+\alpha=180^\circ-|\theta_2-\theta_1|.
+$$
+
+De manera compacta:
+
+$$
+\boxed{
+\alpha=\min\left(
+|\theta_2-\theta_1|,
+180^\circ-|\theta_2-\theta_1|
+\right)
+}
+$$
+
+Esta fórmula garantiza que el resultado sea el ángulo menor.
+
+### Ejemplo sencillo
+
+Si una recta tiene un ángulo de inclinación de:
+
+$$
+\theta_1=25^\circ
+$$
+
+y la otra:
+
+$$
+\theta_2=70^\circ,
+$$
+
+entonces:
+
+$$
+\alpha=|70^\circ-25^\circ|.
+$$
+
+$$
+\boxed{\alpha=45^\circ}.
+$$
+
+ <LinesAngleGraph
+    type="inclination-difference"
+    title="Diferencia entre inclinaciones"
+    description="Las inclinaciones de 25° y 70° producen un ángulo menor de 45°."
+  />
+---
+
+## Relación con las pendientes
+
+Sabemos que la pendiente de una recta se relaciona con su ángulo de inclinación mediante:
+
+$$
+m=\tan\theta.
+$$
+
+Por tanto, si las rectas tienen pendientes:
+
+$$
+m_1=\tan\theta_1
+$$
+
+y
+
+$$
+m_2=\tan\theta_2,
+$$
+
+podemos utilizar la identidad trigonométrica de la tangente de una diferencia:
+
+$$
+\tan(\theta_2-\theta_1)
+=
+
+\frac{\tan\theta_2-\tan\theta_1}
+{1+\tan\theta_1\tan\theta_2}.
+$$
+
+Al sustituir las pendientes:
+
+$$
+\tan\alpha=
+\frac{m_2-m_1}{1+m_1m_2}.
+$$
+
+Como generalmente buscamos el ángulo menor y positivo, utilizamos valor absoluto:
+
+$$
+\boxed{
+\tan\alpha=
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|
+}
+$$
+
+Finalmente, para obtener el ángulo:
+
+$$
+\boxed{
+\alpha=
+\tan^{-1}
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|
+}
+$$
+
+Esta es la fórmula principal para calcular el ángulo entre dos rectas a partir de sus pendientes.
+
+---
+
+## Ejemplo 1: pendientes positivas
+
+Consideremos dos rectas con pendientes:
+
+$$
+m_1=\frac{1}{2}
+$$
+
+y
+
+$$
+m_2=2.
+$$
+
+Aplicamos la fórmula:
+
+$$
+\tan\alpha=
+\left|
+\frac{2-\frac{1}{2}}
+{1+\left(\frac{1}{2}\right)(2)}
+\right|.
+$$
+
+Simplificamos el numerador:
+
+$$
+2-\frac{1}{2}
+=
+
+\frac{3}{2}.
+$$
+
+El denominador es:
+
+$$
+1+1=2.
+$$
+
+Por tanto:
+
+$$
+\tan\alpha=
+\frac{\frac{3}{2}}{2}
+=
+
+\frac{3}{4}.
+$$
+
+Ahora calculamos:
+
+$$
+\alpha=\tan^{-1}\left(\frac{3}{4}\right).
+$$
+
+$$
+\boxed{\alpha\approx36.87^\circ}.
+$$
+
+Esto significa que las rectas se intersectan formando un ángulo agudo de aproximadamente (36.87^\circ).
+
+ <LinesAngleGraph
+    type="positive-slopes"
+    title="Ángulo entre y = ½x y y = 2x"
+    description="Las rectas forman un ángulo agudo aproximado de 36.87°."
+  />
+---
+
+## Ejemplo 2: una pendiente positiva y otra negativa
+
+Sean las rectas con pendientes:
+
+$$
+m_1=2
+$$
+
+y
+
+$$
+m_2=-\frac{1}{3}.
+$$
+
+Sustituimos:
+
+$$
+\tan\alpha=
+\left|
+\frac{-\frac{1}{3}-2}
+{1+(2)\left(-\frac{1}{3}\right)}
+\right|.
+$$
+
+El numerador es:
+
+$$
+-\frac{1}{3}-2
+=
+
+# -\frac{1}{3}-\frac{6}{3}
+
+-\frac{7}{3}.
+$$
+
+El denominador es:
+
+$$
+1-\frac{2}{3}
+=
+
+\frac{1}{3}.
+$$
+
+Por tanto:
+
+$$
+\tan\alpha=
+\left|
+\frac{-\frac{7}{3}}
+{\frac{1}{3}}
+\right|.
+$$
+
+$$
+\tan\alpha=|-7|=7.
+$$
+
+Entonces:
+
+$$
+\alpha=\tan^{-1}(7).
+$$
+
+$$
+\boxed{\alpha\approx81.87^\circ}.
+$$
+
+Las rectas forman un ángulo cercano a (90^\circ), pero no son exactamente perpendiculares.
+
+---
+
+## Rectas paralelas
+
+Dos rectas no verticales son paralelas cuando tienen la misma pendiente:
+
+$$
+m_1=m_2.
+$$
+
+Si sustituimos esta condición en la fórmula:
+
+$$
+\tan\alpha=
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|,
+$$
+
+el numerador se hace cero:
+
+$$
+m_2-m_1=0.
+$$
+
+Por tanto:
+
+$$
+\tan\alpha=0.
+$$
+
+Entonces:
+
+$$
+\boxed{\alpha=0^\circ}.
+$$
+
+Esto confirma que dos rectas paralelas tienen la misma dirección y, por ello, el ángulo entre ellas es cero.
+
+Por ejemplo:
+
+$$
+y=2x+1
+$$
+
+y
+
+$$
+y=2x-4
+$$
+
+son paralelas porque ambas tienen pendiente:
+
+$$
+m=2.
+$$
+
+  <LinesAngleGraph
+    type="parallel"
+    title="Pendientes iguales"
+    description="Las rectas tienen pendiente 2, no se intersectan y su diferencia de dirección es 0°."
+  />
+---
+
+## Rectas perpendiculares
+
+Dos rectas son perpendiculares cuando se intersectan formando un ángulo de:
+
+$$
+90^\circ.
+$$
+
+Para rectas no verticales, esta condición se cumple cuando el producto de sus pendientes es:
+
+$$
+\boxed{m_1m_2=-1}.
+$$
+
+Esto significa que sus pendientes son recíprocas y de signo contrario.
+
+Por ejemplo, si:
+
+$$
+m_1=2,
+$$
+
+la pendiente de una recta perpendicular debe ser:
+
+$$
+m_2=-\frac{1}{2}.
+$$
+
+Comprobamos:
+
+$$
+m_1m_2=
+2\left(-\frac{1}{2}\right)
+=-1.
+$$
+
+Por tanto, las rectas son perpendiculares.
+
+En la fórmula del ángulo, el denominador se hace cero:
+
+$$
+1+m_1m_2=1-1=0.
+$$
+
+La tangente de (90^\circ) no está definida, lo cual confirma que:
+
+$$
+\boxed{\alpha=90^\circ}.
+$$
+
+  <LinesAngleGraph
+    type="perpendicular"
+    title="Producto de pendientes igual a −1"
+    description="Las rectas y = 2x y y = −½x forman un ángulo recto."
+  />
+---
+
+## Ejemplo 3: comprobar perpendicularidad
+
+Sean las rectas:
+
+$$
+r_1:y=3x+2
+$$
+
+y
+
+$$
+r_2:y=-\frac{1}{3}x+5.
+$$
+
+Sus pendientes son:
+
+$$
+m_1=3
+$$
+
+y
+
+$$
+m_2=-\frac{1}{3}.
+$$
+
+Calculamos el producto:
+
+$$
+m_1m_2=
+3\left(-\frac{1}{3}\right)
+=-1.
+$$
+
+Por tanto:
+
+$$
+\boxed{r_1\perp r_2}.
+$$
+
+El ángulo entre ambas es:
+
+$$
+\boxed{90^\circ}.
+$$
+
+No es necesario aplicar toda la fórmula cuando se reconoce inmediatamente que el producto de las pendientes es (-1).
+
+---
+
+## Ejemplo 4: obtener pendientes desde dos puntos
+
+En ocasiones, las pendientes no se proporcionan directamente. Primero deben calcularse utilizando dos puntos de cada recta.
+
+Supongamos que una recta (r_1) pasa por:
+
+$$
+A=(1,2)
+$$
+
+y
+
+$$
+B=(5,4).
+$$
+
+Su pendiente es:
+
+$$
+m_1=
+\frac{4-2}{5-1}
+=
+
+# \frac{2}{4}
+
+\frac{1}{2}.
+$$
+
+La recta (r_2) pasa por:
+
+$$
+C=(-1,4)
+$$
+
+y
+
+$$
+D=(3,0).
+$$
+
+Su pendiente es:
+
+$$
+m_2=
+\frac{0-4}{3-(-1)}
+=
+
+\frac{-4}{4}
+=-1.
+$$
+
+Ahora aplicamos la fórmula:
+
+$$
+\tan\alpha=
+\left|
+\frac{-1-\frac{1}{2}}
+{1+\left(\frac{1}{2}\right)(-1)}
+\right|.
+$$
+
+El numerador es:
+
+$$
+-\frac{3}{2}.
+$$
+
+El denominador es:
+
+$$
+1-\frac{1}{2}
+=
+
+\frac{1}{2}.
+$$
+
+Entonces:
+
+$$
+\tan\alpha=
+\left|
+\frac{-\frac{3}{2}}
+{\frac{1}{2}}
+\right|
+=3.
+$$
+
+Finalmente:
+
+$$
+\alpha=\tan^{-1}(3).
+$$
+
+$$
+\boxed{\alpha\approx71.57^\circ}.
+$$
+
+  <LinesAngleGraph
+    type="four-points"
+    title="Ángulo aproximado de 71.57°"
+    description="La primera recta tiene pendiente 1/2 y la segunda pendiente −1."
+  />
+---
+
+## Caso de una recta vertical
+
+La fórmula basada en pendientes requiere atención cuando una de las rectas es vertical, porque su pendiente no está definida.
+
+Si una recta vertical se cruza con una recta de pendiente (m), podemos utilizar el ángulo de inclinación.
+
+La recta vertical tiene:
+
+$$
+\theta_1=90^\circ.
+$$
+
+La otra recta tiene:
+
+$$
+\theta_2=\tan^{-1}(m),
+$$
+
+ajustada al intervalo entre (0^\circ) y (180^\circ).
+
+El ángulo menor será:
+
+$$
+\alpha=|90^\circ-\theta_2|.
+$$
+
+Por ejemplo, una recta con pendiente:
+
+$$
+m=1
+$$
+
+tiene un ángulo de inclinación de:
+
+$$
+45^\circ.
+$$
+
+El ángulo con una recta vertical será:
+
+$$
+\alpha=|90^\circ-45^\circ|.
+$$
+
+$$
+\boxed{\alpha=45^\circ}.
+$$
+
+Una recta horizontal y una recta vertical, en cambio, siempre son perpendiculares:
+
+$$
+\boxed{\alpha=90^\circ}.
+$$
+
+---
+
+## Ángulo agudo y ángulo obtuso
+
+Cuando dos rectas se cruzan y el ángulo menor es (\alpha), el ángulo obtuso formado por ellas mide:
+
+$$
+\boxed{180^\circ-\alpha}.
+$$
+
+Por ejemplo, si el ángulo agudo es:
+
+$$
+\alpha=35^\circ,
+$$
+
+el ángulo obtuso será:
+
+$$
+180^\circ-35^\circ=145^\circ.
+$$
+
+Los cuatro ángulos de la intersección serán:
+
+$$
+35^\circ,\quad145^\circ,\quad35^\circ,\quad145^\circ.
+$$
+
+Esto ocurre porque los ángulos opuestos por el vértice son iguales y los adyacentes son suplementarios.
+
+ <LinesAngleGraph
+    type="supplementary-angles"
+    title="Ángulos suplementarios"
+    description="Los ángulos se alternan entre α y 180° − α alrededor del punto de intersección."
+  />
+---
+
+## Procedimiento general
+
+Para calcular el ángulo entre dos rectas puede seguirse este proceso:
+
+**Primero**, identificar o calcular las pendientes:
+
+$$
+m_1,\qquad m_2.
+$$
+
+**Después**, comprobar casos especiales:
+
+* Si (m_1=m_2), las rectas son paralelas y el ángulo es (0^\circ).
+* Si (m_1m_2=-1), son perpendiculares y el ángulo es (90^\circ).
+
+**Si no ocurre ninguno de estos casos**, aplicar:
+
+$$
+\tan\alpha=
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|.
+$$
+
+Finalmente, obtener el ángulo:
+
+$$
+\alpha=
+\tan^{-1}
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|.
+$$
+
+La calculadora debe estar configurada en modo grados, normalmente indicado como:
+
+$$
+\text{DEG}.
+$$
+
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes es olvidar el valor absoluto. Sin él, la fórmula puede producir una tangente negativa, aunque el ángulo menor entre dos rectas se expresa normalmente como una cantidad positiva.
+
+Otro error es confundir la condición de paralelismo con la de perpendicularidad:
+
+$$
+m_1=m_2
+$$
+
+indica rectas paralelas, mientras que:
+
+$$
+m_1m_2=-1
+$$
+
+indica rectas perpendiculares.
+
+También es frecuente utilizar una calculadora configurada en radianes y obtener un resultado que no parece corresponder a un ángulo en grados.
+
+Debe recordarse además que la fórmula puede presentar un denominador igual a cero. Esto no es un error algebraico: normalmente indica que las rectas son perpendiculares y que el ángulo es (90^\circ).
+
+Finalmente, cuando una recta es vertical, no debe asignársele arbitrariamente una pendiente. En ese caso conviene trabajar con los ángulos de inclinación o analizar geométricamente la situación.
+
+---
+
+## Aplicaciones
+
+El ángulo entre dos rectas se utiliza en arquitectura para verificar esquinas, inclinaciones y uniones estructurales. En ingeniería permite analizar fuerzas, trayectorias y conexiones entre elementos. En topografía ayuda a estudiar direcciones sobre terrenos y mapas.
+
+En física, el ángulo entre vectores o trayectorias permite descomponer movimientos y calcular componentes. En informática se utiliza en gráficos por computadora, visión artificial, robótica y videojuegos para determinar orientaciones, giros y colisiones.
+
+En geometría, este concepto permite demostrar si dos lados son perpendiculares, clasificar triángulos y cuadriláteros, y estudiar figuras a partir de las coordenadas de sus vértices.
+
+---
+
+## Reflexión final
+
+El ángulo entre dos rectas mide la diferencia entre sus direcciones. Puede calcularse mediante sus ángulos de inclinación o, de manera más directa, mediante sus pendientes:
+
+$$
+\boxed{
+\alpha=
+\tan^{-1}
+\left|
+\frac{m_2-m_1}
+{1+m_1m_2}
+\right|
+}
+$$
+
+Esta fórmula resume una relación profunda entre geometría y trigonometría. Las pendientes describen la razón de cambio de las rectas, mientras que el ángulo expresa visualmente qué tan diferentes son sus orientaciones.
+
+También permite reconocer dos situaciones fundamentales:
+
+$$
+\boxed{m_1=m_2}
+$$
+
+para rectas paralelas, y
+
+$$
+\boxed{m_1m_2=-1}
+$$
+
+para rectas perpendiculares.
+
+Comprender el ángulo entre dos rectas no consiste solamente en aplicar una fórmula. Implica interpretar cómo se relacionan dos direcciones dentro del plano cartesiano y utilizar esa información para analizar figuras, estructuras y fenómenos reales.

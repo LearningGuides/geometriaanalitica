@@ -1,0 +1,593 @@
+---
+titulo: Punto medio de un segmento
+numero: 3
+---
+import MidpointGraph from "../../components/Leccion3.astro"
+import Ejercicios from '../ejercicios/ejercicios3.mdx';
+import BloqueEjercicios from '../../components/BloqueEjercicios.astro';
+
+# Punto medio de un segmento
+
+El punto medio es uno de los conceptos más sencillos y, al mismo tiempo, más útiles de la geometría analítica. Se trata del punto que se encuentra exactamente a la misma distancia de los dos extremos de un segmento. En términos cotidianos, podríamos imaginarlo como el lugar en el que deberíamos colocar una marca para dividir una cuerda recta en dos partes iguales, o como la ubicación ideal de una estación situada a igual distancia de dos ciudades.
+
+En el plano cartesiano, encontrar el punto medio no requiere medir físicamente el segmento. Basta con conocer las coordenadas de sus extremos y aplicar una fórmula. Esta fórmula funciona para segmentos horizontales, verticales, diagonales y también cuando las coordenadas son negativas o decimales.
+
+El punto medio es importante porque aparece en la construcción de figuras, en el cálculo de centros geométricos, en el diseño digital, en la arquitectura, en la física y en muchos problemas relacionados con posiciones y trayectorias.
+
+---
+
+## ¿Qué es el punto medio?
+
+Consideremos un segmento cuyos extremos son los puntos
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2).
+$$
+
+El punto medio, que generalmente se representa con la letra (M), es el punto situado entre (A) y (B) que divide al segmento en dos partes de la misma longitud.
+
+Esto significa que:
+
+$$
+AM=MB.
+$$
+
+También podemos expresar esta relación mediante una razón:
+
+$$
+AM:MB=1:1.
+$$
+
+Por esta razón, el punto medio puede entenderse como un caso particular de la división de un segmento en una razón dada. En este caso, las dos partes tienen exactamente la misma proporción.
+
+ <MidpointGraph
+    type="concept"
+    title="El punto medio de un segmento"
+    description="Las marcas iguales indican que AM y MB tienen la misma longitud."
+  />
+
+---
+
+## Fórmula del punto medio
+
+Si conocemos las coordenadas de los extremos
+
+$$
+A(x_1,y_1)
+$$
+
+y
+
+$$
+B(x_2,y_2),
+$$
+
+las coordenadas del punto medio se calculan con la fórmula:
+
+$$
+\boxed{
+M\left(
+\frac{x_1+x_2}{2},
+\frac{y_1+y_2}{2}
+\right)
+}
+$$
+
+Por separado, tenemos:
+
+$$
+x_M=\frac{x_1+x_2}{2}
+$$
+
+y
+
+$$
+y_M=\frac{y_1+y_2}{2}.
+$$
+
+La fórmula indica que debemos calcular el promedio de las coordenadas horizontales y, por separado, el promedio de las coordenadas verticales.
+
+En otras palabras, la coordenada (x) del punto medio está exactamente entre (x_1) y (x_2), mientras que su coordenada (y) está exactamente entre (y_1) y (y_2).
+
+---
+
+## ¿Por qué se utiliza un promedio?
+
+Supongamos que tenemos dos números sobre una recta:
+
+$$
+2 \qquad \text{y} \qquad 10.
+$$
+
+El número que está exactamente a la mitad entre ambos es:
+
+$$
+\frac{2+10}{2}=6.
+$$
+
+En efecto, la distancia de (2) a (6) es cuatro unidades, y la distancia de (6) a (10) también es cuatro unidades.
+
+En el plano cartesiano hacemos lo mismo, pero en dos direcciones:
+
+* Calculamos el valor intermedio horizontal.
+* Calculamos el valor intermedio vertical.
+
+Por eso, el punto medio se obtiene promediando las coordenadas correspondientes.
+
+<MidpointGraph
+    type="number-line"
+    title="El promedio de dos valores"
+    description="El número 6 se encuentra a cuatro unidades de 2 y a cuatro unidades de 10."
+    height={360}
+  />
+
+---
+
+## Ejemplo 1: coordenadas positivas
+
+Consideremos los puntos
+
+$$
+A=(2,3)
+$$
+
+y
+
+$$
+B=(10,7).
+$$
+
+Para encontrar el punto medio, aplicamos la fórmula:
+
+$$
+M\left(
+\frac{2+10}{2},
+\frac{3+7}{2}
+\right).
+$$
+
+Calculamos la coordenada horizontal:
+
+$$
+x_M=\frac{2+10}{2}
+=\frac{12}{2}
+=6.
+$$
+
+Ahora calculamos la coordenada vertical:
+
+$$
+y_M=\frac{3+7}{2}
+=\frac{10}{2}
+=5.
+$$
+
+Por tanto:
+
+$$
+\boxed{M=(6,5)}.
+$$
+
+Este punto se encuentra exactamente entre (A) y (B).
+
+Podemos comprobarlo observando los desplazamientos.
+
+Desde (A) hasta (M):
+
+$$
+\overrightarrow{AM}=(6-2,\ 5-3)=(4,2).
+$$
+
+Desde (M) hasta (B):
+
+$$
+\overrightarrow{MB}=(10-6,\ 7-5)=(4,2).
+$$
+
+Los dos desplazamientos son iguales, por lo que (M) divide al segmento en dos partes congruentes.
+
+<MidpointGraph
+    type="positive-example"
+    title="Punto medio M(6,5)"
+    description="Las líneas punteadas permiten leer las coordenadas de A, M y B."
+  />
+
+---
+
+## Ejemplo 2: coordenadas negativas
+
+Ahora consideremos:
+
+$$
+A=(-6,4)
+$$
+
+y
+
+$$
+B=(2,-8).
+$$
+
+Aplicamos la fórmula:
+
+$$
+M\left(
+\frac{-6+2}{2},
+\frac{4+(-8)}{2}
+\right).
+$$
+
+Para la coordenada (x):
+
+$$
+x_M=\frac{-6+2}{2}
+=\frac{-4}{2}
+=-2.
+$$
+
+Para la coordenada (y):
+
+$$
+y_M=\frac{4-8}{2}
+=\frac{-4}{2}
+=-2.
+$$
+
+Así, el punto medio es:
+
+$$
+\boxed{M=(-2,-2)}.
+$$
+
+Aunque uno de los extremos se encuentra en el segundo cuadrante y el otro en el cuarto, el procedimiento no cambia. Los signos deben conservarse cuidadosamente durante las operaciones.
+
+  <MidpointGraph
+    type="negative-example"
+    title="Segmento que atraviesa varios cuadrantes"
+    description="El punto M(-2,-2) divide en dos partes iguales el segmento entre A y B."
+  />
+
+---
+
+## Ejemplo 3: punto medio de un segmento horizontal
+
+Sean los puntos
+
+$$
+A=(-4,3)
+$$
+
+y
+
+$$
+B=(8,3).
+$$
+
+Como ambos tienen la misma coordenada (y), el segmento es horizontal.
+
+Aplicamos la fórmula:
+
+$$
+M\left(
+\frac{-4+8}{2},
+\frac{3+3}{2}
+\right).
+$$
+
+Entonces:
+
+$$
+x_M=\frac{4}{2}=2
+$$
+
+y
+
+$$
+y_M=\frac{6}{2}=3.
+$$
+
+Por tanto:
+
+$$
+\boxed{M=(2,3)}.
+$$
+
+La coordenada vertical permanece igual porque todos los puntos del segmento horizontal tienen el mismo valor de (y).
+
+  <MidpointGraph
+    type="horizontal-example"
+    title="Punto medio sobre y = 3"
+    description="Los tres puntos conservan la misma coordenada vertical."
+  />
+
+---
+
+## Ejemplo 4: punto medio de un segmento vertical
+
+Consideremos:
+
+$$
+A=(5,-2)
+$$
+
+y
+
+$$
+B=(5,10).
+$$
+
+En este caso, las coordenadas (x) son iguales, por lo que el segmento es vertical.
+
+Aplicamos la fórmula:
+
+$$
+M\left(
+\frac{5+5}{2},
+\frac{-2+10}{2}
+\right).
+$$
+
+Calculamos:
+
+$$
+x_M=\frac{10}{2}=5
+$$
+
+y
+
+$$
+y_M=\frac{8}{2}=4.
+$$
+
+Por tanto:
+
+$$
+\boxed{M=(5,4)}.
+$$
+
+La coordenada horizontal permanece constante porque todos los puntos del segmento vertical tienen el mismo valor de (x).
+
+---
+
+## Demostración mediante la fórmula de distancia
+
+Podemos demostrar que el punto obtenido es realmente equidistante de los extremos.
+
+Retomemos el ejemplo:
+
+$$
+A=(2,3),\qquad M=(6,5),\qquad B=(10,7).
+$$
+
+La distancia entre (A) y (M) es:
+
+$$
+AM=\sqrt{(6-2)^2+(5-3)^2}.
+$$
+
+$$
+AM=\sqrt{4^2+2^2}.
+$$
+
+$$
+AM=\sqrt{16+4}
+=\sqrt{20}
+=2\sqrt{5}.
+$$
+
+Ahora calculamos la distancia entre (M) y (B):
+
+$$
+MB=\sqrt{(10-6)^2+(7-5)^2}.
+$$
+
+$$
+MB=\sqrt{4^2+2^2}.
+$$
+
+$$
+MB=\sqrt{20}
+=2\sqrt{5}.
+$$
+
+Por tanto:
+
+$$
+AM=MB.
+$$
+
+Esto confirma que (M) es el punto medio.
+
+---
+
+## Relación con la división de segmentos
+
+La fórmula general para dividir internamente un segmento en la razón
+
+$$
+m:n
+$$
+
+es:
+
+$$
+P\left(
+\frac{nx_1+mx_2}{m+n},
+\frac{ny_1+my_2}{m+n}
+\right).
+$$
+
+En el caso del punto medio:
+
+$$
+m=1,\qquad n=1.
+$$
+
+Al sustituir:
+
+$$
+P\left(
+\frac{x_1+x_2}{2},
+\frac{y_1+y_2}{2}
+\right).
+$$
+
+De esta manera obtenemos la fórmula del punto medio. Por tanto, no se trata de una regla aislada, sino de un caso particular de un principio más general.
+
+---
+
+## Encontrar un extremo desconocido
+
+La fórmula también puede utilizarse de manera inversa. Supongamos que conocemos un extremo y el punto medio, pero queremos encontrar el otro extremo.
+
+Si:
+
+$$
+A=(x_1,y_1),
+$$
+
+$$
+M=(x_M,y_M)
+$$
+
+y
+
+$$
+B=(x_2,y_2),
+$$
+
+entonces:
+
+$$
+x_M=\frac{x_1+x_2}{2}.
+$$
+
+Despejando (x_2):
+
+$$
+2x_M=x_1+x_2
+$$
+
+$$
+x_2=2x_M-x_1.
+$$
+
+De manera semejante:
+
+$$
+y_2=2y_M-y_1.
+$$
+
+Por ejemplo, si
+
+$$
+A=(3,2)
+$$
+
+y
+
+$$
+M=(7,5),
+$$
+
+entonces:
+
+$$
+x_2=2(7)-3=11
+$$
+
+y
+
+$$
+y_2=2(5)-2=8.
+$$
+
+Por tanto:
+
+$$
+\boxed{B=(11,8)}.
+$$
+
+  <MidpointGraph
+    type="unknown-endpoint"
+    title="Reconstrucción del extremo B"
+    description="El segmento se prolonga desde A pasando por M hasta obtener B(11,8)."
+  />
+---
+
+## Errores frecuentes
+
+Uno de los errores más comunes consiste en sumar una coordenada (x) con una coordenada (y). Las coordenadas deben promediarse por separado:
+
+$$
+x \text{ con } x
+$$
+
+y
+
+$$
+y \text{ con } y.
+$$
+
+Otro error frecuente es dividir cada coordenada antes de realizar correctamente la suma. Conviene utilizar paréntesis:
+
+$$
+\frac{x_1+x_2}{2}.
+$$
+
+También deben cuidarse los signos negativos. Por ejemplo:
+
+$$
+-6+2=-4,
+$$
+
+no (8).
+
+Finalmente, es importante no confundir el punto medio con la longitud media. El resultado de la fórmula es un par ordenado, no una distancia:
+
+$$
+M=(x,y).
+$$
+
+---
+
+## Aplicaciones del punto medio
+
+En arquitectura, el punto medio permite colocar puertas, columnas o elementos decorativos en el centro de una pared. En cartografía sirve para encontrar una posición intermedia entre dos ubicaciones. En informática y diseño gráfico se utiliza para centrar objetos o construir figuras simétricas.
+
+En geometría, los puntos medios de los lados de un triángulo permiten construir segmentos especiales llamados medianas y segmentos medios. También ayudan a determinar centros, simetrías y transformaciones.
+
+En física, si un objeto se mueve en línea recta con velocidad constante desde una posición inicial hasta una final, el punto medio representa su posición cuando ha completado la mitad del recorrido.
+
+---
+
+## Reflexión final
+
+El punto medio representa el equilibrio geométrico entre dos extremos. Su fórmula:
+
+$$
+\boxed{
+M\left(
+\frac{x_1+x_2}{2},
+\frac{y_1+y_2}{2}
+\right)
+}
+$$
+
+permite localizar con precisión el centro de cualquier segmento en el plano cartesiano.
+
+La idea esencial es muy sencilla: para encontrar una posición intermedia, calculamos el promedio de las coordenadas correspondientes. Sin embargo, este procedimiento elemental constituye la base de numerosos conceptos más avanzados, como la construcción de figuras, el estudio de simetrías, el cálculo de centros geométricos y la división proporcional de segmentos.
+
+Comprender el punto medio no significa solamente memorizar una fórmula. Significa reconocer que la geometría puede expresar la idea de equilibrio mediante números y que, gracias al plano cartesiano, es posible determinar exactamente dónde se encuentra el centro entre dos posiciones.
+
+
+
+<BloqueEjercicios>
+  <Ejercicios />
+</BloqueEjercicios>

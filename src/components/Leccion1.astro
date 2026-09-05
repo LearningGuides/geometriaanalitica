@@ -1,0 +1,679 @@
+---
+export type GraphType =
+  | "points"
+  | "quadrants"
+  | "segment"
+  | "distance";
+
+interface Props {
+  type: GraphType;
+  title?: string;
+  description?: string;
+  height?: number;
+  interactive?: boolean;
+}
+
+const {
+  type,
+  title,
+  description,
+  height = 480,
+  interactive = false,
+} = Astro.props;
+
+const boardId = `jsxgraph-${type}-${crypto.randomUUID()}`;
+import "katex/dist/katex.min.css";
+import "../styles/leccion.css";
+
+---
+<figure
+  class="cartesian-graph"
+  data-cartesian-graph
+  data-board-id={boardId}
+  data-graph-type={type}
+  data-interactive={String(interactive)}
+>
+  {
+    title && (
+      <figcaption class="cartesian-graph__heading">
+        <strong>{title}</strong>
+        {description && <span>{description}</span>}
+      </figcaption>
+    )
+  }
+
+  <div
+    id={boardId}
+    class="jxgbox cartesian-graph__board"
+    style={`height: ${height}px`}
+    role="img"
+    aria-label={description ?? title ?? "Gráfico del plano cartesiano"}
+  >
+  </div>
+</figure>
+
+<script>
+  import JXG from "jsxgraph";
+
+  type GraphType = "points" | "quadrants" | "segment" | "distance";
+
+  interface PointDefinition {
+    name: string;
+    x: number;
+    y: number;
+    color?: string;
+    labelOffset?: [number, number];
+  }
+
+  interface GraphContainer extends HTMLElement {
+    dataset: DOMStringMap & {
+      boardId?: string;
+      graphType?: GraphType;
+      interactive?: string;
+      initialized?: string;
+    };
+  }
+
+  const COLORS = {
+    blue: "#2563eb",
+    red: "#dc2626",
+    green: "#16a34a",
+    orange: "#ea580c",
+    purple: "#7c3aed",
+    gray: "#64748b",
+    dark: "#172033",
+    guide: "#94a3b8",
+  };
+
+  function createBoard(
+    boardId: string,
+    boundingbox: [number, number, number, number],
+    interactive: boolean,
+  ) {
+    return JXG.JSXGraph.initBoard(boardId, {
+      boundingbox,
+      axis: true,
+      grid: true,
+      keepAspectRatio: true,
+      showCopyright: false,
+      showNavigation: interactive,
+      pan: {
+        enabled: interactive,
+      },
+      zoom: {
+        enabled: interactive,
+        wheel: interactive,
+        pinch: interactive,
+      },
+      defaultAxes: {
+        x: {
+          name: "x",
+          withLabel: true,
+          label: {
+            position: "rt",
+            offset: [-14, 16],
+          },
+          ticks: {
+            drawLabels: true,
+            ticksDistance: 1,
+            minorTicks: 0,
+          },
+        },
+        y: {
+          name: "y",
+          withLabel: true,
+          label: {
+            position: "rt",
+            offset: [12, -12],
+          },
+          ticks: {
+            drawLabels: true,
+            ticksDistance: 1,
+            minorTicks: 0,
+          },
+        },
+      },
+    });
+  }
+
+  function createPoint(
+    board: JXG.Board,
+    point: PointDefinition,
+    interactive: boolean,
+  ) {
+    return board.create("point", [point.x, point.y], {
+      name: `${point.name}(${point.x}, ${point.y})`,
+      size: 4,
+      fixed: !interactive,
+      snapToGrid: interactive,
+      snapSizeX: 1,
+      snapSizeY: 1,
+      strokeWidth: 2,
+      strokeColor: point.color ?? COLORS.blue,
+      fillColor: point.color ?? COLORS.blue,
+      highlight: interactive,
+      label: {
+        offset: point.labelOffset ?? [8, 10],
+        fontSize: 15,
+        color: COLORS.dark,
+        cssStyle: "font-weight: 700;",
+      },
+    });
+  }
+
+  function createProjectionLines(
+    board: JXG.Board,
+    point: PointDefinition,
+  ) {
+    board.create(
+      "segment",
+      [
+        [point.x, point.y],
+        [point.x, 0],
+      ],
+      {
+        fixed: true,
+        straightFirst: false,
+        straightLast: false,
+        strokeColor: point.color ?? COLORS.guide,
+        strokeWidth: 1.5,
+        dash: 2,
+        highlight: false,
+      },
+    );
+
+    board.create(
+      "segment",
+      [
+        [point.x, point.y],
+        [0, point.y],
+      ],
+      {
+        fixed: true,
+        straightFirst: false,
+        straightLast: false,
+        strokeColor: point.color ?? COLORS.guide,
+        strokeWidth: 1.5,
+        dash: 2,
+        highlight: false,
+      },
+    );
+  }
+
+  function createText(
+    board: JXG.Board,
+    x: number,
+    y: number,
+    text: string,
+    options: Record<string, unknown> = {},
+  ) {
+    return board.create("text", [x, y, text], {
+      fixed: true,
+      highlight: false,
+      fontSize: 16,
+      color: COLORS.dark,
+      ...options,
+    });
+  }
+
+  function drawPointsGraph(boardId: string, interactive: boolean) {
+    const board = createBoard(
+      boardId,
+      [-7, 7, 7, -6],
+      interactive,
+    );
+
+    const points: PointDefinition[] = [
+      {
+        name: "A",
+        x: 3,
+        y: 2,
+        color: COLORS.blue,
+      },
+      {
+        name: "B",
+        x: -4,
+        y: 5,
+        color: COLORS.red,
+        labelOffset: [-74, 12],
+      },
+      {
+        name: "C",
+        x: -2,
+        y: -3,
+        color: COLORS.green,
+        labelOffset: [-78, -18],
+      },
+      {
+        name: "D",
+        x: 4,
+        y: -2,
+        color: COLORS.orange,
+        labelOffset: [10, -18],
+      },
+    ];
+
+    board.suspendUpdate();
+
+    for (const point of points) {
+      createProjectionLines(board, point);
+      createPoint(board, point, interactive);
+    }
+
+    board.unsuspendUpdate();
+  }
+
+  function drawQuadrantsGraph(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-7, 7, 7, -7],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    const quadrantStyle = {
+      fixed: true,
+      highlight: false,
+      fillOpacity: 0.13,
+      borders: {
+        visible: false,
+      },
+      vertices: {
+        visible: false,
+      },
+    };
+
+    board.create(
+      "polygon",
+      [
+        [0, 0],
+        [7, 0],
+        [7, 7],
+        [0, 7],
+      ],
+      {
+        ...quadrantStyle,
+        fillColor: "#93c5fd",
+      },
+    );
+
+    board.create(
+      "polygon",
+      [
+        [-7, 0],
+        [0, 0],
+        [0, 7],
+        [-7, 7],
+      ],
+      {
+        ...quadrantStyle,
+        fillColor: "#c4b5fd",
+      },
+    );
+
+    board.create(
+      "polygon",
+      [
+        [-7, -7],
+        [0, -7],
+        [0, 0],
+        [-7, 0],
+      ],
+      {
+        ...quadrantStyle,
+        fillColor: "#86efac",
+      },
+    );
+
+    board.create(
+      "polygon",
+      [
+        [0, -7],
+        [7, -7],
+        [7, 0],
+        [0, 0],
+      ],
+      {
+        ...quadrantStyle,
+        fillColor: "#fdba74",
+      },
+    );
+
+    createText(board, 5.3, 6, "I  (+, +)", {
+      fontSize: 18,
+      cssStyle: "font-weight: 700;",
+    });
+
+    createText(board, -6.4, 6, "II  (−, +)", {
+      fontSize: 18,
+      cssStyle: "font-weight: 700;",
+    });
+
+    createText(board, -6.4, -5.7, "III  (−, −)", {
+      fontSize: 18,
+      cssStyle: "font-weight: 700;",
+    });
+
+    createText(board, 4.8, -5.7, "IV  (+, −)", {
+      fontSize: 18,
+      cssStyle: "font-weight: 700;",
+    });
+
+    const points: PointDefinition[] = [
+      {
+        name: "A",
+        x: 2,
+        y: 4,
+        color: COLORS.blue,
+      },
+      {
+        name: "B",
+        x: -3,
+        y: 5,
+        color: COLORS.purple,
+        labelOffset: [-76, 12],
+      },
+      {
+        name: "C",
+        x: -4,
+        y: -2,
+        color: COLORS.green,
+        labelOffset: [-84, -18],
+      },
+      {
+        name: "D",
+        x: 5,
+        y: -3,
+        color: COLORS.orange,
+        labelOffset: [10, -18],
+      },
+    ];
+
+    for (const point of points) {
+      createPoint(board, point, interactive);
+    }
+
+    board.unsuspendUpdate();
+  }
+
+  function drawSegmentGraph(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-1, 7, 8, -2],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    const pointA = createPoint(
+      board,
+      {
+        name: "A",
+        x: 1,
+        y: 2,
+        color: COLORS.blue,
+        labelOffset: [-62, 10],
+      },
+      interactive,
+    );
+
+    const pointB = createPoint(
+      board,
+      {
+        name: "B",
+        x: 5,
+        y: 4,
+        color: COLORS.red,
+      },
+      interactive,
+    );
+
+    board.create("segment", [pointA, pointB], {
+      strokeColor: COLORS.purple,
+      strokeWidth: 4,
+      straightFirst: false,
+      straightLast: false,
+      fixed: !interactive,
+      highlightStrokeColor: COLORS.purple,
+      highlightStrokeWidth: 5,
+    });
+
+    createText(board, 2.55, 3.45, "Segmento AB", {
+      fontSize: 17,
+      color: COLORS.purple,
+      cssStyle:
+        "font-weight: 700; background: rgba(255,255,255,.88); padding: 2px 6px; border-radius: 4px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function drawDistanceGraph(
+    boardId: string,
+    interactive: boolean,
+  ) {
+    const board = createBoard(
+      boardId,
+      [-1, 7, 9, -2],
+      interactive,
+    );
+
+    board.suspendUpdate();
+
+    const pointA = createPoint(
+      board,
+      {
+        name: "A",
+        x: 2,
+        y: 1,
+        color: COLORS.blue,
+        labelOffset: [-62, -16],
+      },
+      interactive,
+    );
+
+    const pointB = createPoint(
+      board,
+      {
+        name: "B",
+        x: 7,
+        y: 5,
+        color: COLORS.red,
+      },
+      interactive,
+    );
+
+    const auxiliaryPoint = board.create("point", [7, 1], {
+      name: "",
+      visible: false,
+      fixed: true,
+    });
+
+    board.create("segment", [pointA, pointB], {
+      strokeColor: COLORS.purple,
+      strokeWidth: 4,
+      fixed: !interactive,
+      straightFirst: false,
+      straightLast: false,
+      highlightStrokeColor: COLORS.purple,
+    });
+
+    board.create("segment", [pointA, auxiliaryPoint], {
+      strokeColor: COLORS.blue,
+      strokeWidth: 3,
+      dash: 2,
+      fixed: true,
+      highlight: false,
+    });
+
+    board.create("segment", [auxiliaryPoint, pointB], {
+      strokeColor: COLORS.red,
+      strokeWidth: 3,
+      dash: 2,
+      fixed: true,
+      highlight: false,
+    });
+
+    board.create("angle", [pointA, auxiliaryPoint, pointB], {
+      radius: 0.55,
+      orthoType: "square",
+      fillColor: "#ffffff",
+      fillOpacity: 0.8,
+      strokeColor: COLORS.gray,
+      withLabel: false,
+      fixed: true,
+      highlight: false,
+    });
+
+    createText(board, 4.15, 0.58, "Δx = 5", {
+      fontSize: 17,
+      color: COLORS.blue,
+      cssStyle: "font-weight: 700;",
+    });
+
+    createText(board, 7.25, 3, "Δy = 4", {
+      fontSize: 17,
+      color: COLORS.red,
+      cssStyle: "font-weight: 700;",
+    });
+
+    createText(board, 3.75, 3.75, "d = √41 ≈ 6.40", {
+      fontSize: 17,
+      color: COLORS.purple,
+      cssStyle:
+        "font-weight: 700; background: rgba(255,255,255,.9); padding: 3px 7px; border-radius: 4px;",
+    });
+
+    board.unsuspendUpdate();
+  }
+
+  function initializeGraph(container: GraphContainer) {
+    if (container.dataset.initialized === "true") {
+      return;
+    }
+
+    const boardId = container.dataset.boardId;
+    const graphType = container.dataset.graphType;
+    const interactive = container.dataset.interactive === "true";
+
+    if (!boardId || !graphType) {
+      console.error(
+        "No se pudo inicializar el gráfico: faltan sus atributos.",
+      );
+      return;
+    }
+
+    const boardElement = document.getElementById(boardId);
+
+    if (!boardElement) {
+      console.error(`No existe el contenedor "${boardId}".`);
+      return;
+    }
+
+    container.dataset.initialized = "true";
+
+    switch (graphType) {
+      case "points":
+        drawPointsGraph(boardId, interactive);
+        break;
+
+      case "quadrants":
+        drawQuadrantsGraph(boardId, interactive);
+        break;
+
+      case "segment":
+        drawSegmentGraph(boardId, interactive);
+        break;
+
+      case "distance":
+        drawDistanceGraph(boardId, interactive);
+        break;
+
+      default: {
+        const exhaustiveCheck: never = graphType;
+        console.error(
+          `Tipo de gráfico no reconocido: ${exhaustiveCheck}`,
+        );
+      }
+    }
+  }
+
+  function initializeAllGraphs() {
+    const containers =
+      document.querySelectorAll<GraphContainer>(
+        "[data-cartesian-graph]",
+      );
+
+    containers.forEach(initializeGraph);
+  }
+
+  initializeAllGraphs();
+
+  document.addEventListener(
+    "astro:page-load",
+    initializeAllGraphs,
+  );
+</script>
+
+<style>
+  .cartesian-graph {
+  width: min(100%, 900px);
+  max-width: 100%;
+  min-width: 0;
+  margin: 2rem auto;
+}
+
+  .cartesian-graph__heading {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 0.8rem;
+    color: #172033;
+  }
+
+  .cartesian-graph__heading strong {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+  }
+
+  .cartesian-graph__heading span {
+    color: #526078;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .cartesian-graph__board {
+    width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    background: #ffffff;
+    box-shadow:
+      0 1px 2px rgb(15 23 42 / 8%),
+      0 8px 24px rgb(15 23 42 / 8%);
+  }
+
+  :global(.JXGtext) {
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  @media (max-width: 640px) {
+    .cartesian-graph {
+      margin-block: 1.25rem;
+    }
+
+    .cartesian-graph__board {
+      min-height: 390px;
+    }
+  }
+</style>
