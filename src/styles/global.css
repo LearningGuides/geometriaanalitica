@@ -39,14 +39,3 @@
     background: #1d4ed8;
   }
 
-  @media (prefers-color-scheme: dark) {
-    body {
-      background:
-        radial-gradient(
-          circle at top left,
-          rgb(30 64 175 / 0.16),
-          transparent 30rem
-        ),
-        #020617;
-    }
-  }
